@@ -15,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware(['auth'])->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/inv', function () {
+    return view('valmaster/accounts/invoice');
+})->middleware(['auth'])->name('invoice');
 
 require __DIR__.'/auth.php';
