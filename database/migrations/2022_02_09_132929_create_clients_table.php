@@ -26,7 +26,7 @@ class CreateClientsTable extends Migration
             $table->integer('days_taken_to_complete');
             $table->date('report_due_date');
             $table->unsignedInteger('assigned_to');
-            $table->unsignedInteger('Valuer_email_address');
+            $table->unsignedInteger('valuer_email_address');
             $table->integer('fee');
             $table->date('fee_due_date');
             $table->date('date_of_delivery');

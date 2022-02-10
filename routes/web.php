@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-})->middleware(['auth'])->name('welcome');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,5 +24,18 @@ Route::get('/dashboard', function () {
 Route::get('/inv', function () {
     return view('valmaster/accounts/invoice');
 })->middleware(['auth'])->name('invoice');
+
+Route::get('/test', function () {
+    return view('valmaster/super-admin/index');
+})->middleware(['auth'])->name('index');
+
+Route::get('/table', function () {
+    return view('components/content');
+});
+
+Route::get('/new', function () {
+    return view('valmaster/front-desk/create-record');
+});
+
 
 require __DIR__.'/auth.php';
