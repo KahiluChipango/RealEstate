@@ -147,7 +147,7 @@
                                         <div>
                                             <x-label for="days_taken_to_complete" :value="__('Day Taken To Complete')" />
 
-                                            <x-input id="dttcomplete" class="block mt-1 w-full" type="date" name="days_taken_to_complete" :value="old('days_taken_to_complete')" required />
+                                            <x-input id="dttcomplete" class="block mt-1 w-full" type="number" name="days_taken_to_complete" :value="old('days_taken_to_complete')" required />
                                         </div>
 
                                         <div>
@@ -163,9 +163,9 @@
                                         </div>
 
                                         <div>
-                                            <x-label for="date_of_receipt_of_instruction" :value="__('Date of Receipt of Inspection')" />
+                                            <x-label for="date_of_receipt_of_instruction" :value="__('Date of Receipt of Instruction')" />
 
-                                            <x-input id="doroinspection" class="block mt-1 w-full" type="date" name="date_of_receipt_of_instruction" :value="old('date_of_receipt_of_instruction')" required />
+                                            <x-input id="doroinstruction" class="block mt-1 w-full" type="date" name="date_of_receipt_of_instruction" :value="old('date_of_receipt_of_instruction')" required />
                                         </div>
 
 

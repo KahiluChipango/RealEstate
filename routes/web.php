@@ -32,9 +32,16 @@ Route::get('/test', function () {
 Route::get('/table', function () {
     return view('components/content');
 });
+//-----------------------------------------------------------------------
 
+
+//Front Desk View
 Route::get('/new', function () {
     return view('valmaster/front-desk/create-record');
+});
+
+Route::get('/table', function () {
+    return view('valmaster/front-desk/table-content');
 });
 
 
