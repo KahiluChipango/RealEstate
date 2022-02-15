@@ -1,96 +1,98 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Front Desk') }}
+        </h2>
+    </x-slot>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
-</head>
-<body>
-<table class="table table-bordered table-dark">
-    <thead>
-    <tr>
-        <th></th>
-        <th>Client Name</th>
-        <th>Contact Number</th>
-        <th>Contact Person</th>
-        <th>Client Email</th>
-        <th>Property Address</th>
-        <th>Fee</th>
-        <th>Status</th>
-        <th>Assigned To</th>
-        <th>Valuer Email</th>
-        <th>Type of Property</th>
-        <th>Market Value</th>
-        <th>Property Description</th>
-        <th>Report Due Date</th>
-        <th>inspection Due</th>
-        <th>Days Taken to Complete</th>
-        <th>Fee Due Date</th>
-        <th>Date of Delivery</th>
-        <th>Date of Receipt of Instruction</th>
-    </tr>
-    </thead>
-    {{--<tbody>--}}
-    {{--<?php $i = 0?>--}}
-    {{--@foreach($clients as $client)--}}
-    {{--    <tr>--}}
-
-    {{--        <td>{{++$i}}</td>--}}
-    {{--        <td>{{$client->client_name}}</td>--}}
-    {{--        <td>{{$client->contact_number}}</td>--}}
-    {{--        <td>{{$client->contact_person}}</td>--}}
-    {{--        <td>{{$client->contact_number}}</td>--}}
-    {{--        <td>{{$client->client_email}}</td>--}}
-    {{--        <td>{{$client->property_address}}</td>--}}
-    {{--        <td>{{$client->fee}}</td>--}}
-    {{--        <td>{{$client->status_for_accounts}}</td>--}}
-    {{--        <td>{{$client->assigned_to}}</td>--}}
-    {{--        <td>{{$client->valuer_email_address}}</td>--}}
-    {{--        <td>{{$client->type_of_property}}</td>--}}
-    {{--        <td>{{$client->market_value}}</td>--}}
-    {{--        <td>{{$client->property_description}}</td>--}}
-    {{--        <td>{{$client->report_due_date}}</td>--}}
-    {{--        <td>{{$client->inspection_due}}</td>--}}
-    {{--        <td>{{$client->days_taken_to_complete}}</td>--}}
-    {{--        <td>{{$client->fee_due_date}}</td>--}}
-    {{--        <td>{{$client->date_of_delivery}}</td>--}}
-    {{--        <td>{{$client->date_of_receipt_of_instruction}}</td>--}}
+    <div class="flex flex-col">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 
 
 
+                <x-table.table>
+                            <x-slot name="header">
+                                <x-table.header>#</x-table.header>
+                                <x-table.header>Job #</x-table.header>
+                                <x-table.header>Client Name</x-table.header>
+                                <x-table.header>Contact Number</x-table.header>
+                                <x-table.header>Contact Person</x-table.header>
+                                <x-table.header>Client Email</x-table.header>
+                                <x-table.header>Property Address</x-table.header>
+                                <x-table.header>Fee</x-table.header>
+                                <x-table.header>Status</x-table.header>
+                                <x-table.header>Assigned To</x-table.header>
+                                <x-table.header>Valuer Email</x-table.header>
+                                <x-table.header>Type of Property</x-table.header>
+                                <x-table.header>Market Value</x-table.header>
+                                <x-table.header>Property Description</x-table.header>
+                                <x-table.header>Report Due Date</x-table.header>
+                                <x-table.header>inspection Due</x-table.header>
+                                <x-table.header>Days Taken to Complete</x-table.header>
+                                <x-table.header>Fee Due Date</x-table.header>
+                                <x-table.header>Date of Delivery</x-table.header>
+                                <x-table.header>Date of Receipt of Instruction</x-table.header>
+                            </x-slot>
 
+                                <?php $i = 0?>
+                                @foreach($clients as $client)
+                                <tr>
 
-    {{--    </tr>--}}
-    {{--@endforeach--}}
+                                    <x-table.column>{{++$i}}</x-table.column>
+                                    <x-table.column>{{$client->job_no}}</x-table.column>
+                                    <x-table.column>{{$client->client_name}}</x-table.column>
+                                    <x-table.column>{{$client->contact_number}}</x-table.column>
+                                    <x-table.column>{{$client->contact_person}}</x-table.column>
+                                    <x-table.column>{{$client->client_email}}</x-table.column>
+                                    <x-table.column>{{$client->property_address}}</x-table.column>
+                                    <x-table.column>{{$client->fee}}</x-table.column>
+                                    <x-table.column>{{$client->status_for_accounts}}</x-table.column>
+                                    <x-table.column>{{$client->assigned_to}}</x-table.column>
+                                    <x-table.column>{{$client->valuer_email_address}}</x-table.column>
+                                    <x-table.column>{{$client->type_of_property}}</x-table.column>
+                                    <x-table.column>{{$client->market_value}}</x-table.column>
+                                    <x-table.column>{{$client->property_description}}</x-table.column>
+                                    <x-table.column>{{$client->report_due_date}}</x-table.column>
+                                    <x-table.column>{{$client->inspection_due}}</x-table.column>
+                                    <x-table.column>{{$client->days_taken_to_complete}}</x-table.column>
+                                    <x-table.column>{{$client->fee_due_date}}</x-table.column>
+                                    <x-table.column>{{$client->date_of_delivery}}</x-table.column>
+                                    <x-table.column>{{$client->date_of_receipt_of_instruction}}</x-table.column>
 
-    {{--</tbody>--}}
+                                </tr>
+                                @endforeach
 
-    <tfoot>
-    <tr>
-        <th></th>
-        <th>Client Name</th>
-        <th>Contact Number</th>
-        <th>Contact Person</th>
-        <th>Client Email</th>
-        <th>Property Address</th>
-        <th>Fee</th>
-        <th>Status</th>
-        <th>Assigned To</th>
-        <th>Valuer Email</th>
-        <th> Type of Property</th>
-        <th>Market Value</th>
-        <th>Property Description</th>
-        <th>Report Due Date</th>
-        <th>inspection Due</th>
-        <th> Days Taken to Complete</th>
-        <th>Fee Due Date</th>
-        <th>Date of Delivery</th>
-        <th>Date of Receipt of Instruction</th>
-    </tr>
-    </tfoot>
-</table>
+                                <x-slot name="footer">
+                                    <tr>
+                                        <x-table.header>#</x-table.header>
+                                        <x-table.header>Job #</x-table.header>
+                                        <x-table.header>Client Name</x-table.header>
+                                        <x-table.header>Contact Number</x-table.header>
+                                        <x-table.header>Contact Person</x-table.header>
+                                        <x-table.header>Client Email</x-table.header>
+                                        <x-table.header>Property Address</x-table.header>
+                                        <x-table.header>Fee</x-table.header>
+                                        <x-table.header>Status</x-table.header>
+                                        <x-table.header>Assigned To</x-table.header>
+                                        <x-table.header>Valuer Email</x-table.header>
+                                        <x-table.header>Type of Property</x-table.header>
+                                        <x-table.header>Market Value</x-table.header>
+                                        <x-table.header>Property Description</x-table.header>
+                                        <x-table.header>Report Due Date</x-table.header>
+                                        <x-table.header>inspection Due</x-table.header>
+                                        <x-table.header>Days Taken to Complete</x-table.header>
+                                        <x-table.header>Fee Due Date</x-table.header>
+                                        <x-table.header>Date of Delivery</x-table.header>
+                                        <x-table.header>Date of Receipt of Instruction</x-table.header>
+                                    </tr>
+                                </x-slot>
+                        </x-table.table>
+
+            </div>
+        </div>
+    </div>
+
+</x-app-layout>

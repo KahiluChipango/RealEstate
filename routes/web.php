@@ -13,25 +13,54 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::group(['middleware' => 'auth'], function(){
+/*
+|--------------------------------------------------------------------------
+| Front Desk Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('table','App\Http\Controllers\ClientController@index')->name('table');
+
+
+/*
+|--------------------------------------------------------------------------
+| Accounts Routes
+|--------------------------------------------------------------------------
+*/
+
+
+
+/*
+|--------------------------------------------------------------------------
+| agents Routes
+|--------------------------------------------------------------------------
+*/
+
+
+/*
+|--------------------------------------------------------------------------
+| Super Admin Routes
+|--------------------------------------------------------------------------
+*/
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->name('dashboard');
 
 Route::get('/inv', function () {
     return view('valmaster/accounts/invoice');
-})->middleware(['auth'])->name('invoice');
+})->name('invoice');
 
 Route::get('/test', function () {
     return view('valmaster/super-admin/index');
 })->middleware(['auth'])->name('index');
 
-Route::get('/table', function () {
-    return view('components/content');
-});
+
 //-----------------------------------------------------------------------
 
 
@@ -40,9 +69,11 @@ Route::get('/new', function () {
     return view('valmaster/front-desk/create-record');
 });
 
-Route::get('/table', function () {
+/*Route::get('/table', function () {
     return view('valmaster/front-desk/table-content');
+});*/
+
 });
-
-
 require __DIR__.'/auth.php';
+
+
