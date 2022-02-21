@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\ValuationController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +21,18 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => 'auth'], function(){
+
+    Route::get('/', 'App\Http\Controllers\DashBoardController@index')->name('/');
+
 /*
 |--------------------------------------------------------------------------
 | Front Desk Routes
 |--------------------------------------------------------------------------
 */
 
-Route::get('table','App\Http\Controllers\ClientController@index')->name('table');
-Route::get('new-record','App\Http\Controllers\ClientController@create')->name('new-record');
-
+Route::prefix('valmaster')->middleware('role:frontdesk')->name('valmaster.')->group(function() {
+    Route::resource('/front-desk', ClientController::class);
+});
 
 
 /*
@@ -31,25 +40,51 @@ Route::get('new-record','App\Http\Controllers\ClientController@create')->name('n
 | Accounts Routes
 |--------------------------------------------------------------------------
 */
-
-
+    Route::prefix('valmaster')->middleware('role:accounts')->name('valmaster.')->group(function() {
+        Route::resource('/accounts', AccountController::class);
+    });
 
 /*
 |--------------------------------------------------------------------------
-| agents Routes
+| agency Routes
 |--------------------------------------------------------------------------
 */
-
+    Route::prefix('valmaster')->middleware('role:agency')->name('valmaster.')->group(function() {
+        Route::resource('/agency', AgencyController::class);
+    });
 
 /*
 |--------------------------------------------------------------------------
 | Super Admin Routes
 |--------------------------------------------------------------------------
 */
+    Route::prefix('valmaster')->middleware('role:superadmin')->name('valmaster.')->group(function() {
+        Route::resource('/super-admin', SuperAdminController::class);
+    });
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+    Route::prefix('valmaster')->middleware('role:admin')->name('valmaster.')->group(function() {
+        Route::resource('/admin', AdminController::class);
+    });
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+/*
+|--------------------------------------------------------------------------
+| Valuation Routes
+|--------------------------------------------------------------------------
+*/
+    Route::prefix('valmaster')->middleware('role:valuation')->name('valmaster.')->group(function() {
+        Route::resource('/valuation', ValuationController::class);
+    });
+
+
+
+
+    /*Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard');*/
 
 Route::get('/inv', function () {
     return view('valmaster/accounts/invoice');

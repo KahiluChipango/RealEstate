@@ -37,7 +37,7 @@
                                 <x-table.header>Date of Receipt of Instruction</x-table.header>
                             </x-slot>
 
-                                <?php $i = 0?>
+                       {{--         <?php $i = 0?>
                                 @foreach($clients as $client)
                                 <tr>
 
@@ -64,8 +64,8 @@
 
                                 </tr>
                                 @endforeach
-
-                                {{--<x-slot name="footer">
+--}}
+                                <x-slot name="footer">
                                     <tr>
                                         <x-table.header>#</x-table.header>
                                         <x-table.header>Job #</x-table.header>
@@ -88,7 +88,7 @@
                                         <x-table.header>Date of Delivery</x-table.header>
                                         <x-table.header>Date of Receipt of Instruction</x-table.header>
                                     </tr>
-                                </x-slot>--}}
+                                </x-slot>
                         </x-table.table>
 
 
