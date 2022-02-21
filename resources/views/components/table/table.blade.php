@@ -1,4 +1,4 @@
-<table class="min-w-full divide-y divide-gray-200">
+<table class="bg-zinc-400 min-w-full divide-y divide-gray-200 ">
     <thead class="bg-gray-50">
     <tr>
         {{$header}}
@@ -8,9 +8,9 @@
         {{$slot}}
     </tbody>
 
-    <tfoot class="bg-gray-50">
+   {{-- <tfoot class="bg-gray-50">
     <tr>
         {{$footer}}
     </tr>
-    </tfoot>
+    </tfoot>--}}
 </table>

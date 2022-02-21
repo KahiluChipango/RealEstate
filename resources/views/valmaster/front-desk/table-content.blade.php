@@ -9,7 +9,7 @@
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <div class="shadow overflow-hidden border border-indigo-400 sm:rounded-lg ">
 
 
 
@@ -65,7 +65,7 @@
                                 </tr>
                                 @endforeach
 
-                                <x-slot name="footer">
+                                {{--<x-slot name="footer">
                                     <tr>
                                         <x-table.header>#</x-table.header>
                                         <x-table.header>Job #</x-table.header>
@@ -88,9 +88,11 @@
                                         <x-table.header>Date of Delivery</x-table.header>
                                         <x-table.header>Date of Receipt of Instruction</x-table.header>
                                     </tr>
-                                </x-slot>
+                                </x-slot>--}}
                         </x-table.table>
 
+
+                </div>
             </div>
         </div>
     </div>

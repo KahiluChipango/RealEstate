@@ -22,6 +22,8 @@ Route::group(['middleware' => 'auth'], function(){
 */
 
 Route::get('table','App\Http\Controllers\ClientController@index')->name('table');
+Route::get('new-record','App\Http\Controllers\ClientController@create')->name('new-record');
+
 
 
 /*
@@ -44,11 +46,8 @@ Route::get('table','App\Http\Controllers\ClientController@index')->name('table')
 | Super Admin Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->name('dashboard');
 
@@ -57,8 +56,8 @@ Route::get('/inv', function () {
 })->name('invoice');
 
 Route::get('/test', function () {
-    return view('valmaster/super-admin/index');
-})->middleware(['auth'])->name('index');
+    return view('valmaster/admin/index');
+})->name('index');
 
 
 //-----------------------------------------------------------------------
@@ -67,11 +66,8 @@ Route::get('/test', function () {
 //Front Desk View
 Route::get('/new', function () {
     return view('valmaster/front-desk/create-record');
-});
+})->name('new');
 
-/*Route::get('/table', function () {
-    return view('valmaster/front-desk/table-content');
-});*/
 
 });
 require __DIR__.'/auth.php';

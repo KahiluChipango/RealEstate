@@ -12,6 +12,8 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index()
     {
         $clients = Client::all();
@@ -26,7 +28,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view("valmaster.front-desk.create-record");
     }
 
     /**
@@ -37,7 +39,12 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = new Client();
+        $client->fill($request->all());
+        $client->save();
+
+
+
     }
 
     /**
