@@ -1,9 +1,7 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Enter Details') }}
-        </h2>
+        <x-nav-links.front-desk></x-nav-links.front-desk>
     </x-slot>
 
     <div class="py-12">
@@ -17,7 +15,7 @@
                             <!-- Validation Errors -->
                             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                            <form method="POST" action="{{ route('register') }}">
+                            <form method="POST" action="{{ route('front-desk.store') }}">
                             @csrf
 
                             <!-- Name -->

@@ -16,8 +16,8 @@ class ClientController extends Controller
 
     public function index()
     {
-        $clients = Client::all();
-        return view("valmaster.front-desk.table-content", compact("clients"));
+
+        return view("valmaster.front-desk.table-content", ['clients' => Client::paginate(10)]);
 
     }
 
@@ -39,9 +39,13 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+
         $client = new Client();
         $client->fill($request->all());
         $client->save();
+
+        $request->session()->flash('Success', "you Have Added a New Client");
+        return redirect(route('valmaster.front-desk.create'));
 
 
 

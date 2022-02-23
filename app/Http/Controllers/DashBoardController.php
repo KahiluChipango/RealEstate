@@ -15,22 +15,22 @@ class DashBoardController extends Controller
     public function index()
     {
         if(Auth::user()->hasRole('superadmin')){
-            return redirect()->route('super-admin.index');
+            return redirect()->route('valmaster.super-admin.index');
 
         }elseif(Auth::user()->hasRole('admin')){
-            return redirect()->route('admin.index');
+            return redirect()->route('valmaster.admin.index');
 
         }elseif(Auth::user()->hasRole('frontdesk')){
-            return redirect()->route('front-desk.index');
+            return redirect()->route('valmaster.front-desk.index');
 
         }elseif(Auth::user()->hasRole('accounts')){
-            return redirect()->route('accounts.index');
+            return redirect()->route('valmaster.accounts.index');
 
         }elseif(Auth::user()->hasRole('agency')){
-            return redirect()->route('agency.index');
+            return redirect()->route('valmaster.agency.index');
 
         }elseif(Auth::user()->hasRole('valuation')){
-            return redirect()->route('valuation.index');
+            return redirect()->route('valmaster.valuation.index');
 
         }
     }

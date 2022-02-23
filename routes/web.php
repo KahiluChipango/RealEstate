@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/', 'App\Http\Controllers\DashBoardController@index')->name('/');
 
+
 /*
 |--------------------------------------------------------------------------
 | Front Desk Routes

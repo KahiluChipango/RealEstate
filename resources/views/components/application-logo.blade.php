@@ -1,3 +1,3 @@
-<img src="/resources/views/components/logo/SG%20Logo.png" alt="">
-<img src="{{asset('assets/images/logo.png')}}" alt="Image" loading="lazy" class="logo">
-<img src="{}" alt="">
+
+<img src="{{asset('logo/SG Logo.png')}}" alt="Image" loading="lazy" class="shadow-lg h-16 w-auto sm:h-10">
+
