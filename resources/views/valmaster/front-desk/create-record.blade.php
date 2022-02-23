@@ -15,7 +15,7 @@
                             <!-- Validation Errors -->
                             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                            <form method="POST" action="{{ route('front-desk.store') }}">
+                            <form method="POST" action="{{ route('/') }}">
                             @csrf
 
                             <!-- Name -->
@@ -133,37 +133,65 @@
                                         <div>
                                             <x-label for="report_due_date" :value="__('Report Due Date')" />
 
-                                            <x-input id="rddate" class="block mt-1 w-full" type="date" name="report_due_date" :value="old('report_due_date')" required />
+                                            <x-input
+                                                id="rddate"
+                                                class="block mt-1 w-full"
+                                                type="date"
+                                                name="report_due_date"
+                                                :value="old('report_due_date')" required />
                                         </div>
 
                                         <div>
                                             <x-label for="inspection_due" :value="__('Inspection Due')" />
 
-                                            <x-input id="idue" class="block mt-1 w-full" type="date" name="inspection_due" :value="old('inspection_due')" required />
+                                            <x-input
+                                                id="idue"
+                                                class="block mt-1 w-full"
+                                                type="date" name="inspection_due"
+                                                :value="old('inspection_due')" required />
                                         </div>
 
                                         <div>
                                             <x-label for="days_taken_to_complete" :value="__('Day Taken To Complete')" />
 
-                                            <x-input id="dttcomplete" class="block mt-1 w-full" type="number" name="days_taken_to_complete" :value="old('days_taken_to_complete')" required />
+                                            <x-input
+                                                id="dttcomplete"
+                                                class="block mt-1 w-full"
+                                                type="number"
+                                                name="days_taken_to_complete"
+                                                :value="old('days_taken_to_complete')" required />
                                         </div>
 
                                         <div>
                                             <x-label for="fee_due_date" :value="__('Fee Due Date')" />
 
-                                            <x-input id="fddate" class="block mt-1 w-full" type="date" name="fee_due_date" :value="old('fee_due_date')" required />
+                                            <x-input
+                                                id="fddate"
+                                                class="block mt-1 w-full"
+                                                type="date" name="fee_due_date"
+                                                :value="old('fee_due_date')" required />
                                         </div>
 
                                         <div>
                                             <x-label for="date_of_delivery" :value="__('Date of Delivery')" />
 
-                                            <x-input id="dodelivery" class="block mt-1 w-full" type="date" name="date_of_delivery" :value="old('date_of_delivery')" required />
+                                            <x-input
+                                                id="dodelivery"
+                                                class="block mt-1 w-full"
+                                                type="date"
+                                                name="date_of_delivery"
+                                                :value="old('date_of_delivery')" required />
                                         </div>
 
                                         <div>
                                             <x-label for="date_of_receipt_of_instruction" :value="__('Date of Receipt of Instruction')" />
 
-                                            <x-input id="doroinstruction" class="block mt-1 w-full" type="date" name="date_of_receipt_of_instruction" :value="old('date_of_receipt_of_instruction')" required />
+                                            <x-input
+                                                id="doroinstruction"
+                                                class="block mt-1 w-full"
+                                                type="date"
+                                                name="date_of_receipt_of_instruction"
+                                                :value="old('date_of_receipt_of_instruction')" required />
                                         </div>
 
 

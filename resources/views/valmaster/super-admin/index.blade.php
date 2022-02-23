@@ -1,19 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
 
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard for super admin') }}
-        </h2>
-        <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
-            {{ __('Dashboard') }}
-        </x-nav-link>
-        <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
-            {{ __('Dashboard') }}
-        </x-nav-link>
-        <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
-            {{ __('Dashboard') }}
-        </x-nav-link>
-
+        <x-nav-links.super-admin></x-nav-links.super-admin>
     </x-slot>
 
     <div class="py-12">
