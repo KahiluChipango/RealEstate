@@ -18,6 +18,6 @@
            </x-nav-link>
 
         </div>
-        <a class="btn btn-sm btn-success float-end" href="{{ route('valmaster.front-desk.create') }}" role="button">ADD NEW CLIENT</a>
+        <a class="btn btn-sm btn-success float-end" href="{{ route('valmaster.super-admin.create') }}" role="button">Add New User</a>
     </div>
 </div>

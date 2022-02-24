@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SuperAdminController extends Controller
@@ -13,7 +15,8 @@ class SuperAdminController extends Controller
      */
     public function index()
     {
-        return view('valmaster.super-admin.index');
+
+        return view('valmaster.super-admin.index', ['users'=>User::paginate(5)]);
     }
 
     /**
@@ -23,7 +26,7 @@ class SuperAdminController extends Controller
      */
     public function create()
     {
-        //
+    return view('valmaster.super-admin.create', ['roles' => Role::all()]);
     }
 
     /**
@@ -34,7 +37,14 @@ class SuperAdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData =  $request->validated();
+
+        $user = User::create($validatedData);
+
+        $user->roles()->sync($request->roles);
+        /*$request->session()->flash('success', "You have Successfully Created a New User '".$user->name."'");*/
+
+        return redirect(route('valmaster.super-admin.index'));
     }
 
     /**
@@ -79,6 +89,10 @@ class SuperAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+
+        /*$request->session()->flash('deleted', 'You have Deleted a user');*/
+
+        return redirect(route("valmaster.super-admin.index"));
     }
 }

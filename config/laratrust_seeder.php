@@ -26,8 +26,6 @@ return [
             'profile' => 'r,u'
         ],
         'agency' => [
-            'users' => 'c,r,u,d',
-            'payments' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
         'accounts' => [

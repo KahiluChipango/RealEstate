@@ -32,7 +32,9 @@ class Client extends Model
 
          ];
 
-
+    public function users() {
+        return $this->belongsToMany('App\Model\User');
+    }
 
 
 

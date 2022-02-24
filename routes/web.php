@@ -22,87 +22,88 @@ use App\Http\Controllers\AccountController;
 
 Route::group(['middleware' => 'auth'], function(){
 
-    Route::get('/', 'App\Http\Controllers\DashBoardController@index')->name('/');
+        Route::get('/', 'App\Http\Controllers\DashBoardController@index')->name('/');
 
 
-/*
-|--------------------------------------------------------------------------
-| Front Desk Routes
-|--------------------------------------------------------------------------
-*/
+    /*
+    |--------------------------------------------------------------------------
+    | Front Desk Routes
+    |--------------------------------------------------------------------------
+    */
 
-Route::prefix('valmaster')->middleware('role:frontdesk')->name('valmaster.')->group(function() {
-    Route::resource('/front-desk', ClientController::class);
-});
-
-
-/*
-|--------------------------------------------------------------------------
-| Accounts Routes
-|--------------------------------------------------------------------------
-*/
-    Route::prefix('valmaster')->middleware('role:accounts')->name('valmaster.')->group(function() {
-        Route::resource('/accounts', AccountController::class);
-    });
-
-/*
-|--------------------------------------------------------------------------
-| agency Routes
-|--------------------------------------------------------------------------
-*/
-    Route::prefix('valmaster')->middleware('role:agency')->name('valmaster.')->group(function() {
-        Route::resource('/agency', AgencyController::class);
-    });
-
-/*
-|--------------------------------------------------------------------------
-| Super Admin Routes
-|--------------------------------------------------------------------------
-*/
-    Route::prefix('valmaster')->middleware('role:superadmin')->name('valmaster.')->group(function() {
-        Route::resource('/super-admin', SuperAdminController::class);
-    });
-/*
-|--------------------------------------------------------------------------
-| Admin Routes
-|--------------------------------------------------------------------------
-*/
-    Route::prefix('valmaster')->middleware('role:admin')->name('valmaster.')->group(function() {
-        Route::resource('/admin', AdminController::class);
-    });
-
-/*
-|--------------------------------------------------------------------------
-| Valuation Routes
-|--------------------------------------------------------------------------
-*/
-    Route::prefix('valmaster')->middleware('role:valuation')->name('valmaster.')->group(function() {
-        Route::resource('/valuation', ValuationController::class);
-    });
+        Route::prefix('valmaster')->middleware('role:frontdesk')->name('valmaster.')->group(function() {
+            Route::resource('/front-desk', ClientController::class);
+        });
 
 
+    /*
+    |--------------------------------------------------------------------------
+    | Accounts Routes
+    |--------------------------------------------------------------------------
+    */
+        Route::prefix('valmaster')->middleware('role:accounts')->name('valmaster.')->group(function() {
+            Route::resource('/accounts', AccountController::class);
+        });
+
+    /*
+    |--------------------------------------------------------------------------
+    | agency Routes
+    |--------------------------------------------------------------------------
+    */
+        Route::prefix('valmaster')->middleware('role:agency')->name('valmaster.')->group(function() {
+            Route::resource('/agency', AgencyController::class);
+        });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Super Admin Routes
+    |--------------------------------------------------------------------------
+    */
+        Route::prefix('valmaster')->middleware('role:superadmin')->name('valmaster.')->group(function() {
+            Route::resource('/super-admin', SuperAdminController::class);
+
+        });
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Routes
+    |--------------------------------------------------------------------------
+    */
+        Route::prefix('valmaster')->middleware('role:admin')->name('valmaster.')->group(function() {
+            Route::resource('/admin', AdminController::class);
+        });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Valuation Routes
+    |--------------------------------------------------------------------------
+    */
+        Route::prefix('valmaster')->middleware('role:valuation')->name('valmaster.')->group(function() {
+            Route::resource('/valuation', ValuationController::class);
+        });
 
 
-    /*Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');*/
-
-Route::get('/inv', function () {
-    return view('valmaster/accounts/invoice');
-})->name('invoice');
-
-Route::get('/test', function () {
-    return view('valmaster/admin/index');
-})->name('index');
 
 
-//-----------------------------------------------------------------------
+        /*Route::get('/', function () {
+            return view('dashboard');
+        })->name('dashboard');*/
+
+    Route::get('/inv', function () {
+        return view('valmaster/accounts/invoice');
+    })->name('invoice');
+
+    Route::get('/test', function () {
+        return view('valmaster/admin/index');
+    })->name('index');
 
 
-//Front Desk View
-Route::get('/new', function () {
-    return view('valmaster/front-desk/create-record');
-})->name('new');
+    //-----------------------------------------------------------------------
+
+
+    //Front Desk View
+    Route::get('/new', function () {
+        return view('valmaster/front-desk/create-record');
+    })->name('new');
 
 
 });

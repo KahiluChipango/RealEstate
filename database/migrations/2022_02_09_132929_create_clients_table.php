@@ -23,8 +23,8 @@ class CreateClientsTable extends Migration
             $table->string('property_address');
             $table->integer('fee');
             $table->enum('status_for_accounts', ['Work In Progress', 'Customer Happy', 'Customer Unhappy', 'Inspected/report Drafting', 'Delivered']);
-            $table->unsignedInteger('assigned_to');
-            $table->unsignedInteger('valuer_email_address');
+            $table->foreignId('users_id')->constrained()->onDelete('cascade');
+//            $table->foreignId('users_email')->constrained()->onDelete('cascade');
             $table->enum('type_of_property', ['residential', 'Commercial', 'Agriculture', 'Industrial', 'Bare Land']);
             $table->double('market_value', 8, 2);
             $table->longText('property_description');
