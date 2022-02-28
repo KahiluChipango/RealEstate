@@ -35,7 +35,7 @@
                                 <x-table.header>Date of Receipt of Instruction</x-table.header>
                             </x-slot>
 
-                       {{--         <?php $i = 0?>
+                                <?php $i = 0?>
                                 @foreach($clients as $client)
                                 <tr>
 
@@ -48,7 +48,7 @@
                                     <x-table.column>{{$client->property_address}}</x-table.column>
                                     <x-table.column>{{$client->fee}}</x-table.column>
                                     <x-table.column>{{$client->status_for_accounts}}</x-table.column>
-                                    <x-table.column>{{$client->assigned_to}}</x-table.column>
+                                    <x-table.column>{{$client->users_id}}</x-table.column>
                                     <x-table.column>{{$client->valuer_email_address}}</x-table.column>
                                     <x-table.column>{{$client->type_of_property}}</x-table.column>
                                     <x-table.column>{{$client->market_value}}</x-table.column>
@@ -62,7 +62,6 @@
 
                                 </tr>
                                 @endforeach
---}}
                                 <x-slot name="footer">
                                     <tr>
                                         <x-table.header>#</x-table.header>

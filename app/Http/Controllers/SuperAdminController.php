@@ -37,14 +37,13 @@ class SuperAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData =  $request->validated();
 
-        $user = User::create($validatedData);
-
+        $user = User::create($request->except(['_token', 'roles']));
         $user->roles()->sync($request->roles);
-        /*$request->session()->flash('success', "You have Successfully Created a New User '".$user->name."'");*/
-
         return redirect(route('valmaster.super-admin.index'));
+     
+
+
     }
 
     /**
@@ -66,7 +65,11 @@ class SuperAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('valmaster.super-admin.edit',
+            [
+                'roles' => Role::all(),
+                'user' => User::find($id)
+                ]);
     }
 
     /**
@@ -78,7 +81,12 @@ class SuperAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->update($request->except(['_token', 'roles']));
+        $user->roles()->sync($request->roles);
+
+        return redirect( route('valmaster.super-admin.index'));
     }
 
     /**

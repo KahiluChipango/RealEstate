@@ -15,13 +15,15 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->integer('job_no');
+            $table->integer('job_no')->from(4000)->autoIncrement();
             $table->string('client_name');
-            $table->integer('contact_number');
+            $table->string('contact_number');
             $table->string('contact_person');
             $table->string('client_email');
             $table->string('property_address');
             $table->integer('fee');
+            $table->boolean('fee_status', );
+            $table->enum('report_status');
             $table->enum('status_for_accounts', ['Work In Progress', 'Customer Happy', 'Customer Unhappy', 'Inspected/report Drafting', 'Delivered']);
             $table->foreignId('users_id')->constrained()->onDelete('cascade');
 //            $table->foreignId('users_email')->constrained()->onDelete('cascade');

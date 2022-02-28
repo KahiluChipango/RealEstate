@@ -12,9 +12,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @can('super-admin')
                     <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @endcan
                   {{--  <x-nav-link :href="route('table')" :active="request()->routeIs('table')">
                         {{ __('Front Desk') }}
                     </x-nav-link>

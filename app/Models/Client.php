@@ -20,8 +20,7 @@ class Client extends Model
         'inspection_due',
         'days_taken_to_complete',
         'report_due_date',
-        'assigned_to',
-        'valuer_email_address',
+        'users_id',
         'fee',
         'fee_due_date',
         'date_of_delivery',
@@ -33,7 +32,7 @@ class Client extends Model
          ];
 
     public function users() {
-        return $this->belongsToMany('App\Model\User');
+        return $this->belongsTo('App\Model\User');
     }
 
 
