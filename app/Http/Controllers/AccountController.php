@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -13,7 +15,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        //
+        return view("valmaster.accounts.index", ['clients' => Client::paginate(10)]);
     }
 
     /**
@@ -56,7 +58,11 @@ class AccountController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('valmaster.accounts.edit',
+            [
+                'clients' => Client::find($id),
+                'user' => User::all()
+            ]);
     }
 
     /**
@@ -68,7 +74,11 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::findOrFail($id);
+
+        $client->update($request->except(['user_id']));
+
+        return redirect( route('valmaster.accounts.index'));
     }
 
     /**

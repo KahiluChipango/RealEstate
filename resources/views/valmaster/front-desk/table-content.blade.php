@@ -21,9 +21,10 @@
                                 <x-table.header>Client Email</x-table.header>
                                 <x-table.header>Property Address</x-table.header>
                                 <x-table.header>Fee</x-table.header>
-                                <x-table.header>Status</x-table.header>
+                                <x-table.header>Fee Status</x-table.header>
+                                <x-table.header>Report Status</x-table.header>
+                                <x-table.header>FeedBack Status</x-table.header>
                                 <x-table.header>Assigned To</x-table.header>
-                                <x-table.header>Valuer Email</x-table.header>
                                 <x-table.header>Type of Property</x-table.header>
                                 <x-table.header>Market Value</x-table.header>
                                 <x-table.header>Property Description</x-table.header>
@@ -40,15 +41,20 @@
                                 <tr>
 
                                     <x-table.column>{{++$i}}</x-table.column>
-                                    <x-table.column>{{$client->job_no}}</x-table.column>
+                                    <x-table.column>{{ $client->branch }}{{$client->id}}</x-table.column>
                                     <x-table.column>{{$client->client_name}}</x-table.column>
                                     <x-table.column>{{$client->contact_number}}</x-table.column>
                                     <x-table.column>{{$client->contact_person}}</x-table.column>
                                     <x-table.column>{{$client->client_email}}</x-table.column>
                                     <x-table.column>{{$client->property_address}}</x-table.column>
                                     <x-table.column>{{$client->fee}}</x-table.column>
-                                    <x-table.column>{{$client->status_for_accounts}}</x-table.column>
-                                    <x-table.column>{{$client->users_id}}</x-table.column>
+                                    <x-table.column>{{$client->fee_status}}</x-table.column>
+                                    <x-table.column>{{$client->report_status}}</x-table.column>
+                                    <x-table.column>{{$client->feedback_status}}</x-table.column>
+                                    <x-table.column>{{$client->users->name}}</x-table.column>
+
+                               {{--  //   @foreach($users as $user)  <x-table.column>{{$user->name}}</x-table.column> @endforeach--}}
+
                                     <x-table.column>{{$client->valuer_email_address}}</x-table.column>
                                     <x-table.column>{{$client->type_of_property}}</x-table.column>
                                     <x-table.column>{{$client->market_value}}</x-table.column>

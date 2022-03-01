@@ -22,12 +22,28 @@
 {{--                                this section for client details--}}
 
 
+
                                   <div class="pt-6">
                                       <h1 class="font-semibold text-lg text-gray-800 leading-tight">Client Details</h1>
                                       <div class="grid grid-cols-3 gap-4 ">
 
-                                          <!-- Job Number -->
+                                          <!-- Select Branch -->
                                           <div>
+                                              <x-label for="branch"
+                                                       :value="__('Select Branch')" />
+                                              <select name="branch"
+                                                      class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                      type="text"
+                                                      name="branch">
+                                                  <option value="LSK">Lusaka</option>
+                                                  <option value="NDL">Ndola</option>
+                                                  <option value="KT">Kitwe </option>
+                                                  <option value="HAR">Harare</option>
+                                              </select>
+                                          </div>
+
+                                          <!-- Job Number -->
+                 {{--                         <div>
                                               <x-label for="job_no"
                                                        :value="__('Job Number')" />
 
@@ -37,8 +53,7 @@
                                                        name="job_no"
                                                        :value="old('job_no')" required autofocus />
                                           </div>
-
-                                          <!-- Client Name -->
+                                     --}}     <!-- Client Name -->
                                           <div>
                                               <x-label for="client_name"
                                                        :value="__('Client Name')" />
@@ -57,7 +72,7 @@
 
                                               <x-input id="contact_number"
                                                        class="block mt-1 w-full"
-                                                       type="number"
+                                                       type="text"
                                                        name="contact_number"
                                                        :value="old('client_contact')" required autofocus />
                                           </div>
@@ -123,8 +138,8 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="fee_status">
-                                                  <option value="Paid">Paid</option>
-                                                  <option value="Not Paid">Not Paid</option>
+                                                  <option value="1">Paid</option>
+                                                  <option value="0">Not Paid</option>
                                               </select>
                                           </div>
 

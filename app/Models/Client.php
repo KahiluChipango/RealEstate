@@ -10,29 +10,31 @@ class Client extends Model
     use HasFactory;
 
     protected $fillable = [
+        'branch',
         'job_no',
         'client_name',
-        'property_address',
-        'contact_person',
         'contact_number',
+        'contact_person',
         'client_email',
-        'date_of_receipt_of_instruction',
-        'inspection_due',
-        'days_taken_to_complete',
-        'report_due_date',
-        'users_id',
+        'property_address',
         'fee',
-        'fee_due_date',
-        'date_of_delivery',
+        'fee_status',
+        'report_status',
+        'feedback_status',
+        'users_id',
         'type_of_property',
-        'status_for_accounts',
         'market_value',
         'property_description',
-
-         ];
+        'report_due_date',
+        'inspection_due',
+        'days_taken_to_complete',
+        'fee_due_date',
+        'date_of_delivery',
+        'date_of_receipt_of_instruction',
+    ];
 
     public function users() {
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Models\User');
     }
 
 

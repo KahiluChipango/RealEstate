@@ -14,17 +14,18 @@ class CreateClientsTable extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->id();
-            $table->integer('job_no')->from(4000)->autoIncrement();
+            $table->id()->from(4000);
+            $table->enum('branch', ['LSK', 'NDL', 'KT', 'HAR']);
+     /*       $table->integer('job_no')->from(4000);*/
             $table->string('client_name');
             $table->string('contact_number');
             $table->string('contact_person');
             $table->string('client_email');
             $table->string('property_address');
             $table->integer('fee');
-            $table->boolean('fee_status', );
-            $table->enum('report_status');
-            $table->enum('status_for_accounts', ['Work In Progress', 'Customer Happy', 'Customer Unhappy', 'Inspected/report Drafting', 'Delivered']);
+            $table->boolean('fee_status')->default(0);
+            $table->enum('report_status', ['Work In Progress', 'Inspected/report Drafting', 'Delivered']);
+            $table->enum('feedback_status', ['Customer Happy', 'Customer Unhappy']);
             $table->foreignId('users_id')->constrained()->onDelete('cascade');
 //            $table->foreignId('users_email')->constrained()->onDelete('cascade');
             $table->enum('type_of_property', ['residential', 'Commercial', 'Agriculture', 'Industrial', 'Bare Land']);

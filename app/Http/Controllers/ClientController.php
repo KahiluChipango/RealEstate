@@ -19,7 +19,11 @@ class ClientController extends Controller
     public function index()
     {
 
-        return view("valmaster.front-desk.table-content", ['clients' => Client::all()]);
+        return view("valmaster.front-desk.table-content",
+            [
+                'clients' => Client::all(),
+                'users' => User::find('name')
+                ]);
 
     }
 
@@ -52,21 +56,25 @@ class ClientController extends Controller
 //        dd($request->all());
 
         $request->validate([
-            'job_no' => ['required', 'integer'],
+            'branch' => ['required'],
             'client_name' => ['required', 'string'],
-            'property_address' => ['required', 'string'],
+            'contact_number' => ['required', 'string'],
             'contact_person' => ['required',],
-            'contact_number' => ['required', 'integer'],
             'client_email' => ['required', 'string'],
+            'property_address' => ['required', 'string'],
+            'fee' => ['required',],
+            'fee_status' => ['required',],
+            'report_status' => ['required',],
+            'feedback_status' => ['required',],
             'date_of_receipt_of_instruction' => ['required',],
             'inspection_due' => ['required',],
             'days_taken_to_complete' => ['required',],
             'report_due_date' => ['required',],
-            'fee' => ['required',],
+
             'fee_due_date' => ['required',],
             'date_of_delivery' => ['required',],
             'type_of_property' => ['required',],
-            'status_for_accounts' => ['required',],
+
             'market_value' => ['required',],
             'property_description' => ['required',],
         ]);
