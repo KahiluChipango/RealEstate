@@ -42,7 +42,7 @@ class SuperAdminController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required']
+            'password' => ['required', 'min:8']
         ]);
         $user = User::create([
             'name' => $request->name,

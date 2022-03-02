@@ -7,17 +7,11 @@
                              {{ __('Home') }}
            </x-nav-link>
 
-           <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
-               {{ __('Client Details') }}
-           </x-nav-link>
-            <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
-               {{ __('Due Date/Time') }}
-           </x-nav-link>
-            <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
-               {{ __('Assigned Personel') }}
-           </x-nav-link>
-
         </div>
-        <a class="btn btn-sm btn-success float-end" href="{{ route('valmaster.front-desk.create') }}" role="button">ADD NEW CLIENT</a>
+        <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+           href="{{ route('valmaster.front-desk.create') }}"
+           role="button">
+            ADD NEW CLIENT
+        </a>
     </div>
 </div>
