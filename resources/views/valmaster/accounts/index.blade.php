@@ -17,6 +17,7 @@
                             <x-table.header>fee Due Date</x-table.header>
                             <x-table.header>Status</x-table.header>
                             <x-table.header>Actions</x-table.header>
+                            <x-table.header>Send</x-table.header>
 
                         </x-slot>
 
@@ -24,15 +25,21 @@
                         @foreach( $clients as $client)
                             <tr>
 
-                                <x-table.column>{{$client->job_no}}</x-table.column>
-                                <x-table.column>{{$client->name}}</x-table.column>
+                                <x-table.column>{{$client->branch}}{{$client->id}}</x-table.column>
+                                <x-table.column>{{$client->client_name}}</x-table.column>
                                 <x-table.column>{{$client->fee}}</x-table.column>
+                                <x-table.column>{{$client->fee_due_date}}</x-table.column>
+                                <x-table.column>
+                                   @if($client->fee_status == 1)
+                                        <span class="px-2 inline-flex  leading-5 rounded-full bg-green-100 text-green-800"> Paid </span>
+                                    @elseif($client->fee_status == 0)
+                                        <span class="px-2 inline-flex  leading-5 rounded-full bg-red-500/75 "> Not Paid </span>
+                                    @endif
+
+                                </x-table.column>
+
 
                                 <x-table.column>
-
-
-
-
                                     {{--Edit Button--}}
                                     <a class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                        href="{{ route('valmaster.accounts.edit', $client->id) }}"
@@ -55,19 +62,29 @@
                                     </form>--}}
                                 </x-table.column>
 
+                                <x-table.column>
+                                    @if($client->fee_status == 1)
+                                    {{--Receipt Button--}}
+                                        <a class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-lime-600 hover:bg-lime-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                           href="{{ route('valmaster.accounts.edit', $client->id) }}"
+                                           role="button">
+                                            Receipt
+                                        </a>
+                                    @elseif($client->fee_status == 0)
+                                        {{--invoice Button--}}
+                                        <a class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                           href="{{ route('valmaster.accounts.edit', $client->id) }}"
+                                           role="button">
+                                            Invoice
+                                        </a>
+                                    @endif
+                                </x-table.column>
+
 
                             </tr>
                         @endforeach
 
-                        <x-slot name="footer">
-                            <tr>
-                                <x-table.header>#</x-table.header>
-                                <x-table.header>Job #</x-table.header>
-                                <x-table.header>Client Name</x-table.header>
-                                <x-table.header>Contact Number</x-table.header>
 
-                            </tr>
-                        </x-slot>
                     </x-table.table>
 
                    {{-- {{ $users->links() }}--}}

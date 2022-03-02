@@ -15,7 +15,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view("valmaster.accounts.index", ['clients' => Client::all()]);
+        return view("valmaster.accounts.index", ['clients' => Client::paginate(10)]);
     }
 
     /**

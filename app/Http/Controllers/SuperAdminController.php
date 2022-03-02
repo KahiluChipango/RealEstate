@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class SuperAdminController extends Controller
 {
@@ -38,10 +39,23 @@ class SuperAdminController extends Controller
     public function store(Request $request)
     {
 
-        $user = User::create($request->except(['_token', 'roles']));
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required']
+        ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            $request->except(['_token', 'roles'])
+        ]);
+        /*$user = User::create($request->except(['_token', 'roles']));*/
         $user->roles()->sync($request->roles);
+
+
         return redirect(route('valmaster.super-admin.index'));
-     
+
 
 
     }

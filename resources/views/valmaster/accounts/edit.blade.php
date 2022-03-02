@@ -1,4 +1,4 @@
-<x-app-layout>
+z<x-app-layout>
     <x-slot name="header">
 
         <x-nav-links.accounts></x-nav-links.accounts>

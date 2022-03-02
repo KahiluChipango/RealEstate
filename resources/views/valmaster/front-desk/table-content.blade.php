@@ -54,8 +54,6 @@
                                     <x-table.column>{{$client->users->name}}</x-table.column>
 
                                {{--  //   @foreach($users as $user)  <x-table.column>{{$user->name}}</x-table.column> @endforeach--}}
-
-                                    <x-table.column>{{$client->valuer_email_address}}</x-table.column>
                                     <x-table.column>{{$client->type_of_property}}</x-table.column>
                                     <x-table.column>{{$client->market_value}}</x-table.column>
                                     <x-table.column>{{$client->property_description}}</x-table.column>
