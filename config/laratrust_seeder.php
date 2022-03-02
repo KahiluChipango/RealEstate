@@ -34,8 +34,8 @@ return [
         'valuation' => [
             'profile' => 'r,u',
         ],
-        'role_name' => [
-            'module_1_name' => 'c,r,u,d',
+        'user' => [
+            'newuser' => 'c,r,u,d',
         ]
     ],
 
