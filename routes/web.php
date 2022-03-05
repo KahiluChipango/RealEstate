@@ -89,7 +89,7 @@ Route::group(['middleware' => 'auth'], function(){
         })->name('dashboard');*/
 
     Route::get('/inv', function () {
-        return view('valmaster/accounts/invoice');
+        return view('valmaster/accounts/send/invoice');
     })->name('invoice');
 
     Route::get('/test', function () {
