@@ -45,7 +45,7 @@
                        </div>
 
 
-                       <div class="col-start-1 col-end-1 bg-green-100 fst-italic ">
+                       <div class="col-start-1 col-end-1 fst-italic ">
                            <p>Fatima. C. Kasese</p>
                            <p>House No.16</p>
                            <p>Amber Road Kamwala South</p>

@@ -44,8 +44,12 @@ Route::group(['middleware' => 'auth'], function(){
         Route::prefix('valmaster')->middleware('role:accounts')->name('valmaster.')->group(function() {
             Route::resource('/accounts', AccountController::class);
            /* Route::get('/accounts/invoice', 'App\Http\Controllers\AccountController@invoice')->name('accounts.send.invoice');*/
-            Route::get('/accounts/inv', [AccountController::class, 'invoice'])->name('accounts.send.inv');
+            Route::get('/invoice', [AccountController::class, 'invoice'])->name('accounts.send.invoice');
+            Route::get('/receipt', [AccountController::class, 'receipt'])->name('accounts.send.receipt');
+
         });
+
+
 
     /*
     |--------------------------------------------------------------------------

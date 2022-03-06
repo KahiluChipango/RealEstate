@@ -121,4 +121,13 @@ class AccountController extends Controller
 
     }
 
+    public function receipt(){
+
+       /* return view("valmaster.accounts.send.invoice");*/
+        return view('valmaster.accounts.send.receipt');
+
+    }
+
+
+
 }
