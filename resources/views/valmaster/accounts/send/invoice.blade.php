@@ -10,10 +10,10 @@
                 <div class="p-6 bg-white border-b border-gray-200">
 
                    <div class="grid grid-cols-4 gap-4">
-                       <h1 class="col-start-2 col-span-2 bg-teal-600"> Sherwood Green Properties Limited </h1>
+                       <h1 class="col-start-2 col-span-2 bg-teal-600 text-center"> Sherwood Green Properties Limited </h1>
                        <x-application-logo class="col-end-4 col-span-1 block h-10 w-auto fill-current text-gray-600" />
 
-                       <h1 class="col-start-2 col-span-2 bg-teal-600"> INVOICE </h1>
+                       <h1 class="col-start-2 col-span-2 bg-teal-600 text-center"> INVOICE </h1>
                        <div class="col-start-1 col-span-2 bg-green-100">
                            <p>Mukuba Pensions  House</p>
                            <p>Box. 32616 | Tel: +260 211 255 604/5</p>
@@ -21,15 +21,25 @@
                        </div>
 
 
-                       <div class="col-start-3 col-span-2 bg-lime-600">
+                       <div class="col-start-3 col-span-1 bg-lime-600 text-right">
 
-                           <div class=" col-span-1">
+
                                <h3>Date:</h3>
                                <h3>Invoice:</h3>
                                <h3>For:</h3>
-                           </div>
+
 
                        </div>
+                       <div class="col-start-4 col-span-2 bg-lime-600 text-right">
+
+
+                               <h3>Date:</h3>
+                               <h3>Invoice:</h3>
+                               <h3>For:</h3>
+
+
+                       </div>
+
 
                        <div class="col-start-1 col-end-1 bg-green-100">
                            <p>Fatima. C. Kasese</p>
@@ -70,12 +80,23 @@
                            </table>
                        </div>
 
+                       {{-- Bank Details --}}
                        <div class="col-start-1 col-end-1 bg-green-100">
                            <p>Fatima. C. Kasese</p>
                            <p>House No.16</p>
                            <p>Amber Road Kamwala South</p>
                            <p>Lusaka</p>
                        </div>
+
+                       {{-- Footer --}}
+                       <div class="col-start-1 col-span-4 bg-teal-600">
+                           <p> Make all checks payable to Sherwood Greene Properties Limited </p>
+                           <p>If you have any questions concerning this invoice, contact Mwansa Ngosa or</p>
+                           <p>Chileshe Musonda on +260977708100 or mwansa.ngosa@sherwoodgreene.com</p>
+
+                       </div>
+
+                       <h1 class="col-start-2 col-span-2 bg-teal-600 text-center"> 'THANK YOU FOR YOUR BUSINESS!' </h1>
 
                    </div>
                 </div>
