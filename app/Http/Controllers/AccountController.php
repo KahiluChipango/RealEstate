@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Messages\VonageMessage;
 
 class AccountController extends Controller
 {
@@ -91,4 +92,33 @@ class AccountController extends Controller
     {
         //
     }
+
+   /* public function sendSmsNotificaition()
+    {
+        $basic  = new \Nexmo\Client\Credentials\Basic('Nexmo key', 'Nexmo secret');
+        $client = new \Nexmo\Client($basic);
+
+        $message = $client->message()->send([
+            'to' => '260974476363',
+            'from' => 'John Doe',
+            'text' => 'A simple hello message sent from Vonage SMS API'
+        ]);
+
+        dd('SMS message has been delivered.');
+    }*/
+
+   /* public function toVonage($notifiable)
+    {
+        return (new VonageMessage)
+            ->content('Your SMS message content');
+    }*/
+
+
+    public function invoice(){
+
+       /* return view("valmaster.accounts.send.invoice");*/
+        return view('valmaster.accounts.send.invoice');
+
+    }
+
 }

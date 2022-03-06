@@ -48,7 +48,15 @@
                                     <x-table.column>{{$client->client_email}}</x-table.column>
                                     <x-table.column>{{$client->property_address}}</x-table.column>
                                     <x-table.column>{{$client->fee}}</x-table.column>
-                                    <x-table.column>{{$client->fee_status}}</x-table.column>
+
+                                    <x-table.column>
+                                        @if($client->fee_status == 1)
+                                                        {{'Paid'}}
+                                        @elseif($client->fee_status == 0)
+                                                        {{'Not Paid'}}
+                                        @endif
+                                    </x-table.column>
+
                                     <x-table.column>{{$client->report_status}}</x-table.column>
                                     <x-table.column>{{$client->feedback_status}}</x-table.column>
                                     <x-table.column>{{$client->users->name}}</x-table.column>

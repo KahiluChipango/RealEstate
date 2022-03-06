@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/vonage-notification-channel": "^2.5",
+        "nexmo/client": "^2.4",
         "santigarcor/laratrust": "^7.0"
     },
     "require-dev": {
