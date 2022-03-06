@@ -29,7 +29,7 @@
 
 
                                <h3>Date:</h3>
-                               <h3>Invoice:</h3>
+                               <h3>Invoice #:</h3>
                                <h3>For:</h3>
 
 
@@ -37,7 +37,7 @@
                        <div class="col-start-4 col-span-2 text-left font-semibold">
 
 
-                           <h3>June 1, 2021</h3>
+                           <h3>{{ date('M d, Y')}}</h3>
                            <h3>3647</h3>
                            <h3>Fatima. C. Kasese</h3>
 
@@ -45,7 +45,7 @@
                        </div>
 
 
-                       <div class="col-start-1 col-end-1 bg-green-100 ">
+                       <div class="col-start-1 col-end-1 bg-green-100 fst-italic ">
                            <p>Fatima. C. Kasese</p>
                            <p>House No.16</p>
                            <p>Amber Road Kamwala South</p>
@@ -60,12 +60,40 @@
                        {{--Discription and amounts table--}}
 
 
-                           <textarea class="col-start-1 col-span-3 row-cols-4"> </textarea>
+                       <div class="col-start-1 col-span-4 row-cols-1 border border-dark">
+                           <table>
+                               <thead class="border border-slate-300 ">
+                               <tr>
+                                   <th class="px-9">Description</th>
+                                   <th class="border border-slate-300 ">Amount</th>
+                               </tr>
+                               </thead>
+
+                               <tbody>
+                               <tr>
+                                   <td class="border border-slate-300 ...">Indiana</td>
+                                   <td class="border border-slate-300 ...">Indianapolis</td>
+                               </tr>
+                               <tr>
+                                   <td class="border border-slate-300 ...">Ohio</td>
+                                   <td class="border border-slate-300 ...">Columbus</td>
+                               </tr>
+                               <tr>
+
+                                   <td class="border border-slate-300 ...">Detroit</td>
+                               </tr>
+                               </tbody>
+
+                           </table>
+
+                       </div>
+
 
 
 
                        {{-- Bank Details --}}
                        <div class="col-start-1 col-end-1 bg-green-100">
+                           <h2 class="font-bold uppercase font-serif">Bank Details</h2>
                            <p>Fatima. C. Kasese</p>
                            <p>House No.16</p>
                            <p>Amber Road Kamwala South</p>
@@ -73,7 +101,7 @@
                        </div>
 
                        {{-- Footer --}}
-                       <div class="col-start-1 col-span-4 bg-teal-600">
+                       <div class="col-start-1 col-span-4 font-semibold">
                            <p> Make all checks payable to <b>Sherwood Greene Properties Limited</b> </p>
                            <p>If you have any questions concerning this invoice, contact Mwansa Ngosa or</p>
                            <p>Chileshe Musonda on +260977708100 or mwansa.ngosa@sherwoodgreene.com</p>
