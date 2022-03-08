@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InvoiceMail;
 use App\Models\Client;
 use App\Models\User;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Messages\VonageMessage;
+use Illuminate\Support\Facades\Mail;
+
 
 class AccountController extends Controller
 {
@@ -117,7 +121,12 @@ class AccountController extends Controller
     public function invoice(){
 
        /* return view("valmaster.accounts.send.invoice");*/
-        return view('valmaster.accounts.send.invoice');
+       /* return view('valmaster.accounts.send.invoice');*/
+      /*  Mail::to('kahiluchipango@gmail.com')->send(new InvoiceMail());
+        return new InvoiceMail();*/
+
+        $pdf = PDF::loadView('valmaster.accounts.send.invoice');
+        return $pdf->download('invoice.pdf');
 
     }
 
