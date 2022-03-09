@@ -18,11 +18,34 @@
                        </h1>
 
 
-                       <div class="col-start-1 col-span-2">
-                           <p>Mukuba Pensions  House</p>
-                           <p>Box. 32616 | Tel: +260 211 255 604/5</p>
-                           <p>Email: sgzam@sherwoodgreene.com</p>
-                       </div>
+                       {{-- Branch Addres--}}
+                       @if($client->branch == 'LSK')
+                           <div class="col-start-1 col-span-2">
+                               <p>Mukuba Pensions  House</p>
+                               <p>Box. 32616 | Tel: +260 211 255 604/5</p>
+                               <p>Email: sgzam@sherwoodgreene.com</p>
+                           </div>
+                       @elseif($client->branch == "NDL")
+                            <div class="col-start-1 col-span-2">
+                               <p>President Avenue</p>
+                                <p> Beverley House</p>
+                               <p>P.O.Box. 71919 | Tel: +260 212 612153/4</p>
+                               <p>Email: sgzam@sherwoodgreene.com</p>
+                           </div>
+                       @elseif($client->branch == 'KT')
+                            <div class="col-start-1 col-span-2">
+                               <p>Unit #1, Lubambe Shopping Centre</p>
+                               <p>P.O.Box. 249 Parklands | Tel: +260 212 228 880/2/1</p>
+                               <p>Email: sgzamkt@sherwoodgreene.com</p>
+                           </div>
+                       @elseif($client->branch == "HAR")
+                            <div class="col-start-1 col-span-2">
+                               <p>Mukuba Pensions  House</p>
+                               <p>Box. 32616 | Tel: +260 211 255 604/5</p>
+                               <p>Email: sgzam@sherwoodgreene.com</p>
+                           </div>
+                       @endif
+
 
 
                        <div class="col-start-3 col-span-1 text-right font-bold font-mono">
@@ -38,24 +61,27 @@
 
 
                            <h3>{{ date('M d, Y')}}</h3>
-                           <h3>3647</h3>
-                           <h3>Fatima. C. Kasese</h3>
+                           <h3>{{$client->branch}}{{$client->id}}</h3>
+                           <h3> {{ $client->client_name }}</h3>
 
 
                        </div>
 
 
                        <div class="col-start-1 col-end-1 fst-italic ">
-                           <p>Fatima. C. Kasese</p>
-                           <p>House No.16</p>
-                           <p>Amber Road Kamwala South</p>
-                           <p>Lusaka</p>
+                           <p> {{ $client->client_name }}</p>
+                           <p> {{ $client->property_address }}</p>
+
                        </div>
 
                        {{--Contact Number--}}
                        <div class="col-start-1 col-span-4 bg-slate-200">
-                           <p>Contact Number: 0972000403</p>
+                           <p>Contact Person: {{ $client->contact_person }}</p>
                        </div>
+                        <div class="col-start-1 col-span-4 bg-slate-200">
+                           <p>Contact Number: {{ $client->contact_number }}</p>
+                       </div>
+
 
                        {{--Discription and amounts table--}}
 
@@ -92,6 +118,47 @@
 
 
                        {{-- Bank Details --}}
+                       @if($client->branch == 'LSK')
+                           <div class="col-start-1 col-span-2">
+                               <h2 class="font-bold uppercase font-serif">Bank Details</h2>
+                               <p>Bank Name: <b>STANBIC BANK</b></p>
+                               <p>Account Name: <b>SHERWOOD GREENE</b></p>
+                               <p>Account Number: <b>9130000328050</b></p>
+                               <p>Branch: <b>MULUNGUSHI</b></p>
+                               <p>Swift Code: <b>SBICZMLX</b></p>
+                               <p>Sort Code: <b>040015</b></p>
+                           </div>
+                       @elseif($client->branch == "NDL")
+                           <div class="col-start-1 col-span-2">
+                               <h2 class="font-bold uppercase font-serif">Bank Details</h2>
+                               <p>Bank Name: <b>ACCESS BANK</b></p>
+                               <p>Account Name: <b>SHERWOOD GREENE</b></p>
+                               <p>Account Number: <b>0010011011091</b></p>
+                               <p>Branch: <b>CAIRO RD, NORTHEND</b></p>
+                               <p>Swift Code: <b>AZAMZMLU</b></p>
+                               <p>Sort Code: <b>350001</b></p>
+                           </div>
+                       @elseif($client->branch == 'KT')
+                           <div class="col-start-1 col-span-4">
+                               <h2 class="font-bold uppercase font-serif">Bank Details</h2>
+                               <p>Bank Name: <b>ABSA BANK ZAMBIA</b></p>
+                               <p>Account Name: <b>SHERWOOD GREENE</b></p>
+                               <p>Account Number: <b>009-1014963 || </b></p> <p>Swift Code: <b>BARCMLX || </b></p> <p>Sort Code: <b>040015</b></p>
+                               <p>Dollar Account: <b>1046762 ||</b> </p> <p>Swift Code: <b>BARCZMLX || </b></p> <p>Sort Code: <b>02-00-01</b></p>
+                               <p>Branch: <b>KITWE</b></p>
+
+                           </div>
+                       @elseif($client->branch == "HAR")
+                           <div class="col-start-1 col-span-2">
+                               <h2 class="font-bold uppercase font-serif">Bank Details</h2>
+                               <p>Mukuba Pensions  House</p>
+                               <p>Box. 32616 | Tel: +260 211 255 604/5</p>
+                               <p>Email: sgzam@sherwoodgreene.com</p>
+                           </div>
+                       @endif
+
+{{--
+
                        <div class="col-start-1 col-end-1 bg-green-100">
                            <h2 class="font-bold uppercase font-serif">Bank Details</h2>
                            <p>Fatima. C. Kasese</p>
@@ -99,6 +166,7 @@
                            <p>Amber Road Kamwala South</p>
                            <p>Lusaka</p>
                        </div>
+--}}
 
                        {{-- Footer --}}
                        <div class="col-start-1 col-span-4 font-semibold">

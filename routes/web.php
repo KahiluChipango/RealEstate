@@ -7,7 +7,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\ValuationController;
 use App\Http\Controllers\AccountController;
-
+use App\Http\Controllers\InvoiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +46,10 @@ Route::group(['middleware' => 'auth'], function(){
            /* Route::get('/accounts/invoice', 'App\Http\Controllers\AccountController@invoice')->name('accounts.send.invoice');*/
             Route::get('/invoice', [AccountController::class, 'invoice'])->name('accounts.send.invoice');
             Route::get('/receipt', [AccountController::class, 'receipt'])->name('accounts.send.receipt');
+            Route::get('/sms', [AccountController::class, 'sendSms'])->name('accounts.send.sms');
+
+            Route::resource('/invoice', InvoiceController::class);
+
 
         });
 

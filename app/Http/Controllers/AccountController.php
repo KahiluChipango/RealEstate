@@ -10,6 +10,7 @@ use Illuminate\Notifications\Messages\VonageMessage;
 use Illuminate\Support\Facades\Mail;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Notifications\Messages\NexmoMessage;
+use Nexmo\Laravel\Facade\Nexmo;
 
 class AccountController extends Controller
 {
@@ -118,10 +119,16 @@ class AccountController extends Controller
     }*/
 
 
-    public function invoice(){
+    public function invoice($id){
 
        /* return view("valmaster.accounts.send.invoice");*/
-       /* return view('valmaster.accounts.send.invoice');*/
+        return view('valmaster.accounts.send.invoice',
+            [
+                'client' => Client::find($id),
+                'user' => User::all()
+            ]);
+
+
       /*  Mail::to('kahiluchipango@gmail.com')->send(new InvoiceMail());
         return new InvoiceMail();*/
 
@@ -145,11 +152,25 @@ class AccountController extends Controller
     }
 
 
-    public function sendSms($notifiable){
+    public function sendSms(){
 
-        return (new NexmoMessage)
-            ->content('Your SMS message content');
+        $basic  = new \Vonage\Client\Credentials\Basic("343ceee7", "3scJRrOn6xWqwJKQ");
+        $client = new \Vonage\Client($basic);
 
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS(
+                "260978278797",
+                'Sherwood',
+                'this is From Sherwood greene Properties Limited')
+        );
+
+        $message = $response->current();
+
+        if ($message->getStatus() == 0) {
+            echo "The message was sent successfully\n";
+        } else {
+            echo "The message failed with status: " . $message->getStatus() . "\n";
+        }
     }
 
 }
