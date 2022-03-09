@@ -53,7 +53,11 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('valmaster.accounts.send.invoice',
+            [
+                'client' => Client::find($id),
+                'user' => User::all()
+            ]);
     }
 
     /**

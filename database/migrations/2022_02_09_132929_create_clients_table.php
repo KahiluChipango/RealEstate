@@ -29,7 +29,7 @@ class CreateClientsTable extends Migration
             $table->foreignId('users_id')->constrained()->onDelete('cascade');
 //            $table->foreignId('users_email')->constrained()->onDelete('cascade');
             $table->enum('type_of_property', ['residential', 'Commercial', 'Agriculture', 'Industrial', 'Bare Land']);
-            $table->double('market_value', 8, 2);
+            $table->double('market_value', 9, 2);
             $table->longText('property_description');
             $table->date('report_due_date');
             $table->date('inspection_due');

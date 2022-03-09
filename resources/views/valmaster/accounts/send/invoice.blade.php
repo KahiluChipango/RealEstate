@@ -143,8 +143,8 @@
                                <h2 class="font-bold uppercase font-serif">Bank Details</h2>
                                <p>Bank Name: <b>ABSA BANK ZAMBIA</b></p>
                                <p>Account Name: <b>SHERWOOD GREENE</b></p>
-                               <p>Account Number: <b>009-1014963 || </b></p> <p>Swift Code: <b>BARCMLX || </b></p> <p>Sort Code: <b>040015</b></p>
-                               <p>Dollar Account: <b>1046762 ||</b> </p> <p>Swift Code: <b>BARCZMLX || </b></p> <p>Sort Code: <b>02-00-01</b></p>
+                               <p>Account Number: <b>009-1014963 </b></p> <p>Swift Code: <b>BARCMLX</b></p> <p>Sort Code: <b>040015</b></p>
+                               <p>Dollar Account: <b>1046762</b> </p> <p>Swift Code: <b>BARCZMLX</b></p> <p>Sort Code: <b>02-00-01</b></p>
                                <p>Branch: <b>KITWE</b></p>
 
                            </div>
@@ -157,16 +157,7 @@
                            </div>
                        @endif
 
-{{--
 
-                       <div class="col-start-1 col-end-1 bg-green-100">
-                           <h2 class="font-bold uppercase font-serif">Bank Details</h2>
-                           <p>Fatima. C. Kasese</p>
-                           <p>House No.16</p>
-                           <p>Amber Road Kamwala South</p>
-                           <p>Lusaka</p>
-                       </div>
---}}
 
                        {{-- Footer --}}
                        <div class="col-start-1 col-span-4 font-semibold">

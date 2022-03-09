@@ -58,24 +58,24 @@ class ClientController extends Controller
         $request->validate([
             'branch' => ['required'],
             'client_name' => ['required', 'string'],
-            'contact_number' => ['required', 'string'],
+            'contact_number' => ['required'],
             'contact_person' => ['required',],
             'client_email' => ['required', 'string'],
             'property_address' => ['required', 'string'],
-            'fee' => ['required',],
-            'fee_status' => ['required',],
+            'fee' => ['required', 'integer'],
+            'fee_status' => ['required'],
             'report_status' => ['required',],
             'feedback_status' => ['required',],
             'date_of_receipt_of_instruction' => ['required',],
             'inspection_due' => ['required',],
-            'days_taken_to_complete' => ['required',],
-            'report_due_date' => ['required',],
+            'days_taken_to_complete' => ['required', 'integer'],
+            'report_due_date' => ['required', 'date'],
 
-            'fee_due_date' => ['required',],
-            'date_of_delivery' => ['required',],
-            'type_of_property' => ['required',],
+            'fee_due_date' => ['required', 'date'],
+            'date_of_delivery' => ['required', 'date'],
+            'type_of_property' => ['required', ],
 
-            'market_value' => ['required',],
+            'market_value' => ['required', ],
             'property_description' => ['required',],
         ]);
 

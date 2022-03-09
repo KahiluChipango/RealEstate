@@ -124,7 +124,7 @@
 
                                               <x-input id="fee"
                                                        class="block mt-1 w-full"
-                                                       type="text"
+                                                       type="number"
                                                        name="fee"
                                                        :value="old('fee')" required autofocus />
                                           </div>
