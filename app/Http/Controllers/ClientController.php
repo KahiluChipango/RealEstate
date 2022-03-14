@@ -6,6 +6,7 @@ use App\Models\Client;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Facade\FlareClient\Time;
 
 class ClientController extends Controller
 {
@@ -53,14 +54,15 @@ class ClientController extends Controller
 
        /* $request->session()->flash('Success', "you Have Added a New Client");*/
 
-//        dd($request->all());
+     //   dd($request->all());
 
         $request->validate([
             'branch' => ['required'],
             'client_name' => ['required', 'string'],
-            'contact_number' => ['required'],
-            'contact_person' => ['required',],
+            'client_number' => ['required',],
             'client_email' => ['required', 'string'],
+            'contact_person' => ['required',],
+            'contact_person_number' => ['required'],
             'property_address' => ['required', 'string'],
             'fee' => ['required', 'integer'],
             'fee_status' => ['required'],
@@ -70,7 +72,6 @@ class ClientController extends Controller
             'inspection_due' => ['required',],
             'days_taken_to_complete' => ['required', 'integer'],
             'report_due_date' => ['required', 'date'],
-
             'fee_due_date' => ['required', 'date'],
             'date_of_delivery' => ['required', 'date'],
             'type_of_property' => ['required', ],

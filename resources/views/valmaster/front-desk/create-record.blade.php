@@ -19,7 +19,7 @@
                             @csrf
 
                             <!-- Name -->
-{{--                                this section for client details--}}
+                            {{--this section for client details--}}
 
 
 
@@ -42,18 +42,8 @@
                                               </select>
                                           </div>
 
-                                          <!-- Job Number -->
-                 {{--                         <div>
-                                              <x-label for="job_no"
-                                                       :value="__('Job Number')" />
 
-                                              <x-input id="job_no"
-                                                       class="block mt-1 w-full"
-                                                       type="number"
-                                                       name="job_no"
-                                                       :value="old('job_no')" required autofocus />
-                                          </div>
-                                     --}}     <!-- Client Name -->
+                                            <!-- Client Name -->
                                           <div>
                                               <x-label for="client_name"
                                                        :value="__('Client Name')" />
@@ -67,15 +57,37 @@
 
                                           <!-- Contact Number -->
                                           <div>
-                                              <x-label for="contact_number"
-                                                       :value="__('Contact Number')" />
+                                              <x-label for="client_number"
+                                                       :value="__('Client Number')" />
 
-                                              <x-input id="contact_number"
+                                              <x-input id="client_number"
                                                        class="block mt-1 w-full"
                                                        type="text"
-                                                       name="contact_number"
-                                                       :value="old('client_contact')" required autofocus />
+                                                       name="client_number"
+                                                       :value="old('client_number')" required autofocus />
                                           </div>
+
+                                          <!-- Email Address -->
+                                          <div>
+                                              <x-label for="client_email"
+                                                       :value="__('Client Email')" />
+
+                                              <x-input id="client_email"
+                                                       class="block mt-1 w-full"
+                                                       type="email"
+                                                       name="client_email"
+                                                       :value="old('client_email')" required />
+                                          </div>
+
+                                      </div>
+
+                                  </div>
+
+                                {{-- Contact Person Details--}}
+
+                                <div class="pt-8">
+                                    <h1 class="font-semibold text-lg text-gray-800 leading-tight">Contact Person Details</h1>
+                                      <div class="grid grid-cols-3 gap-4">
 
                                           <!-- Contact Person -->
                                           <div>
@@ -88,20 +100,17 @@
                                                        name="contact_person"
                                                        :value="old('contact_person')" required autofocus />
                                           </div>
-                                      </div>
 
-
-                                      <div class="grid grid-cols-3 gap-4 pt-4">
-                                          <!-- Email Address -->
+                                          <!-- Contact Person Number -->
                                           <div>
-                                              <x-label for="client_email"
-                                                       :value="__('Client Email')" />
+                                              <x-label for="contact_person_number"
+                                                       :value="__('Contact Person Number')" />
 
-                                              <x-input id="client_email"
+                                              <x-input id="contact_person_number"
                                                        class="block mt-1 w-full"
-                                                       type="email"
-                                                       name="client_email"
-                                                       :value="old('client_email')" required />
+                                                       type="text"
+                                                       name="contact_person_number"
+                                                       :value="old('contact_person-number')" required autofocus />
                                           </div>
 
 
@@ -181,10 +190,8 @@
 
                                   </div>
 
-{{--this is a users section--}}
-
-
-                                <div class="pt-6">
+                                {{--this is a users section--}}
+                                <div class="pt-8">
                                     <h1 class="font-semibold text-lg text-gray-800 leading-tight">User</h1>
                                     <div class="grid grid-cols-3 gap-4">
 
@@ -233,6 +240,24 @@
                                                      type="number"
                                                      name="market_value"
                                                      :value="old('market_value')" required autofocus />
+                                        </div>
+
+                                        <!--Purposer  -->
+                                        <div>
+                                            <x-label for="purpose"
+                                                     :value="__('Purpose')" />
+
+                                            <select name="purpose"
+                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                    type="text"
+                                                    name="purpose">
+                                                <option value="Sale">Sale</option>
+                                                <option value="Collateral">Collateral</option>
+                                                <option value="Insurance">Insurance</option>
+                                                <option value="Rental">Rental</option>
+                                                <option value="Accounting">Accounting</option>
+
+                                            </select>
                                         </div>
 
                                         <!-- Property Description -->
@@ -310,6 +335,21 @@
                                                 name="fee_due_date"
                                                 :value="old('fee_due_date')" required />
                                         </div>
+
+
+                                         <!-- Valuation Time -->
+                                        <div>
+                                            <x-label for="valuation_time"
+                                                     :value="__('Valuation Time')" />
+
+                                            <x-input
+                                                id="valuation_time"
+                                                class="block mt-1 w-full"
+                                                type="time"
+                                                name="valuation_time"
+                                                :value="old('valuation_time')"/>
+                                        </div>
+
 
                                         <!-- Date of Delivery  -->
                                         <div>

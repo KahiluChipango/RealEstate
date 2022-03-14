@@ -8,6 +8,7 @@ use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\ValuationController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\SmsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -112,10 +113,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     //Front Desk View
     Route::get('/new', function () {
-        return view('valmaster/front-desk/create-record');
+        return view('valmaster/accounts/invoice');
     })->name('new');
 
-
+    Route::get('/pdf', [SmsController::class, 'index'])->name('pdf');
 });
 require __DIR__.'/auth.php';
 

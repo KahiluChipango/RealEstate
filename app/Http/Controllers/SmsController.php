@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Nexmo\Laravel\Facade\Nexmo;
 
@@ -14,7 +15,8 @@ class SmsController extends Controller
      */
     public function index()
     {
-       return view('valmaster.accounts.send.invoice');
+        $pdf = Pdf::loadView('valmaster.accounts.invoice');
+        return $pdf->download('invoice.pdf')->setOptions(['defaultFont' => 'sans-serif']);
     }
 
     /**
