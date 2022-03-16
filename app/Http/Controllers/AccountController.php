@@ -53,7 +53,7 @@ class AccountController extends Controller
      */
     public function show($id)
     {
-        return view('valmaster.accounts.send.invoice',
+        return view('valmaster.accounts.invoice.invoice-templete',
             [
                 'client' => Client::find($id),
                 'user' => User::all()
@@ -102,25 +102,28 @@ class AccountController extends Controller
         //
     }
 
-   /* public function sendSmsNotificaition()
-    {
-        $basic  = new \Nexmo\Client\Credentials\Basic('Nexmo key', 'Nexmo secret');
-        $client = new \Nexmo\Client($basic);
 
-        $message = $client->message()->send([
-            'to' => '260974476363',
-            'from' => 'John Doe',
-            'text' => 'A simple hello message sent from Vonage SMS API'
+    public function saveInvoice($id){
+
+
+        $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
+            'client' => Client::find($id),
+            'user' => User::all()
         ]);
+        return $pdf->download('Invoice # - '.$id.'.pdf');
+    }
 
-        dd('SMS message has been delivered.');
-    }*/
 
-   /* public function toVonage($notifiable)
-    {
-        return (new VonageMessage)
-            ->content('Your SMS message content');
-    }*/
+
+
+
+
+
+
+
+
+
+
 
 
     public function invoice($id){
@@ -150,20 +153,24 @@ class AccountController extends Controller
 
     public function sendEmail(){
 
-        Mail::to('kahiluchipango@gmail.com')->send(new InvoiceMail());
+        $client = Client::findOrFail('client_email');
+        Mail::to($client->client_email)->send(new InvoiceMail());
        return new InvoiceMail();
 
     }
 
 
-    public function sendSms(){
+    public function sendSms($id){
+
+        $data = Client::find('contact_person_number');
+
 
         $basic  = new \Vonage\Client\Credentials\Basic("343ceee7", "3scJRrOn6xWqwJKQ");
         $client = new \Vonage\Client($basic);
 
         $response = $client->sms()->send(
             new \Vonage\SMS\Message\SMS(
-                "260978278797",
+                Client::find('contact_person_number'),
                 'Sherwood',
                 'this is From Sherwood greene Properties Limited')
         );
@@ -177,4 +184,7 @@ class AccountController extends Controller
         }
     }
 
+    public function invoicePdf(){
+
+    }
 }

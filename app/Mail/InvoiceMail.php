@@ -2,10 +2,12 @@
 
 namespace App\Mail;
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\App;
 
 class InvoiceMail extends Mailable
 {
@@ -28,6 +30,7 @@ class InvoiceMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('valmaster.accounts.send.emails.invoice');
+        return $this->markdown('valmaster.accounts.send.emails.invoice')
+            ->attach(AccountController::class, 'invoicePdf');
     }
 }

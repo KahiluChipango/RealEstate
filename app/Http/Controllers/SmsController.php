@@ -16,7 +16,7 @@ class SmsController extends Controller
     public function index()
     {
         $pdf = Pdf::loadView('valmaster.accounts.invoice');
-        return $pdf->download('invoice.pdf')->setOptions(['defaultFont' => 'sans-serif']);
+        return $pdf->download('invoice.pdf');
     }
 
     /**

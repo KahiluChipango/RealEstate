@@ -7,6 +7,8 @@ module.exports = {
         './resources/views/**/*.blade.php',
         './resources/views/valmaster/*.blade.php',
         './resources/views/valmaster/front-desk/*.blade.php',
+        './resources/views/valmaster/accounts/*.blade.php',
+        './resources/views/valmaster/accounts/invoice/*.blade.php',
 
     ],
 

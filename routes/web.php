@@ -49,6 +49,7 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('/receipt', [AccountController::class, 'receipt'])->name('accounts.send.receipt');
             Route::get('/sms', [AccountController::class, 'sendSms'])->name('accounts.send.sms');
 
+            Route::get('/save/{id}', [AccountController::class, 'saveInvoice'])->name('accounts.invoice.mail-invoice');
             Route::resource('/invoice', InvoiceController::class);
 
 
@@ -81,6 +82,11 @@ Route::group(['middleware' => 'auth'], function(){
     */
         Route::prefix('valmaster')->middleware('role:admin')->name('valmaster.')->group(function() {
             Route::resource('/admin', AdminController::class);
+            Route::get('/invoice', [AccountController::class, 'invoice'])->name('accounts.send.invoice');
+            Route::get('/receipt', [AccountController::class, 'receipt'])->name('accounts.send.receipt');
+            Route::get('/sms', [AccountController::class, 'sendSms'])->name('accounts.send.sms');
+
+            Route::resource('/invoice', InvoiceController::class);
         });
 
     /*

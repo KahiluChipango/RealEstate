@@ -3,6 +3,30 @@
 
         <x-nav-links.admin></x-nav-links.admin>
     </x-slot>
+    <div class="row">
+        <div class="col-12">
+            <div class="float-end hidden space-x-3 sm:-my-px sm:ml-10 sm:flex">
+                <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                   href="{{ route('/') }}"
+                   role="button">
+                    Download
+                </a>
+                <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                   href="{{ route('/') }}"
+                   role="button">
+                    Send Email
+                </a>
+                <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                   href="{{ route('/') }}"
+                   role="button">
+                    Send SMS
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+
 
     <div class="py-4 bg-green-100">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
