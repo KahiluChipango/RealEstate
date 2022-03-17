@@ -15,14 +15,14 @@ class CreateAgenciesTable extends Migration
     {
         Schema::create('agencies', function (Blueprint $table) {
             $table->id();
-            $table->enum('rent/sale', ['SALE', 'RENT']);
+            $table->enum('rent_sale', ['SALE', 'RENT']);
             $table->string('web');
             $table->string('agent_in_charge');
             $table->enum('service_line', ['ESTATE AGENCY', 'VALUATION', 'PROPERTY MGT', 'CONSULTANCY']);
             $table->date('date_of_instruction');
             $table->string('client_name');
             $table->string('client_contact_number');
-            $table->email('email');
+            $table->string('email');
             $table->string('property_address');
             $table->string('google_cordinates');
             $table->enum('type_of_property', ['Residential', 'Commercial', 'Agriculture', 'Industrial', 'Bare Land']);
@@ -51,8 +51,8 @@ class CreateAgenciesTable extends Migration
             $table->enum('surroundings_facilities_5', ['BUS STATION', 'NO BUS STATION', 'TAXI RANK', 'NO TAXI RANK']);
             $table->string('rent_price_k');
             $table->string('rent_price_usd');
-            $table->string('sale_price/market_value_k');
-            $table->string('sale_price/market_value_usd');
+            $table->string('sale_price_market_value_k');
+            $table->string('sale_price_market_value_usd');
 
             $table->timestamps();
         });

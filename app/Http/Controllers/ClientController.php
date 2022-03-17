@@ -22,7 +22,7 @@ class ClientController extends Controller
 
         return view("valmaster.front-desk.table-content",
             [
-                'clients' => Client::all(),
+                'clients' => Client::paginate(10),
                 'users' => User::find('name')
                 ]);
 
