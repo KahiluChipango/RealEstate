@@ -102,70 +102,42 @@ class AdminController extends Controller
 
 
 
-
+    /**
+     * Invoice Section.
+     *
+     */
     public function saveInvoice($id){
 
 
+        $client = Client::find($id);
         $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
             'client' => Client::find($id),
             'user' => User::all()
         ]);
-        return $pdf->download('Invoice # - '.$id.'.pdf');
+        return $pdf->download('Invoice - '.$client->branch.$client->id.'.pdf');
     }
 
+    public function sendInvoice($id){
+
+        $client = Client::find($id);
+        $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
+            'client' => Client::find($id),
+            'user' => User::all()
+        ]);
 
 
-    public function invoice($id){
+        $data["email"] = "aatmaninfotech@gmail.com";
+        $data["title"] = "From Sherwood Greene";
+        $data["body"] = "This is Demo";
 
-        /* return view("valmaster.accounts.send.invoice");*/
-        return view('valmaster.admin.send.invoice',
-            [
-                'client' => Client::find($id),
-                'user' => User::all()
-            ]);
+        Mail::send('valmaster.accounts.send.emails.invoice',  $data, function($message)use($client, $pdf) {
+            $message->to($client->client_email)
+                ->from('Kahilu@mail.com')
+                ->subject('Invoice')
+                ->attachData($pdf->output(), 'Invoice - '.$client->branch.$client->id.'.pdf');
+        });
 
+        dd('Mail sent successfully');
 
-        /*  Mail::to('kahiluchipango@gmail.com')->send(new InvoiceMail());
-          return new InvoiceMail();*/
-
-        /*      $pdf = PDF::loadView('valmaster.accounts.send.invoice');
-              return $pdf->download('invoice.pdf');*/
-
-    }
-
-    public function receipt(){
-
-
-        return view('valmaster.admin.send.receipt');
-
-    }
-
-    public function sendEmail(){
-
-        Mail::to('kahiluchipango@gmail.com')->send(new InvoiceMail());
-        return new InvoiceMail();
-
-    }
-
-
-    public function sendSms(){
-
-        $basic  = new \Vonage\Client\Credentials\Basic("343ceee7", "3scJRrOn6xWqwJKQ");
-        $client = new \Vonage\Client($basic);
-
-        $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS(
-                "260978278797",
-                'Sherwood',
-                'this is From Sherwood greene Properties Limited')
-        );
-
-        $message = $response->current();
-
-        if ($message->getStatus() == 0) {
-            echo "The message was sent successfully\n";
-        } else {
-            echo "The message failed with status: " . $message->getStatus() . "\n";
-        }
     }
 }
