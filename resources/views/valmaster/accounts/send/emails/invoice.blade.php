@@ -1,3 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sherwood Grenne</title>
+</head>
+<body>
+<h1>{{ $title }}</h1>
+<p>{{ $body }}</p>
+
+<p>Thank you</p>
+</body>
+</html>
+
+
+
+
+{{--
 @component('mail::message')
 # Invoice
 
@@ -10,3 +27,4 @@ Download Invoice
 Thanks,<br>
 Sherwood Greene Limited
 @endcomponent
+--}}

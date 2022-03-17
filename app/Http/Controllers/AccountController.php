@@ -103,46 +103,49 @@ class AccountController extends Controller
     }
 
 
+
+    /**
+     * Invoice Section.
+     *
+     */
     public function saveInvoice($id){
 
 
+        $client = Client::find($id);
         $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
             'client' => Client::find($id),
             'user' => User::all()
         ]);
-        return $pdf->download('Invoice # - '.$id.'.pdf');
+        return $pdf->download('Invoice - '.$client->branch.$client->id.'.pdf');
+    }
+
+    public function sendInvoice($id){
+
+        $client = Client::find($id);
+        $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
+            'client' => Client::find($id),
+            'user' => User::all()
+        ]);
+
+
+        $data["email"] = "aatmaninfotech@gmail.com";
+        $data["title"] = "From Sherwood Greene";
+        $data["body"] = "This is Demo";
+
+        Mail::send('valmaster.accounts.send.emails.invoice',  $data, function($message)use($client, $pdf) {
+            $message->to($client->client_email)
+                ->from('Kahilu@mail.com')
+                ->subject('Invoice')
+                ->attachData($pdf->output(), 'Invoice - '.$client->branch.$client->id.'.pdf');
+        });
+
+        dd('Mail sent successfully');
+
     }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-    public function invoice($id){
-
-       /* return view("valmaster.accounts.send.invoice");*/
-        return view('valmaster.accounts.send.invoice',
-            [
-                'client' => Client::find($id),
-                'user' => User::all()
-            ]);
-
-
-      /*  Mail::to('kahiluchipango@gmail.com')->send(new InvoiceMail());
-        return new InvoiceMail();*/
-
-  /*      $pdf = PDF::loadView('valmaster.accounts.send.invoice');
-        return $pdf->download('invoice.pdf');*/
-
-    }
 
     public function receipt(){
 
@@ -153,8 +156,8 @@ class AccountController extends Controller
 
     public function sendEmail(){
 
-        $client = Client::findOrFail('client_email');
-        Mail::to($client->client_email)->send(new InvoiceMail());
+
+        Mail::to('kahiluchipango@gmail.com')->send(new InvoiceMail());
        return new InvoiceMail();
 
     }
@@ -184,7 +187,4 @@ class AccountController extends Controller
         }
     }
 
-    public function invoicePdf(){
-
-    }
 }

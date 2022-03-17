@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\InvoiceMail;
 use App\Models\Client;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -97,6 +98,21 @@ class AdminController extends Controller
     {
         //
     }
+
+
+
+
+
+    public function saveInvoice($id){
+
+
+        $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
+            'client' => Client::find($id),
+            'user' => User::all()
+        ]);
+        return $pdf->download('Invoice # - '.$id.'.pdf');
+    }
+
 
 
     public function invoice($id){

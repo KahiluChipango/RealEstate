@@ -17,7 +17,6 @@ z<x-app-layout>
                         <div class="float-start"> <h2 > ID: {{$clients->branch}}{{$clients->id}}</h2> </div>
                         <div class="float-end"><h2 >
                                 Assiened to:
-                                {{--@if ($clients->users_id) {{ $clients->users->name}} @endif--}}
                                 {{ $clients->users->name}}
 
 
