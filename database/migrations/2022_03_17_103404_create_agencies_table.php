@@ -15,7 +15,7 @@ class CreateAgenciesTable extends Migration
     {
         Schema::create('agencies', function (Blueprint $table) {
             $table->id();
-            $table->boolean('rent/sale')->default(0);
+            $table->enum('rent/sale', ['SALE', 'RENT']);
             $table->string('web');
             $table->string('agent_in_charge');
             $table->enum('service_line', ['ESTATE AGENCY', 'VALUATION', 'PROPERTY MGT', 'CONSULTANCY']);
