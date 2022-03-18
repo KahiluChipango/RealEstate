@@ -105,7 +105,7 @@ class AccountController extends Controller
 
 
     /**
-     * Invoice Section.
+     *  Save Invoice to pdf Function.
      *
      */
     public function saveInvoice($id){
@@ -118,6 +118,16 @@ class AccountController extends Controller
         ]);
         return $pdf->download('Invoice - '.$client->branch.$client->id.'.pdf');
     }
+
+
+    /**
+     * Send Email
+     * with
+     * invoice pdf
+     * attachment
+     * Function.
+     *
+     */
 
     public function sendInvoice($id){
 
@@ -144,38 +154,20 @@ class AccountController extends Controller
     }
 
 
+    /**
+     *  Save Invoice sms
+     * Function.
+     *
+     */
+    public function invoiceSms($id){
 
-
-
-    public function receipt(){
-
-       /* return view("valmaster.accounts.send.invoice");*/
-        return view('valmaster.accounts.send.receipt');
-
-    }
-
-    public function sendEmail(){
-
-
-        Mail::to('kahiluchipango@gmail.com')->send(new InvoiceMail());
-       return new InvoiceMail();
-
-    }
-
-
-    public function sendSms($id){
-
-        $data = Client::find('contact_person_number');
-
+        $data = Client::find($id);
 
         $basic  = new \Vonage\Client\Credentials\Basic("343ceee7", "3scJRrOn6xWqwJKQ");
         $client = new \Vonage\Client($basic);
 
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS(
-                Client::find('contact_person_number'),
-                'Sherwood',
-                'this is From Sherwood greene Properties Limited')
+            new \Vonage\SMS\Message\SMS("260974476363", 'Hello', 'A text message sent using the Nexmo SMS API')
         );
 
         $message = $response->current();
@@ -185,6 +177,11 @@ class AccountController extends Controller
         } else {
             echo "The message failed with status: " . $message->getStatus() . "\n";
         }
+
     }
+
+
+
+
 
 }
