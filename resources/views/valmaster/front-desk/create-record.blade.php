@@ -272,12 +272,7 @@
                                                      :value="old('property_description')" required autofocus />
 
                                         </div>
-
-
-
                                     </div>
-
-
                                 </div>
 
 
@@ -286,7 +281,7 @@
 
                                 <div class="pt-6">
                                     <h3 class="font-semibold text-lg text-gray-800 leading-tight">Date and Time</h3>
-                                    <div class="grid grid-cols-3 gap-4">
+                                    <div class="grid grid-cols-5 gap-4">
 
                                         <!-- Report Due Date-->
                                         <div>

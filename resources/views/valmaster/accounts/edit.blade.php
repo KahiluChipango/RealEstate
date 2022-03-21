@@ -145,7 +145,11 @@ z<x-app-layout>
                                         <div>
                                             <x-label for="fee" :value="__('Fee')" />
 
-                                            <x-input id="fee" class="block mt-1 w-full" type="text" name="fee" value="{{ $clients->fee }}" required autofocus />
+                                            <x-input id="fee"
+                                                     class="block mt-1 w-full"
+                                                     type="text"
+                                                     name="fee"
+                                                     value="{{ $clients->fee }}" required autofocus />
                                         </div>
 
                                         <!-- Email Address -->
@@ -163,8 +167,6 @@ z<x-app-layout>
                                                     <option value="0">Not Paid</option>
                                                     <option value="1">Paid</option>
                                                 @endif
-
-
                                             </select>
                                         </div>
                                         <!-- Email Address -->
@@ -175,12 +177,10 @@ z<x-app-layout>
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="report_status">
-                                                @isset($clients->report_status) {{ $clients->report_status }}
 
-                                                <option value="Work In Progress">Work In Progress</option>
-                                                <option value="Inspected/report Drafting">Inspected/report Drafting</option>
-                                                <option value="Delivered">Delivered</option>
-                                                @endisset
+                                                <option value="Work In Progress" {{$clients->report_status == "Work In Progress" ? 'selected': ''}}>Work In Progress</option>
+                                                <option value="Inspected/report Drafting" {{$clients->report_status == "Inspected/report Drafting" ? 'selected': ''}}>Inspected/report Drafting</option>
+                                                <option value="Delivered" {{$clients->report_status == "Delivered" ? 'selected': ''}}>Delivered</option>
 
 
                                             </select>
@@ -193,10 +193,8 @@ z<x-app-layout>
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="feedback_status">
-                                                @isset($clients->feedback_status) {{ $clients->feedback_status }}
-                                                <option value="Customer Happy">Customer Happy</option>
-                                                <option value="Customer Unhappy">Customer Unhappy</option>
-                                                @endisset
+                                                <option value="Customer Happy" {{$clients->feedback_status == "Customer Happy" ? 'selected': ''}}>Customer Happy</option>
+                                                <option value="Customer Unhappy" {{$clients->feedback_status == "Customer Unhappy" ? 'selected': ''}}>Customer Unhappy</option>
                                             </select>
                                         </div>
 

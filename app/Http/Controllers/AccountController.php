@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\InvoiceMail;
+use Notification;
+use App\Notifications\SMSNotification;
 use App\Models\Client;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -151,6 +153,25 @@ class AccountController extends Controller
 
         dd('Mail sent successfully');
 
+    }
+
+
+    public function send()
+    {
+        $user = User::first();
+
+        $project = [
+            'greeting' => 'Hi '.$user->name.',',
+            'body' => 'This is the project assigned to you.',
+            'thanks' => 'Thank you this is from codeanddeploy.com',
+            'actionText' => 'View Project',
+            'actionURL' => url('/'),
+            'id' => 57
+        ];
+
+        Notification::send($user, new SMSNotification($project));
+
+        dd('Notification sent!');
     }
 
 

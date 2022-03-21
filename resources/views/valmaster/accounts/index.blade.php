@@ -18,13 +18,11 @@
                             <x-table.header>Status</x-table.header>
                             <x-table.header>Actions</x-table.header>
                             <x-table.header>Send</x-table.header>
-
                         </x-slot>
 
 
                         @foreach( $clients as $client)
                             <tr>
-
                                 <x-table.column>{{$client->branch}}{{$client->id}}</x-table.column>
                                 <x-table.column>{{$client->client_name}}</x-table.column>
                                 <x-table.column>{{$client->fee}}</x-table.column>
@@ -35,10 +33,7 @@
                                     @elseif($client->fee_status == 0)
                                         <span class="px-2 inline-flex  leading-5 rounded-full bg-red-500/75 "> Not Paid </span>
                                     @endif
-
                                 </x-table.column>
-
-
                                 <x-table.column>
                                     {{--Edit Button--}}
                                     <a class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -46,20 +41,6 @@
                                        role="button">
                                         Edit
                                     </a>
-
-
-                                    {{--Delete Button--}}
-                                   {{-- <button type="submit"
-                                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500/75 hover:bg-red-500/100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                            onclick="event.preventDefault();
-                                                document.getElementById('delete-user-form-{{$user->id}}').submit()">
-                                        DELETE
-                                    </button>
-
-                                    <form id="delete-user-form-{{ $user->id }}" action="{{ route('valmaster.super-admin.edit', $user->id) }}" method="POST" style="display: none">
-                                        @csrf
-                                        @method("")
-                                    </form>--}}
                                 </x-table.column>
 
                                 <x-table.column>
@@ -78,15 +59,9 @@
                                         </a>
                                     @endif
                                 </x-table.column>
-
-
                             </tr>
                         @endforeach
-
-
                     </x-table.table>
-
-                   {{-- {{ $users->links() }}--}}
                 </div>
             </div>
         </div>

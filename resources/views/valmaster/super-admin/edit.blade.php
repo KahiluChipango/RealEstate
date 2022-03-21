@@ -34,25 +34,6 @@
                                         <x-input id="email" class="block mt-1 w-full" type="email" name="email" value="{{ $user->email }}" required />
                                     </div>
 
-                                    {{-- <div class="mt-4">
-                                        @foreach($roles as $role)
-                                            <div class="form-check">
-                                                <label class="form-check-label" for="{{$role->name}}">
-                                                    {{ $role->name }}
-                                                </label>
-
-
-                                                <x-input class="form-check-input" name="roles[]"
-                                                         type="radio"
-                                                         value="{{$role->id}}"
-                                                         id="{{$role->name}}"
-                                                         @isset($user) @if(in_array($role->id, $user->roles->pluck('id')->toArray())) checked @endif @endisset
-                                                 />
-
-                                            </div>
-
-                                        @endforeach
-                                    </div>--}}
 
                                     <div class="mt-4">
                                         @foreach($roles as $role)

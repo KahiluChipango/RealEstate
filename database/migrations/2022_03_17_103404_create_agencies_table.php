@@ -15,6 +15,7 @@ class CreateAgenciesTable extends Migration
     {
         Schema::create('agencies', function (Blueprint $table) {
             $table->id();
+            $table->string('job_number');
             $table->enum('rent_sale', ['SALE', 'RENT']);
             $table->string('web');
             $table->string('agent_in_charge');
@@ -37,7 +38,7 @@ class CreateAgenciesTable extends Migration
             $table->enum('quality_of_finishes', ['ULTRA MODERN', 'MODERN', 'MODERATE', 'OLD']);
             $table->string('land_size');
             $table->enum('additional_buildings', ['GUEST HOUSE', 'WORKERS', 'QUARTERS', 'GARAGE']);
-            $table->ENUM('swimming_pool', ['POOL', 'NO POOL']);
+            $table->enum('swimming_pool', ['POOL', 'NO POOL']);
             $table->enum('layout_of_office_space', ['PARTIONED', 'OPEN SPACE']);
             $table->enum('parking', ['PLENTY', 'MODERATE', 'LITTLE', 'NO PARKING']);
             $table->enum('pets', ['PET FRIENDLY', 'NO PET']);

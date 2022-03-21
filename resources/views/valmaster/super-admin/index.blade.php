@@ -26,17 +26,12 @@
                                 <x-table.column>{{$user->name}}</x-table.column>
                                 <x-table.column>{{$user->email}}</x-table.column>
                                 <x-table.column>
-
-
-
-
                                         {{--Edit Button--}}
                                         <a class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                            href="{{ route('valmaster.super-admin.edit', $user->id) }}"
                                            role="button">
                                             Edit
                                         </a>
-
 
                                         {{--Delete Button--}}
                                         <button type="submit"
@@ -51,8 +46,6 @@
                                         @method("DELETE")
                                     </form>
                                 </x-table.column>
-
-
                             </tr>
                         @endforeach
 

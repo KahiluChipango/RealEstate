@@ -10,6 +10,7 @@ class Agency extends Model
     use HasFactory;
 
     protected $fillable =[
+        'job_number',
         'rent_sale',
         'web',
         'agent_in_charge',

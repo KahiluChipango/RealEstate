@@ -53,10 +53,7 @@ class SuperAdminController extends Controller
         /*$user = User::create($request->except(['_token', 'roles']));*/
         $user->roles()->sync($request->roles);
 
-
         return redirect(route('valmaster.super-admin.index'));
-
-
 
     }
 
