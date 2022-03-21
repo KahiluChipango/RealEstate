@@ -46,7 +46,6 @@
                                         Edit
                                     </a>
 
-
                                     {{--Delete Button--}}
                                     {{-- <button type="submit"
                                              class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500/75 hover:bg-red-500/100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -85,7 +84,7 @@
 
                     </x-table.table>
 
-
+                    {{$clients->links()}}
                 </div>
             </div>
         </div>

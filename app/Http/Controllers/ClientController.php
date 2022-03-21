@@ -46,16 +46,6 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-
-       /* $client = Client::create($request->all());
-        $client->users()->attachUser($request->user_id);*/
-
-
-
-       /* $request->session()->flash('Success', "you Have Added a New Client");*/
-
-     //   dd($request->all());
-
         $request->validate([
             'branch' => ['required'],
             'client_name' => ['required', 'string'],
@@ -84,14 +74,7 @@ class ClientController extends Controller
         $client->fill($request->all());
         $client->save();
 
-
-
-
-
         return redirect(route('valmaster.front-desk.create'));
-
-
-
     }
 
     /**
@@ -111,9 +94,14 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit($id)
     {
-        //
+        return view("valmaster.front-desk.edit",
+            [
+                'client' => Client::find($id),
+                'users' => User::all()
+            ]);
+
     }
 
     /**
@@ -123,9 +111,11 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, $id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->update($request->all());
+        return redirect(route('valmaster.front-desk.index'));
     }
 
     /**
@@ -134,8 +124,9 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy($id)
     {
-        //
+        Client::destroy($id);
+        return redirect(route('valmaster.front-desk.index'));
     }
 }

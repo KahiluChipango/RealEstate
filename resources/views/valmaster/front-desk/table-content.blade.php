@@ -37,6 +37,7 @@
                                 <x-table.header>Fee Due Date</x-table.header>
                                 <x-table.header>Date of Delivery</x-table.header>
                                 <x-table.header>Date of Receipt of Instruction</x-table.header>
+                                <x-table.header>Action</x-table.header>
                             </x-slot>
 
                                 <?php $i = 0?>
@@ -51,7 +52,7 @@
                                     <x-table.column>{{$client->contact_person}}</x-table.column>
                                     <x-table.column>{{$client->contact_person_number}}</x-table.column>
                                     <x-table.column>{{$client->property_address}}</x-table.column>
-                                    <x-table.column>{{$client->fee}}</x-table.column>
+                                    <x-table.column>K{{$client->fee}}</x-table.column>
 
                                     <x-table.column>
                                         @if($client->fee_status == 1)
@@ -75,6 +76,27 @@
                                     <x-table.column>{{$client->fee_due_date}}</x-table.column>
                                     <x-table.column>{{$client->date_of_delivery}}</x-table.column>
                                     <x-table.column>{{$client->date_of_receipt_of_instruction}}</x-table.column>
+                                    <x-table.column>
+                                        {{--Edit Button--}}
+                                        <a class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                           href="{{ route('valmaster.front-desk.edit', $client->id) }}"
+                                           role="button">
+                                            Edit
+                                        </a>
+
+                                        {{--Delete Button--}}
+                                        <button type="submit"
+                                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500/75 hover:bg-red-500/100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                onclick="event.preventDefault();
+                                                    document.getElementById('delete-user-form-{{$client->id}}').submit()">
+                                            DELETE
+                                        </button>
+
+                                        <form id="delete-user-form-{{ $client->id }}" action="{{ route('valmaster.front-desk.destroy', $client->id) }}" method="POST" style="display: none">
+                                            @csrf
+                                            @method("DELETE")
+                                        </form>
+                                    </x-table.column>
 
                                 </tr>
                                 @endforeach
@@ -82,6 +104,7 @@
                         </x-table.table>
 
 
+                    {{$clients->links()}}
                 </div>
             </div>
         </div>

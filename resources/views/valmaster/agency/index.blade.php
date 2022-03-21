@@ -127,7 +127,7 @@
                             </tr>
                         @endforeach
                     </x-table.table>
-
+                    {{$agencies->links()}}
                 </div>
             </div>
         </div>
