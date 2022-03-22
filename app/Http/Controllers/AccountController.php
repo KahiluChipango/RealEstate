@@ -21,9 +21,26 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view("valmaster.accounts.index", ['clients' => Client::paginate(10)]);
+        $search = $request['search'] ?? "";
+        if ($search != "") {
+            $clients = Client::where('id', 'LIKE', '%'.$search.'%')
+                ->orWhere('branch', 'LIKE', '%'.$search.'%')
+                ->orWhere('client_name', 'LIKE', '%'.$search.'%')
+                ->orWhere('fee', 'LIKE', '%'.$search.'%')
+                ->orWhere('fee_status', 'LIKE', '%'.$search.'%')
+                ->orWhere('fee_due_date', 'LIKE', '%'.$search.'%')
+                ->paginate(20);
+
+        } else {
+            $clients = Client::paginate(10);
+
+        }
+
+        return view("valmaster.accounts.index", )
+            ->with('users', User::find('name'))
+            ->with('clients', $clients);
     }
 
     /**

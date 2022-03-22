@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function(){
 
         Route::prefix('valmaster')->middleware('role:frontdesk')->name('valmaster.')->group(function() {
             Route::resource('/front-desk', ClientController::class);
+
         });
 
 
@@ -48,6 +49,7 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('/save/{id}', [AccountController::class, 'saveInvoice'])->name('accounts.invoice.save-invoice');
             Route::get('/email/{id}', [AccountController::class, 'sendInvoice'])->name('accounts.invoice.mail-invoice');
             Route::get('/send-sms/{id}', [AccountController::class, 'invoiceSms'])->name('accounts.incoice.send-sms');
+
 
 
             Route::resource('/invoice', InvoiceController::class);

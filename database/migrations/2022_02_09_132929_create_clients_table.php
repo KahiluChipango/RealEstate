@@ -23,7 +23,7 @@ class CreateClientsTable extends Migration
             $table->string('contact_person_number');
             $table->string('property_address');
             $table->float('fee', 9, 2);
-            $table->boolean('fee_status')->default(0);
+            $table->enum('fee_status', ['Paid', 'Not Paid']);
             $table->enum('report_status', ['Work In Progress', 'Inspected/report Drafting', 'Delivered']);
             $table->enum('feedback_status', ['Customer Happy', 'Customer Unhappy']);
             $table->foreignId('users_id')->constrained()->onDelete('cascade');

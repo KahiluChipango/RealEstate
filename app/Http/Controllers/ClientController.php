@@ -17,14 +17,44 @@ class ClientController extends Controller
      */
 
 
-    public function index()
+    public function index(Request $request)
     {
 
-        return view("valmaster.front-desk.table-content",
-            [
-                'clients' => Client::paginate(10),
-                'users' => User::find('name')
-                ]);
+        $search = $request['search'] ?? "";
+        if ($search != "") {
+            $clients = Client::where('id', 'LIKE', '%'.$search.'%')
+                ->orWhere('branch', 'LIKE', '%'.$search.'%')
+                ->orWhere('client_name', 'LIKE', '%'.$search.'%')
+                ->orWhere('client_number', 'LIKE', '%'.$search.'%')
+                ->orWhere('client_email', 'LIKE', '%'.$search.'%')
+                ->orWhere('contact_person', 'LIKE', '%'.$search.'%')
+                ->orWhere('contact_person_number', 'LIKE', '%'.$search.'%')
+                ->orWhere('property_address', 'LIKE', '%'.$search.'%')
+                ->orWhere('fee', 'LIKE', '%'.$search.'%')
+                ->orWhere('fee_status', 'LIKE', '%'.$search.'%')
+                ->orWhere('report_status', 'LIKE', '%'.$search.'%')
+                ->orWhere('feedback_status', 'LIKE', '%'.$search.'%')
+                ->orWhere('type_of_property', 'LIKE', '%'.$search.'%')
+                ->orWhere('market_value', 'LIKE', '%'.$search.'%')
+                ->orWhere('purpose', 'LIKE', '%'.$search.'%')
+                ->orWhere('property_description', 'LIKE', '%'.$search.'%')
+                ->orWhere('report_due_date', 'LIKE', '%'.$search.'%')
+                ->orWhere('inspection_due', 'LIKE', '%'.$search.'%')
+                ->orWhere('valuation_time', 'LIKE', '%'.$search.'%')
+                ->orWhere('days_taken_to_complete', 'LIKE', '%'.$search.'%')
+                ->orWhere('fee_due_date', 'LIKE', '%'.$search.'%')
+                ->orWhere('date_of_delivery', 'LIKE', '%'.$search.'%')
+                ->orWhere('date_of_receipt_of_instruction', 'LIKE', '%'.$search.'%')
+                ->paginate(20);
+
+        } else {
+            $clients = Client::paginate(10);
+
+        }
+
+        return view("valmaster.front-desk.table-content")
+            ->with('users', User::find('name'))
+            ->with('clients', $clients);
 
     }
 
@@ -129,4 +159,7 @@ class ClientController extends Controller
         Client::destroy($id);
         return redirect(route('valmaster.front-desk.index'));
     }
+
+
+
 }

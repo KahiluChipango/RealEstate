@@ -118,9 +118,7 @@ z<x-app-layout>
 
                                 <div class="pb-2"></div>
                                 <h3 class="font-bold"> Fee Status: </h3>
-                                @if ($clients->fee_status == 1) {{'Paid'}}
-                                @elseif ($clients->fee_status == 0) {{'Not Paid'}}
-                                @endif
+                                {{$clients->fee_status}}
 
                                 <div class="pb-2"></div>
                                 <h3 class="font-bold"> Report Status: </h3>
@@ -160,13 +158,8 @@ z<x-app-layout>
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="number"
                                                     name="fee_status">
-                                                @if ($clients->fee_status == 1)
-                                                    <option value="1">Paid</option>
-                                                    <option value="0">Not Paid</option>
-                                                @elseif ($clients->fee_status == 0)
-                                                    <option value="0">Not Paid</option>
-                                                    <option value="1">Paid</option>
-                                                @endif
+                                                <option value="Paid" {{$clients->fee_status == "Paid" ? 'selected': ''}}>Paid</option>
+                                                <option value="Not Paid" {{$clients->fee_status == "Not Paid" ? 'selected': ''}}>Not Paid</option>
                                             </select>
                                         </div>
                                         <!-- Email Address -->

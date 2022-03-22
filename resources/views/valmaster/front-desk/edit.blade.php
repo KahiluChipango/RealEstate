@@ -148,8 +148,8 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="fee_status">
-                                                  <option value="1" {{$client->fee_status == "1" ? 'selected': ''}}>Paid</option>
-                                                  <option value="0" {{$client->fee_status == "0" ? 'selected': ''}}>Not Paid</option>
+                                                  <option value="Paid" {{$client->fee_status == "Paid" ? 'selected': ''}}>Paid</option>
+                                                  <option value="Not Paid" {{$client->fee_status == "Not Paid" ? 'selected': ''}}>Not Paid</option>
                                               </select>
                                           </div>
 
@@ -372,11 +372,7 @@
                                                 name="date_of_receipt_of_instruction"
                                                 value="{{$client->date_of_receipt_of_instruction}}" required />
                                         </div>
-
-
                                     </div>
-
-
                                 </div>
 
                                 <!-- Add Button-->
