@@ -17,7 +17,7 @@ class SuperAdminController extends Controller
     public function index()
     {
 
-        return view('valmaster.super-admin.index', ['users'=>User::paginate(5)]);
+        return view('valmaster.super-admin.index', ['users'=>User::paginate(10)]);
     }
 
     /**

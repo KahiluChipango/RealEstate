@@ -29,7 +29,7 @@ class AdminController extends Controller
                 ->paginate(20);
 
         } else {
-            $clients = Client::paginate(10);
+            $clients = Client::paginate(20);
 
         }
 
@@ -152,6 +152,95 @@ class AdminController extends Controller
                 ->from('Kahilu@mail.com')
                 ->subject('Invoice')
                 ->attachData($pdf->output(), 'Invoice - '.$client->branch.$client->id.'.pdf');
+        });
+
+        dd('Mail sent successfully');
+
+    }
+
+
+
+    /**
+     *  Save Invoice sms
+     * Function.
+     *
+     */
+    public function invoiceSms($id){
+
+        $data = Client::find($id);
+
+        $basic  = new \Vonage\Client\Credentials\Basic("343ceee7", "3scJRrOn6xWqwJKQ");
+        $client = new \Vonage\Client($basic);
+
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("260974476363", 'Hello', 'A text message sent using the Nexmo SMS API')
+        );
+
+        $message = $response->current();
+
+        if ($message->getStatus() == 0) {
+            echo "The message was sent successfully\n";
+        } else {
+            echo "The message failed with status: " . $message->getStatus() . "\n";
+        }
+
+    }
+
+
+
+
+    /*
+     * Receipt Section
+     * */
+
+    public function showReceipt($id)
+    {
+        return view('valmaster.admin.receipt.receipt-templete',
+            [
+                'client' => Client::find($id),
+                'user' => User::all()
+            ]);
+    }
+
+
+    public function saveReceipt($id){
+
+
+        $client = Client::find($id);
+        $pdf = PDF::loadView('valmaster.admin.receipt.mail-receipt',  [
+            'client' => Client::find($id),
+            'user' => User::all()
+        ]);
+        return $pdf->download('Receipt - '.$client->branch.$client->id.'.pdf');
+    }
+
+    /**
+     * Send Email
+     * with
+     * Receipt pdf
+     * attachment
+     * Function.
+     *
+     */
+
+    public function sendReceipt($id){
+
+        $client = Client::find($id);
+        $pdf = PDF::loadView('valmaster.admin.receipt.mail-receipt',  [
+            'client' => Client::find($id),
+            'user' => User::all()
+        ]);
+
+
+        $data["email"] = "aatmaninfotech@gmail.com";
+        $data["title"] = "From Sherwood Greene";
+        $data["body"] = "This is Demo";
+
+        Mail::send('valmaster.admin.send.emails.receipt',  $data, function($message)use($client, $pdf) {
+            $message->to($client->client_email)
+                ->from('Kahilu@mail.com')
+                ->subject('Receipt')
+                ->attachData($pdf->output(), 'Receipt - '.$client->branch.$client->id.'.pdf');
         });
 
         dd('Mail sent successfully');

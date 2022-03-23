@@ -34,7 +34,7 @@ class AccountController extends Controller
                 ->paginate(20);
 
         } else {
-            $clients = Client::paginate(10);
+            $clients = Client::paginate(20);
 
         }
 
@@ -221,5 +221,62 @@ class AccountController extends Controller
 
 
 
+    /*
+     * Receipt Section
+     * */
+
+    public function showReceipt($id)
+    {
+        return view('valmaster.accounts.receipt.receipt-templete',
+            [
+                'client' => Client::find($id),
+                'user' => User::all()
+            ]);
+    }
+
+
+    public function saveReceipt($id){
+
+
+        $client = Client::find($id);
+        $pdf = PDF::loadView('valmaster.accounts.receipt.mail-receipt',  [
+            'client' => Client::find($id),
+            'user' => User::all()
+        ]);
+        return $pdf->download('Receipt - '.$client->branch.$client->id.'.pdf');
+    }
+
+    /**
+     * Send Email
+     * with
+     * Receipt pdf
+     * attachment
+     * Function.
+     *
+     */
+
+    public function sendReceipt($id){
+
+        $client = Client::find($id);
+        $pdf = PDF::loadView('valmaster.accounts.receipt.mail-receipt',  [
+            'client' => Client::find($id),
+            'user' => User::all()
+        ]);
+
+
+        $data["email"] = "aatmaninfotech@gmail.com";
+        $data["title"] = "From Sherwood Greene";
+        $data["body"] = "This is Demo";
+
+        Mail::send('valmaster.accounts.send.emails.receipt',  $data, function($message)use($client, $pdf) {
+            $message->to($client->client_email)
+                ->from('Kahilu@mail.com')
+                ->subject('Receipt')
+                ->attachData($pdf->output(), 'Receipt - '.$client->branch.$client->id.'.pdf');
+        });
+
+        dd('Mail sent successfully');
+
+    }
 
 }

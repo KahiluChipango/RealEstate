@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
 
-        <x-nav-links.admin></x-nav-links.admin>
+        <x-nav-links.accounts></x-nav-links.accounts>
     </x-slot>
     <div class="row">
         <div class="col-12">
@@ -17,7 +17,7 @@
                     Send Email
                 </a>
                 <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                   href="{{ route('valmaster.accounts.incoice.send-sms', $client->id) }}"
+                   href=""
                    role="button">
                     Send SMS
                 </a>
@@ -75,7 +75,7 @@
                         <div class="col-start-3 col-span-1 text-right font-bold font-mono">
 
 
-                            <h3>Date:</h3>
+                            <h3>Date:</h3><h3>{{ date('M d, Y')}}</h3>
                             <h3>Invoice #:</h3>
                             <h3>For:</h3>
 

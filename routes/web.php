@@ -48,7 +48,10 @@ Route::group(['middleware' => 'auth'], function(){
            /* Route::get('/accounts/invoice', 'App\Http\Controllers\AccountController@invoice')->name('accounts.send.invoice');*/
             Route::get('/save/{id}', [AccountController::class, 'saveInvoice'])->name('accounts.invoice.save-invoice');
             Route::get('/email/{id}', [AccountController::class, 'sendInvoice'])->name('accounts.invoice.mail-invoice');
-            Route::get('/send-sms/{id}', [AccountController::class, 'invoiceSms'])->name('accounts.incoice.send-sms');
+            Route::get('/send-sms/{id}', [AccountController::class, 'invoiceSms'])->name('accounts.invoice.send-sms');
+            Route::get('/save-receipt/{id}', [AccountController::class, 'saveReceipt'])->name('accounts.receipt.save-receipt');
+            Route::get('/email-receipt/{id}', [AccountController::class, 'sendReceipt'])->name('accounts.receipt.mail-receipt');
+            Route::get('/show-receipt/{id}', [AccountController::class, 'showReceipt'])->name('accounts.receipt.show-receipt');
 
 
 
