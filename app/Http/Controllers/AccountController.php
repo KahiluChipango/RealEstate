@@ -158,18 +158,17 @@ class AccountController extends Controller
         ]);
 
 
-        $data["email"] = "aatmaninfotech@gmail.com";
-        $data["title"] = "From Sherwood Greene";
-        $data["body"] = "This is Demo";
+
+        $data["title"] = "Sherwood Greene Properties";
 
         Mail::send('valmaster.accounts.send.emails.invoice',  $data, function($message)use($client, $pdf) {
             $message->to($client->client_email)
-                ->from('Kahilu@mail.com')
+                ->from(auth()->user()->email)
                 ->subject('Invoice')
                 ->attachData($pdf->output(), 'Invoice - '.$client->branch.$client->id.'.pdf');
         });
 
-        dd('Mail sent successfully');
+        return redirect()->back();
 
     }
 
