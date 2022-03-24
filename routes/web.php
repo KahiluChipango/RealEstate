@@ -46,12 +46,12 @@ Route::group(['middleware' => 'auth'], function(){
         Route::prefix('valmaster')->middleware('role:accounts')->name('valmaster.')->group(function() {
             Route::resource('/accounts', AccountController::class);
            /* Route::get('/accounts/invoice', 'App\Http\Controllers\AccountController@invoice')->name('accounts.send.invoice');*/
-            Route::get('/save/{id}', [AccountController::class, 'saveInvoice'])->name('accounts.invoice.save-invoice');
-            Route::get('/email/{id}', [AccountController::class, 'sendInvoice'])->name('accounts.invoice.mail-invoice');
+            Route::get('invoice-email/{id}', [AccountController::class, 'sendInvoice'])->name('accounts.email.invoice');
             Route::get('/send-sms/{id}', [AccountController::class, 'invoiceSms'])->name('accounts.invoice.send-sms');
             Route::get('receipt/{id}', [AccountController::class, 'showReceipt'] )->name('accounts.show-receipt');
-            Route::get('/download/{id}', [AccountController::class, 'saveReceipt'])->name('download.receipt');
+            Route::get('/download-receipt/{id}', [AccountController::class, 'saveReceipt'])->name('accounts.download.receipt');
             Route::get('/receipt-email/{id}', [AccountController::class, 'sendReceipt'])->name('accounts.email.receipt');
+            Route::get('/download-invoice/{id}', [AccountController::class, 'saveInvoice'])->name('accounts.download.invoice');
 
 
         });

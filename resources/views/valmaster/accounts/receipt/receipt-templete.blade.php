@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="float-end hidden space-x-3 sm:-my-px sm:ml-10 sm:flex">
                 <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                   href="{{ route('valmaster.download.receipt',  $client->id) }}"
+                   href="{{ route('valmaster.accounts.download.receipt',  $client->id) }}"
                    role="button">
                     Download
                 </a>
