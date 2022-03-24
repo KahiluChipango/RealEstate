@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Receipt{{$client->branch}}{{$client->id}}</title>
+    <title>Receipt - {{$client->branch}}{{$client->id}}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     {{-- <style type="text/css" media="screen"> </style>--}}
     <style type="text/css" media="screen">
@@ -13478,7 +13478,7 @@ Ensure the default browser behavior of the `hidden` attribute.
                 Received From:
             </th>
             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 col-start-2 text-left">
-                First
+                {{$client->client_name." (".$client->client_email.")"}}
             </th>
         </tr>
         </thead>
@@ -13488,7 +13488,7 @@ Ensure the default browser behavior of the `hidden` attribute.
                 In Respect of:
             </td>
             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap col-span-2">
-                Mark
+                {{$client->purpose." of ".$client->type_of_property." Property at ".$client->property_address}}
             </td>
 
         </tr>
@@ -13497,7 +13497,7 @@ Ensure the default browser behavior of the `hidden` attribute.
                 Received By:
             </td>
             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                Jacob
+                {{$user}}
             </td>
 
         </tr>

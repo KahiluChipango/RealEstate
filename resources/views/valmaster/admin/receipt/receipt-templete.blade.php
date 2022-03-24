@@ -7,12 +7,12 @@
         <div class="col-12">
             <div class="float-end hidden space-x-3 sm:-my-px sm:ml-10 sm:flex">
                 <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                   href="{{ route('valmaster.accounts.receipt.save-receipt',  $client->id) }}"
+                   href="{{ route('valmaster.admin.receipt.save-receipt',  $client->id) }}"
                    role="button">
                     Download
                 </a>
                 <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                   href="{{ route('valmaster.accounts.receipt.mail-receipt', $client->id) }}"
+                   href="{{ route('valmaster.admin.receipt.mail-receipt', $client->id) }}"
                    role="button">
                     Send Email
                 </a>
@@ -56,7 +56,7 @@
                                     Received From:
                                 </th>
                                 <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 col-start-2 text-left">
-                                    First
+                                    {{$client->client_name." (".$client->client_email.")"}}
                                 </th>
                             </tr>
                             </thead>
@@ -66,7 +66,7 @@
                                     In Respect of:
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap col-span-2">
-                                    Mark
+                                    {{$client->purpose." of ".$client->type_of_property." Property at ".$client->property_address}}
                                 </td>
 
                             </tr>
@@ -75,7 +75,7 @@
                                     Received By:
                                 </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    Jacob
+                                    {{$user}}
                                 </td>
 
                             </tr>

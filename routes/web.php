@@ -49,16 +49,10 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('/save/{id}', [AccountController::class, 'saveInvoice'])->name('accounts.invoice.save-invoice');
             Route::get('/email/{id}', [AccountController::class, 'sendInvoice'])->name('accounts.invoice.mail-invoice');
             Route::get('/send-sms/{id}', [AccountController::class, 'invoiceSms'])->name('accounts.invoice.send-sms');
-            Route::get('/save-receipt/{id}', [AccountController::class, 'saveReceipt'])->name('accounts.receipt.save-receipt');
-            Route::get('/email-receipt/{id}', [AccountController::class, 'sendReceipt'])->name('accounts.receipt.mail-receipt');
-            Route::get('/show-receipt/{id}', [AccountController::class, 'showReceipt'])->name('accounts.receipt.show-receipt');
+            Route::get('receipt/{id}', [AccountController::class, 'showReceipt'] )->name('accounts.show-receipt');
+            Route::get('/download/{id}', [AccountController::class, 'saveReceipt'])->name('download.receipt');
+            Route::get('/receipt-email/{id}', [AccountController::class, 'sendReceipt'])->name('accounts.email.receipt');
 
-
-
-            Route::resource('/invoice', InvoiceController::class);
-            Route::get('/invoice', [AccountController::class, 'invoice'])->name('accounts.send.invoice');
-            Route::get('/receipt', [AccountController::class, 'receipt'])->name('accounts.send.receipt');
-            Route::get('/sms', [AccountController::class, 'sendSms'])->name('accounts.send.sms');
 
         });
 
@@ -89,11 +83,14 @@ Route::group(['middleware' => 'auth'], function(){
     */
         Route::prefix('valmaster')->middleware('role:admin')->name('valmaster.')->group(function() {
             Route::resource('/admin', AdminController::class);
-            Route::get('/invoice', [AdminController::class, 'invoice'])->name('accounts.send.invoice');
-            Route::get('/receipt', [AdminController::class, 'receipt'])->name('accounts.send.receipt');
-            Route::get('/sms', [AdminController::class, 'sendSms'])->name('accounts.send.sms');
 
-            Route::resource('/invoice', InvoiceController::class);
+            Route::get('/save/{id}', [AdminController::class, 'saveInvoice'])->name('admin.invoice.save-invoice');
+            Route::get('/email/{id}', [AdminController::class, 'sendInvoice'])->name('admin.invoice.mail-invoice');
+            Route::get('/send-sms/{id}', [AdminController::class, 'invoiceSms'])->name('admin.invoice.send-sms');
+            Route::get('/save-receipt/{id}', [AdminController::class, 'saveReceipt'])->name('admin.receipt.save-receipt');
+            Route::get('/email-receipt/{id}', [AdminController::class, 'sendReceipt'])->name('admin.receipt.mail-receipt');
+            Route::get('/show-receipt/{id}', [AdminController::class, 'showReceipt'])->name('admin.receipt.show-receipt');
+
         });
 
     /*

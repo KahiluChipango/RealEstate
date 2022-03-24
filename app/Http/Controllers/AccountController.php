@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\InvoiceMail;
+use Illuminate\Support\Facades\Auth;
 use Notification;
 use App\Notifications\SMSNotification;
 use App\Models\Client;
@@ -221,16 +222,19 @@ class AccountController extends Controller
 
 
 
-    /*
+    /**
      * Receipt Section
-     * */
+     *
+     */
 
     public function showReceipt($id)
     {
+
+
         return view('valmaster.accounts.receipt.receipt-templete',
             [
                 'client' => Client::find($id),
-                'user' => User::all()
+                'user' => auth()->user()->name
             ]);
     }
 
@@ -241,7 +245,7 @@ class AccountController extends Controller
         $client = Client::find($id);
         $pdf = PDF::loadView('valmaster.accounts.receipt.mail-receipt',  [
             'client' => Client::find($id),
-            'user' => User::all()
+            'user' => auth()->user()->name,
         ]);
         return $pdf->download('Receipt - '.$client->branch.$client->id.'.pdf');
     }
@@ -260,22 +264,20 @@ class AccountController extends Controller
         $client = Client::find($id);
         $pdf = PDF::loadView('valmaster.accounts.receipt.mail-receipt',  [
             'client' => Client::find($id),
-            'user' => User::all()
+            'user' => auth()->user()->name
         ]);
 
 
-        $data["email"] = "aatmaninfotech@gmail.com";
-        $data["title"] = "From Sherwood Greene";
-        $data["body"] = "This is Demo";
+        $data["title"] = "Sherwood Greene Properties Limited";
 
         Mail::send('valmaster.accounts.send.emails.receipt',  $data, function($message)use($client, $pdf) {
             $message->to($client->client_email)
-                ->from('Kahilu@mail.com')
+                ->from(auth()->user()->email)
                 ->subject('Receipt')
                 ->attachData($pdf->output(), 'Receipt - '.$client->branch.$client->id.'.pdf');
         });
 
-        dd('Mail sent successfully');
+        return redirect()->back();
 
     }
 

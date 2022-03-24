@@ -70,8 +70,7 @@
                                     @if($client->fee_status == 'Paid')
                                     {{--Receipt Button--}}
                                         <a class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-lime-600 hover:bg-lime-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                           href="{{ route('valmaster.accounts.receipt.show-receipt', $client->id) }}"
-                                           role="button">
+                                           href="{{ route('valmaster.accounts.show-receipt', $client->id) }}">
                                             Receipt
                                         </a>
                                     @elseif($client->fee_status == 'Not Paid')

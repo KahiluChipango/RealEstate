@@ -33,7 +33,7 @@ class AdminController extends Controller
 
         }
 
-        return view("valmaster.accounts.index", )
+        return view("valmaster.admin.index", )
             ->with('users', User::find('name'))
             ->with('clients', $clients);
     }
@@ -67,7 +67,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        return view('valmaster.admin.send.invoice',
+        return view('valmaster.admin.invoice.invoice-templete',
             [
                 'client' => Client::find($id),
                 'user' => User::all()
@@ -127,7 +127,7 @@ class AdminController extends Controller
 
 
         $client = Client::find($id);
-        $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
+        $pdf = PDF::loadView('valmaster.admin.invoice.mail-invoice',  [
             'client' => Client::find($id),
             'user' => User::all()
         ]);
@@ -137,7 +137,7 @@ class AdminController extends Controller
     public function sendInvoice($id){
 
         $client = Client::find($id);
-        $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
+        $pdf = PDF::loadView('valmaster.admin.invoice.mail-invoice',  [
             'client' => Client::find($id),
             'user' => User::all()
         ]);
@@ -147,7 +147,7 @@ class AdminController extends Controller
         $data["title"] = "From Sherwood Greene";
         $data["body"] = "This is Demo";
 
-        Mail::send('valmaster.accounts.send.emails.invoice',  $data, function($message)use($client, $pdf) {
+        Mail::send('valmaster.admin.send.emails.invoice',  $data, function($message)use($client, $pdf) {
             $message->to($client->client_email)
                 ->from('Kahilu@mail.com')
                 ->subject('Invoice')
@@ -198,7 +198,7 @@ class AdminController extends Controller
         return view('valmaster.admin.receipt.receipt-templete',
             [
                 'client' => Client::find($id),
-                'user' => User::all()
+                'user' => auth()->user()->name
             ]);
     }
 
@@ -209,7 +209,7 @@ class AdminController extends Controller
         $client = Client::find($id);
         $pdf = PDF::loadView('valmaster.admin.receipt.mail-receipt',  [
             'client' => Client::find($id),
-            'user' => User::all()
+            'user' => auth()->user()->name
         ]);
         return $pdf->download('Receipt - '.$client->branch.$client->id.'.pdf');
     }
@@ -228,22 +228,20 @@ class AdminController extends Controller
         $client = Client::find($id);
         $pdf = PDF::loadView('valmaster.admin.receipt.mail-receipt',  [
             'client' => Client::find($id),
-            'user' => User::all()
+            'user' => auth()->user()->name
         ]);
 
 
-        $data["email"] = "aatmaninfotech@gmail.com";
-        $data["title"] = "From Sherwood Greene";
-        $data["body"] = "This is Demo";
 
+        $data["title"] = "Sherwood Greene Properties Limited";
         Mail::send('valmaster.admin.send.emails.receipt',  $data, function($message)use($client, $pdf) {
             $message->to($client->client_email)
-                ->from('Kahilu@mail.com')
+                ->from(auth()->user()->email)
                 ->subject('Receipt')
                 ->attachData($pdf->output(), 'Receipt - '.$client->branch.$client->id.'.pdf');
         });
 
-        dd('Mail sent successfully');
+       return redirect()->back();
 
     }
 }
