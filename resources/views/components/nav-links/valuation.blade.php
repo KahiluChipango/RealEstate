@@ -11,7 +11,7 @@
         <div class="float-end hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
             <x-nav-link href="https://drive.google.com/drive/folders/1Go7sPa_1UdxhT7ixBSRYPEp7oilT9VaI" target="_blank">
-                {{ __('COMMERCIAL PORTAL ') }}
+                {{ __('COMMERCIAL REPORT ') }}
             </x-nav-link>
 
         </div>
