@@ -13,7 +13,7 @@ class ValuationController extends Controller
      */
     public function index()
     {
-        //
+       return view('valmaster.valuation.index');
     }
 
     /**

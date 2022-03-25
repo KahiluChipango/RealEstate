@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\InvoiceMail;
 use Illuminate\Support\Facades\Auth;
+use MongoDB\Driver\Session;
 use Notification;
 use App\Notifications\SMSNotification;
 use App\Models\Client;
@@ -33,7 +34,6 @@ class AccountController extends Controller
                 ->orWhere('fee_status', 'LIKE', '%'.$search.'%')
                 ->orWhere('fee_due_date', 'LIKE', '%'.$search.'%')
                 ->paginate(20);
-
         } else {
             $clients = Client::paginate(20);
 
@@ -107,6 +107,7 @@ class AccountController extends Controller
         $client = Client::findOrFail($id);
 
         $client->update($request->except(['user_id']));
+
 
         return redirect( route('valmaster.accounts.index'));
     }
