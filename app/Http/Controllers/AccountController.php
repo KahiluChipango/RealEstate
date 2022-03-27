@@ -109,7 +109,7 @@ class AccountController extends Controller
         $client->update($request->except(['user_id']));
 
 
-        return redirect( route('valmaster.accounts.index'));
+        return redirect( route('valmaster.accounts.index'))->with('Update', 'You Have Successfully Updated '.$client->client_name.' Job #: '.$client->branch.$id);
     }
 
     /**
@@ -164,12 +164,11 @@ class AccountController extends Controller
 
         Mail::send('valmaster.accounts.send.emails.invoice',  $data, function($message)use($client, $pdf) {
             $message->to($client->client_email)
-                ->from(auth()->user()->email)
                 ->subject('Invoice')
                 ->attachData($pdf->output(), 'Invoice - '.$client->branch.$client->id.'.pdf');
         });
 
-        return redirect()->back();
+        return redirect()->back()->with('EmailInvoice', 'Invoice Email Has Been sent To: '.$client->client_email);
 
     }
 
@@ -272,12 +271,11 @@ class AccountController extends Controller
 
         Mail::send('valmaster.accounts.send.emails.receipt',  $data, function($message)use($client, $pdf) {
             $message->to($client->client_email)
-                ->from(auth()->user()->email)
                 ->subject('Receipt')
                 ->attachData($pdf->output(), 'Receipt - '.$client->branch.$client->id.'.pdf');
         });
 
-        return redirect()->back();
+        return redirect()->back()->with('EmailReceipt', 'Receipt Email Has Been sent To: '.$client->client_email);
 
     }
 

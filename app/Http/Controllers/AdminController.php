@@ -149,7 +149,6 @@ class AdminController extends Controller
 
         Mail::send('valmaster.admin.send.emails.invoice',  $data, function($message)use($client, $pdf) {
             $message->to($client->client_email)
-                ->from('Kahilu@mail.com')
                 ->subject('Invoice')
                 ->attachData($pdf->output(), 'Invoice - '.$client->branch.$client->id.'.pdf');
         });
@@ -236,12 +235,11 @@ class AdminController extends Controller
         $data["title"] = "Sherwood Greene Properties Limited";
         Mail::send('valmaster.admin.send.emails.receipt',  $data, function($message)use($client, $pdf) {
             $message->to($client->client_email)
-                ->from(auth()->user()->email)
                 ->subject('Receipt')
                 ->attachData($pdf->output(), 'Receipt - '.$client->branch.$client->id.'.pdf');
         });
 
-       return redirect()->back();
+       return redirect()->back()->with('EmailReceipt', 'Receipt Email Has Been sent To: '.$client->client_email);
 
     }
 }

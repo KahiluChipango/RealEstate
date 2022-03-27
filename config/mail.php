@@ -97,7 +97,7 @@ return [
     ],
 
     'reply_to' => [
-        'address' => 'mwansa.ngosa@sherwoodgreene.com',
+        'address' =>  env('MAIL_FROM_ADDRESS', 'mwansa.ngosa@sherwoodgreene.com'),
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 

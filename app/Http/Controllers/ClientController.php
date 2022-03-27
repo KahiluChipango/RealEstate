@@ -104,7 +104,7 @@ class ClientController extends Controller
         $client->fill($request->all());
         $client->save();
 
-        return redirect(route('valmaster.front-desk.create'));
+        return redirect(route('valmaster.front-desk.create'))->with('Add', 'Record has been saved to database');
     }
 
     /**
@@ -145,7 +145,7 @@ class ClientController extends Controller
     {
         $client = Client::findOrFail($id);
         $client->update($request->all());
-        return redirect(route('valmaster.front-desk.index'));
+        return redirect(route('valmaster.front-desk.index'))->with('Update', 'You Have Successfully Updated '.$client->client_name.' Job #: '.$client->branch.$id);
     }
 
     /**
@@ -157,7 +157,7 @@ class ClientController extends Controller
     public function destroy($id)
     {
         Client::destroy($id);
-        return redirect(route('valmaster.front-desk.index'));
+        return redirect(route('valmaster.front-desk.index'))->with('delete', 'Record has Been Deleted ');
     }
 
 
