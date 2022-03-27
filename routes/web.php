@@ -56,7 +56,22 @@ Route::group(['middleware' => 'auth'], function(){
 
         });
 
+        /*
+           |--------------------------------------------------------------------------
+           | Admin Routes
+           |--------------------------------------------------------------------------
+           */
+        Route::prefix('valmaster')->middleware('role:admin')->name('valmaster.')->group(function() {
+            Route::resource('/admin', AdminController::class);
 
+            Route::get('/save/{id}', [AdminController::class, 'saveInvoice'])->name('admin.invoice.save-invoice');
+            Route::get('/email/{id}', [AdminController::class, 'sendInvoice'])->name('admin.invoice.mail-invoice');
+            Route::get('/send-sms/{id}', [AdminController::class, 'invoiceSms'])->name('admin.invoice.send-sms');
+            Route::get('/save-receipt/{id}', [AdminController::class, 'saveReceipt'])->name('admin.receipt.save-receipt');
+            Route::get('/email-receipt/{id}', [AdminController::class, 'sendReceipt'])->name('admin.receipt.mail-receipt');
+            Route::get('/show-receipt/{id}', [AdminController::class, 'showReceipt'])->name('admin.receipt.show-receipt');
+
+        });
 
     /*
     |--------------------------------------------------------------------------
@@ -76,22 +91,7 @@ Route::group(['middleware' => 'auth'], function(){
             Route::resource('/super-admin', SuperAdminController::class);
 
         });
-    /*
-    |--------------------------------------------------------------------------
-    | Admin Routes
-    |--------------------------------------------------------------------------
-    */
-        Route::prefix('valmaster')->middleware('role:admin')->name('valmaster.')->group(function() {
-            Route::resource('/admin', AdminController::class);
 
-            Route::get('/save/{id}', [AdminController::class, 'saveInvoice'])->name('admin.invoice.save-invoice');
-            Route::get('/email/{id}', [AdminController::class, 'sendInvoice'])->name('admin.invoice.mail-invoice');
-            Route::get('/send-sms/{id}', [AdminController::class, 'invoiceSms'])->name('admin.invoice.send-sms');
-            Route::get('/save-receipt/{id}', [AdminController::class, 'saveReceipt'])->name('admin.receipt.save-receipt');
-            Route::get('/email-receipt/{id}', [AdminController::class, 'sendReceipt'])->name('admin.receipt.mail-receipt');
-            Route::get('/show-receipt/{id}', [AdminController::class, 'showReceipt'])->name('admin.receipt.show-receipt');
-
-        });
 
     /*
     |--------------------------------------------------------------------------

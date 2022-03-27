@@ -132,7 +132,7 @@ class AgencyController extends Controller
        $agency->fill($request->all());
        $agency->save();
 
-       return redirect(route('valmaster.agency.index'));
+       return redirect(route('valmaster.agency.index'))->with('Add', 'Record has been saved to database');
     }
 
     /**
@@ -172,7 +172,7 @@ class AgencyController extends Controller
         $agency = Agency::findOrFail($id);
 
         $agency->update($request->all());
-        return redirect(route('valmaster.agency.index'));
+        return redirect(route('valmaster.agency.index'))->with('Update', 'You Have Successfully Updated '.$agency->client_name.' Job #: '.$agency->job_number);
     }
 
     /**
@@ -184,6 +184,6 @@ class AgencyController extends Controller
     public function destroy($id)
     {
         Agency::destroy($id);
-        return redirect(route("valmaster.agency.index"));
+        return redirect(route("valmaster.agency.index"))->with('delete', 'Record has Been Deleted ');
     }
 }

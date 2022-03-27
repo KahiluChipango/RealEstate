@@ -134,7 +134,7 @@ z<x-app-layout>
                             <!-- Validation Errors -->
                             <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                            <form method="POST" action="{{ route('valmaster.accounts.update', $clients->id) }}">
+                            <form method="POST" action="{{ route('valmaster.admin.update', $clients->id) }}">
                                 @method('PATCH')
 
                                 @csrf
@@ -142,7 +142,7 @@ z<x-app-layout>
                                         <h1 class="font-semibold text-2xl text-gray-800 leading-tight underline underline-offset-1">Change Status Details</h1>
                                         <!-- fee status  -->
                                         <div>
-                                            <x-label for="fee" :value="__('Fee')" />
+                                            <x-label for="fee" :value="__('Fee (K)')" />
 
                                             <x-input id="fee" class="block mt-1 w-full" type="text" name="fee" value="{{ $clients->fee }}" required autofocus />
                                         </div>

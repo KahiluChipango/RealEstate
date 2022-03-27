@@ -102,7 +102,7 @@ class AdminController extends Controller
 
         $client->update($request->except(['user_id']));
 
-        return redirect( route('valmaster.admin.index'));
+        return redirect( route('valmaster.admin.index'))->with('Update', 'You Have Successfully Updated '.$client->client_name.' Job #: '.$client->branch.$id);
     }
 
     /**
