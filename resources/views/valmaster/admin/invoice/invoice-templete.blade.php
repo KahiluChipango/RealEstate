@@ -7,23 +7,32 @@
         <div class="col-12">
             <div class="float-end hidden space-x-3 sm:-my-px sm:ml-10 sm:flex">
                 <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                   href="{{ route('valmaster.admin.invoice.save-invoice',  $client->id) }}"
-                   role="button">
+                   {{--href="{{ route('valmaster.accounts.download.invoice',  $client->id) }}"--}}
+                   role="button"
+                   id="download-invoice">
                     Download
                 </a>
                 <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                   href="{{ route('valmaster.admin.invoice.mail-invoice', $client->id) }}"
+                   {{-- href="{{ route('valmaster.accounts.email.invoice', $client->id) }}"--}}
+                   id="email-invoice"
                    role="button">
                     Send Email
                 </a>
                 <a class="float-end inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                   href="{{ route('/') }}"
+                   href=""
                    role="button">
                     Send SMS
                 </a>
-
-
             </div>
+
+            @if(session()->has('EmailInvoice'))
+                <div class="bg-green-200 rounded-lg xl:w-96 float-md-start text-base text-green-700 inline-flex items-center w-full mb-2" role="alert">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check-circle" class="w-4 h-4 mr-2 fill-current" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
+                    </svg>
+                    {{ session('EmailInvoice') }}
+                </div>
+            @endif
         </div>
     </div>
 
@@ -32,6 +41,85 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+
+
+
+                    {{-- Enter Description Area For Download--}}
+                    <form action="{{ route('valmaster.accounts.download.invoice',  $client->id) }}">
+                        <div class="bg-black bg-opacity-50 absolute inset-0 hidden justify-center items-center"
+                             id="overlay">
+                            <div class="bg-gray-200 max-w-sm py-2 px-3 rounded shadow-xl text-gray-800">
+                                <div class="flex justify-between items-center">
+
+                                    <h4 class="text-lg font-bold">Enter Description.</h4>
+
+                                    <svg class="h-6 w-6 cursor-pointer p-1 hover:bg-gray-300 rounded-full" id="close-modal" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                              clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="mt-2 text-sm input-group relative flex flex-wrap items-stretch ">
+                                  <textarea
+                                      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                      id="exampleFormControlTextarea1"
+                                      rows="3"
+                                      placeholder="Description"
+                                      name="description"
+                                  ></textarea>
+                                </div>
+                                <div class="mt-3 flex justify-end space-x-3">
+                                    <button class="px-3 py-1 rounded hover:bg-red-300 hover:bg-opacity-50 hover:text-red-900"
+                                            id="cancel"
+                                            role="button">Cancel</button>
+                                    <button class="px-3 py-1 text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded"
+                                            type="submit"
+                                            id="desBtn">
+                                        Download
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    {{-- Enter Description Area For Email--}}
+                    <form action="{{ route('valmaster.accounts.email.invoice', $client->id) }}">
+                        <div class="bg-black bg-opacity-50 absolute inset-0 hidden justify-center items-center"
+                             id="overlayemail">
+                            <div class="bg-gray-200 max-w-sm py-2 px-3 rounded shadow-xl text-gray-800">
+                                <div class="flex justify-between items-center">
+
+                                    <h4 class="text-lg font-bold">Enter Description.</h4>
+
+                                    <svg class="h-6 w-6 cursor-pointer p-1 hover:bg-gray-300 rounded-full" id="close-email-modal" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                              clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="mt-2 text-sm input-group relative flex flex-wrap items-stretch ">
+                                  <textarea
+                                      class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                      id="exampleFormControlTextarea1"
+                                      rows="3"
+                                      placeholder="Description"
+                                      name="email-description"
+                                  ></textarea>
+                                </div>
+                                <div class="mt-3 flex justify-end space-x-3">
+                                    <button class="px-3 py-1 rounded hover:bg-red-300 hover:bg-opacity-50 hover:text-red-900"
+                                            id="cancel-email"
+                                            role="button">Cancel</button>
+                                    <button class="px-3 py-1 text-sm font-medium rounded-md text-white bg-cyan-600 hover:bg-cyan-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 rounded"
+                                            type="submit"
+                                            id="send-email">
+                                        Send Email
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
 
                     <div class="grid grid-cols-4 gap-4">
                         <h1 class="col-start-2 col-span-2 text-center text-3xl font-bold"> Sherwood Greene Properties Limited </h1>
@@ -78,8 +166,6 @@
                             <h3>Date:</h3>
                             <h3>Invoice #:</h3>
                             <h3>For:</h3>
-
-
                         </div>
                         <div class="col-start-4 col-span-2 text-left font-semibold">
 
@@ -99,41 +185,52 @@
                         </div>
 
                         {{--Contact Number--}}
-                        <div class="col-start-1 col-span-4 bg-slate-200">
-                            <p>Contact Person: {{ $client->contact_person }}</p>
+                        <div class="col-start-1 col-span-4 ">
+                            <p><strong>Contact Person:</strong> {{ $client->contact_person }}</p>
                         </div>
-                        <div class="col-start-1 col-span-4 bg-slate-200">
-                            <p>Contact Number: {{ $client->contact_number }}</p>
+                        <div class="col-start-1 col-span-4 ">
+                            <p><strong>Contact Number:</strong>  {{ $client->contact_person_number }}</p>
                         </div>
 
 
                         {{--Discription and amounts table--}}
 
 
-                        <div class="col-start-1 col-span-4 row-cols-1 border border-dark">
-                            <table>
-                                <thead class="border border-slate-300 ">
+                        <div class="col-start-1 col-span-3 row-cols-1 border border-dark">
+                            <table class="min-w-full  col-span-3">
+                                <thead class="border-b ">
                                 <tr>
-                                    <th class="px-9">Description</th>
-                                    <th class="border border-slate-300 ">Amount</th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 font-bold text-left col-span-2">
+                                        Description
+                                    </th>
+                                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 font-bold text-right">
+                                        Amount
+                                    </th>
                                 </tr>
                                 </thead>
-
                                 <tbody>
-                                <tr>
-                                    <td class="border border-slate-300 ...">Indiana</td>
-                                    <td class="border border-slate-300 ...">Indianapolis</td>
-                                </tr>
-                                <tr>
-                                    <td class="border border-slate-300 ...">Ohio</td>
-                                    <td class="border border-slate-300 ...">Columbus</td>
-                                </tr>
-                                <tr>
+                                <tr class="bg-white border-b">
 
-                                    <td class="border border-slate-300 ...">Detroit</td>
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap col-span-3">
+                                        Description Will Appear here on the Downloaded or E-Mail PDF
+                                    </td>
+
+                                </tr>
+
+                                <tr class="bg-white border-b">
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 font-bold text-xl">
+                                        TOTAL
+                                    </td>
+
+                                    <td class="text-sm font-light px-6 py-4 whitespace-nowrap text-right font-bold text-lg">
+                                        Amount
+                                    </td>
+
+                                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
+                                        K{{$client->fee}}
+                                    </td>
                                 </tr>
                                 </tbody>
-
                             </table>
 
                         </div>
@@ -198,4 +295,41 @@
             </div>
         </div>
     </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () =>{
+            const overlay = document.querySelector('#overlay')
+            const overlayemail = document.querySelector('#overlayemail')
+            const saveBtn = document.querySelector('#download-invoice')
+            const emailBtn = document.querySelector('#email-invoice')
+            const closeBtn = document.querySelector('#close-modal')
+            const closeEmailBtn = document.querySelector('#close-email-modal')
+            const cancelBtn = document.querySelector('#cancel')
+            const cancelEmailBtn = document.querySelector('#cancel-email')
+            const desBtn = document.querySelector('#desBtn')
+            const sendEmailBtn = document.querySelector('#send-email')
+
+
+            const toggleModal = () => {
+                overlay.classList.toggle('hidden')
+                overlay.classList.toggle('flex')
+
+            }
+            const emailToggleModal = () => {
+                overlayemail.classList.toggle('hidden')
+                overlayemail.classList.toggle('flex')
+
+            }
+
+
+            desBtn.addEventListener('click', toggleModal)
+            saveBtn.addEventListener('click', toggleModal)
+            cancelBtn.addEventListener('click', toggleModal)
+            closeBtn.addEventListener('click', toggleModal)
+            cancelEmailBtn.addEventListener('click', emailToggleModal)
+            closeEmailBtn.addEventListener('click', emailToggleModal)
+            emailBtn.addEventListener('click', emailToggleModal)
+            sendEmailBtn.addEventListener('click', emailToggleModal)
+        })
+    </script>
 </x-app-layout>

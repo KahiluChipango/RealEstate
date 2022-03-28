@@ -152,12 +152,14 @@ class AccountController extends Controller
      *
      */
 
-    public function sendInvoice($id){
+    public function sendInvoice(Request $request, $id){
 
+        $description= $request['email-description'];
         $client = Client::find($id);
         $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
             'client' => Client::find($id),
-            'user' => User::all()
+            'user' => User::all(),
+            'description' => $description
         ]);
 
 

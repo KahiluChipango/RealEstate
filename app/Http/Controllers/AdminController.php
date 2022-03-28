@@ -123,37 +123,39 @@ class AdminController extends Controller
      * Invoice Section.
      *
      */
-    public function saveInvoice($id){
+    public function saveInvoice(Request $request, $id){
 
 
+        $description= $request['description'];
         $client = Client::find($id);
-        $pdf = PDF::loadView('valmaster.admin.invoice.mail-invoice',  [
+        $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
             'client' => Client::find($id),
-            'user' => User::all()
+            'user' => User::all(),
+            'description' => $description
         ]);
         return $pdf->download('Invoice - '.$client->branch.$client->id.'.pdf');
     }
 
-    public function sendInvoice($id){
+    public function sendInvoice(Request $request, $id){
 
+        $description= $request['email-description'];
         $client = Client::find($id);
         $pdf = PDF::loadView('valmaster.admin.invoice.mail-invoice',  [
             'client' => Client::find($id),
-            'user' => User::all()
+            'user' => User::all(),
+            'description' => $description
         ]);
 
 
-        $data["email"] = "aatmaninfotech@gmail.com";
-        $data["title"] = "From Sherwood Greene";
-        $data["body"] = "This is Demo";
+        $data["title"] = "Sherwood Greene Properties";
 
-        Mail::send('valmaster.admin.send.emails.invoice',  $data, function($message)use($client, $pdf) {
+        Mail::send('valmaster.accounts.send.emails.invoice',  $data, function($message)use($client, $pdf) {
             $message->to($client->client_email)
                 ->subject('Invoice')
                 ->attachData($pdf->output(), 'Invoice - '.$client->branch.$client->id.'.pdf');
         });
 
-        dd('Mail sent successfully');
+        return redirect()->back()->with('EmailInvoice', 'Invoice Email Has Been sent To: '.$client->client_email);
 
     }
 
