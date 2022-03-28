@@ -13396,50 +13396,58 @@ Ensure the default browser behavior of the `hidden` attribute.
         <div class="col-start-1 col-end-1 fst-italic ">
             <p> {{ $client->client_name }}</p>
             <p> {{ $client->property_address }}</p>
-
         </div>
 
         {{--Contact Number--}}
-        <div class="col-start-1 col-span-4 bg-slate-200">
-            <p>Contact Person: {{ $client->contact_person }}</p>
+        <div class="col-start-1 col-span-4 ">
+            <p><strong>Contact Person:</strong> {{ $client->contact_person }}</p>
         </div>
-        <div class="col-start-1 col-span-4 bg-slate-200">
-            <p>Contact Number: {{ $client->contact_number }}</p>
+        <div class="col-start-1 col-span-4 ">
+            <p><strong>Contact Number:</strong>  {{ $client->contact_person_number }}</p>
         </div>
 
 
         {{--Discription and amounts table--}}
 
 
-        <div class="col-start-1 col-span-4 row-cols-1 border border-dark">
-            <table>
-                <thead class="border border-slate-300 ">
+
+        <div class="col-start-1 col-span-3 row-cols-1 border border-dark">
+            <table class="min-w-full  col-span-3">
+                <thead class="border-b ">
                 <tr>
-                    <th class="px-9">Description</th>
-                    <th class="border border-slate-300 ">Amount</th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 font-bold text-left col-span-2">
+                        Description
+                    </th>
+                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 font-bold text-right">
+                        Amount
+                    </th>
                 </tr>
                 </thead>
-
                 <tbody>
-                <tr>
-                    <td class="border border-slate-300 ...">Indiana</td>
-                    <td class="border border-slate-300 ...">Indianapolis</td>
-                </tr>
-                <tr>
-                    <td class="border border-slate-300 ...">Ohio</td>
-                    <td class="border border-slate-300 ...">Columbus</td>
-                </tr>
-                <tr>
+                <tr class="bg-white border-b">
 
-                    <td class="border border-slate-300 ...">Detroit</td>
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap col-span-3">
+                        {{$description}}
+                    </td>
+
+                </tr>
+
+                <tr class="bg-white border-b">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 font-bold text-xl">
+                        TOTAL
+                    </td>
+
+                    <td class="text-sm font-light px-6 py-4 whitespace-nowrap text-right font-bold text-lg">
+                        Amount
+                    </td>
+
+                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
+                        K{{$client->fee}}
+                    </td>
                 </tr>
                 </tbody>
-
             </table>
-
         </div>
-
-
 
 
         {{-- Bank Details --}}

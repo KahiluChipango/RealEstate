@@ -129,13 +129,15 @@ class AccountController extends Controller
      *  Save Invoice to pdf Function.
      *
      */
-    public function saveInvoice($id){
+    public function saveInvoice(Request $request, $id){
 
 
+        $description= $request['description'];
         $client = Client::find($id);
         $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
             'client' => Client::find($id),
-            'user' => User::all()
+            'user' => User::all(),
+            'description' => $description
         ]);
         return $pdf->download('Invoice - '.$client->branch.$client->id.'.pdf');
     }
