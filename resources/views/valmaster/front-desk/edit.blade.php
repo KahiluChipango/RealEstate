@@ -63,8 +63,9 @@
 
                                               <x-input id="client_number"
                                                        class="block mt-1 w-full"
-                                                       type="text"
+                                                       type="tel"
                                                        name="client_number"
+                                                       maxlength="12"
                                                        value="{{$client->client_number}}" required autofocus />
                                           </div>
 
@@ -109,8 +110,9 @@
 
                                               <x-input id="contact_person_number"
                                                        class="block mt-1 w-full"
-                                                       type="text"
+                                                       type="tel"
                                                        name="contact_person_number"
+                                                       maxlength="12"
                                                        value="{{$client->contact_person_number}}" required autofocus />
                                           </div>
 
@@ -120,7 +122,7 @@
                                               <x-label for="property_address"
                                                        :value="__('Property Address')" />
 
-                                              <x-input id="pnproperty_addressame"
+                                              <x-input id="property_address"
                                                        class="block mt-1 w-full"
                                                        type="text"
                                                        name="property_address"

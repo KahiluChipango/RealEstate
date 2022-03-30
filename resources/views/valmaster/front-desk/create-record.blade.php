@@ -70,8 +70,10 @@
 
                                               <x-input id="client_number"
                                                        class="block mt-1 w-full"
-                                                       type="text"
+                                                       type="tel"
                                                        name="client_number"
+                                                       placeholder="260970******"
+                                                       maxlength="12"
                                                        :value="old('client_number')" required autofocus />
                                           </div>
 
@@ -84,6 +86,7 @@
                                                        class="block mt-1 w-full"
                                                        type="email"
                                                        name="client_email"
+                                                       placeholder="Example@mail.com"
                                                        :value="old('client_email')" required />
                                           </div>
 
@@ -116,8 +119,10 @@
 
                                               <x-input id="contact_person_number"
                                                        class="block mt-1 w-full"
-                                                       type="text"
+                                                       type="tel"
                                                        name="contact_person_number"
+                                                       placeholder="260970******"
+                                                       maxlength="12"
                                                        :value="old('contact_person-number')" required autofocus />
                                           </div>
 
@@ -127,7 +132,7 @@
                                               <x-label for="property_address"
                                                        :value="__('Property Address')" />
 
-                                              <x-input id="pname"
+                                              <x-input id="property_address"
                                                        class="block mt-1 w-full"
                                                        type="text"
                                                        name="property_address"
