@@ -1,4 +1,4 @@
-z<x-app-layout>
+<x-app-layout>
     <x-slot name="header">
 
         <x-nav-links.admin></x-nav-links.admin>
@@ -12,21 +12,15 @@ z<x-app-layout>
 
                     <h1 class="text-2xl pb-3 font-semibold"> Client Details</h1>
                     <div>
-
-
                         <div class="float-start"> <h2 > ID: {{$clients->branch}}{{$clients->id}}</h2> </div>
-                        <div class="float-end"><h2 >
-                                Assiened to:
-                                {{--@if ($clients->users_id) {{ $clients->users->name}} @endif--}}
+                        <div class="float-end">
+                            <h2 >
+                                Assigned to:
                                 {{ $clients->users->name}}
-
-
                             </h2></div>
-
                     </div>
+
                     <div class="pt-6">
-
-
                         <div class="grid grid-cols-3 gap-4">
                             <!-- Personal Details -->
                             <div >
@@ -63,10 +57,7 @@ z<x-app-layout>
                                 <div class="pb-2"></div>
                                 <h3 class="font-bold"> Fee Due Date: </h3>
                                 {{ $clients->fee_due_date }}
-
-
                             </div>
-
 
                             <div >
                                 <h1 class="font-semibold text-2xl text-gray-800 leading-tight underline underline-offset-1">Date Details</h1>
@@ -81,177 +72,119 @@ z<x-app-layout>
                                 <div class="pb-2"></div>
                                 <h3 class="font-bold"> Date of Receipt of Instruction: </h3>
                                 {{ $clients->date_of_receipt_of_instruction }}
-
-                            </div>
-
-
                             </div>
                         </div>
-
-
-                        <div class="grid grid-cols-3 gap-4 pt-4">
-                            <div >
-                                <h1 class="font-semibold text-2xl text-gray-800 leading-tight underline underline-offset-1">Property Details</h1>
-                                <div class="pb-2"></div>
-                                <h3 class="font-bold"> Property Address: </h3>
-                                {{ $clients->property_address }}
-
-                                <div class="pb-2"></div>
-                                <h3 class="font-bold"> Type Of Property: </h3>
-                                {{ $clients->type_of_property }}
-
-                                <div class="pb-2"></div>
-                                <h3 class="font-bold"> Market Value: </h3>
-                                {{ $clients->market_value }}
-
-                                <div class="pb-2"></div>
-                                <h3 class="font-bold"> Property Description: </h3>
-                                {{ $clients->property_description }}
-
-                            </div>
-
-                            {{--Status Details --}}
-                            <div >
-                                <h1 class="font-semibold text-2xl text-gray-800 leading-tight underline underline-offset-1">Property Details</h1>
-                                <div class="pb-2"></div>
-                                <h3 class="font-bold"> Fee: </h3>
-                                {{ $clients->fee }}
-
-                                <div class="pb-2"></div>
-                                <h3 class="font-bold"> Fee Status: </h3>
-                                {{$clients->fee_status}}
-
-                                <div class="pb-2"></div>
-                                <h3 class="font-bold"> Report Status: </h3>
-                                {{ $clients->report_status }}
-
-                                <div class="pb-2"></div>
-                                <h3 class="font-bold"> FeedBack Status: </h3>
-                                {{ $clients->feedback_status }}
-
-                            </div>
-
-                            <!-- Validation Errors -->
-                            <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-                            <form method="POST" action="{{ route('valmaster.admin.update', $clients->id) }}">
-                                @method('PATCH')
-
-                                @csrf
-                                    <div>
-                                        <h1 class="font-semibold text-2xl text-gray-800 leading-tight underline underline-offset-1">Change Status Details</h1>
-                                        <!-- fee status  -->
-                                        <div>
-                                            <x-label for="fee" :value="__('Fee (K)')" />
-
-                                            <x-input id="fee" class="block mt-1 w-full" type="text" name="fee" value="{{ $clients->fee }}" required autofocus />
-                                        </div>
-
-                                        <!-- Email Address -->
-                                        <div class="mt-4">
-                                            <x-label for="fee_status" :value="__('Fee Status')" />
-
-                                            <select name="fee_status"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="number"
-                                                    name="fee_status">
-                                                <option value="Paid" {{$clients->fee_status == "Paid" ? 'selected': ''}}>Paid</option>
-                                                <option value="Not Paid" {{$clients->fee_status == "Not Paid" ? 'selected': ''}}>Not Paid</option>
-                                            </select>
-                                        </div>
-                                        <!-- Email Address -->
-                                        <div class="mt-4">
-                                            <x-label for="report_status" :value="__('Report Status')" />
-
-                                            <select name="report_status"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="text"
-                                                    name="report_status">
-                                                @isset($clients->report_status) {{ $clients->report_status }}
-
-                                                <option value="Work In Progress">Work In Progress</option>
-                                                <option value="Inspected/report Drafting">Inspected/report Drafting</option>
-                                                <option value="Delivered">Delivered</option>
-                                                @endisset
-
-
-                                            </select>
-                                        </div>
-                                        <!-- Email Address -->
-                                        <div class="mt-4">
-                                            <x-label for="feedback_status" :value="__('FeedBack Status')" />
-
-                                            <select name="feedback_status"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="text"
-                                                    name="feedback_status">
-                                                @isset($clients->feedback_status) {{ $clients->feedback_status }}
-                                                <option value="Customer Happy">Customer Happy</option>
-                                                <option value="Customer Unhappy">Customer Unhappy</option>
-                                                @endisset
-                                            </select>
-                                        </div>
-
-
-
-                                    </div>
-                                <div class="flex items-center justify-end mt-4">
-
-                                    <x-button class="ml-4">
-                                        {{ __(' Update') }}
-                                    </x-button>
-                                </div>
-                            </form>
-
-                        </div>
-
                     </div>
 
+                    <div class="grid grid-cols-3 gap-4 pt-4">
+                        <div >
+                            <h1 class="font-semibold text-2xl text-gray-800 leading-tight underline underline-offset-1">Property Details</h1>
+                            <div class="pb-2"></div>
+                            <h3 class="font-bold"> Property Address: </h3>
+                            {{ $clients->property_address }}
 
+                            <div class="pb-2"></div>
+                            <h3 class="font-bold"> Type Of Property: </h3>
+                            {{ $clients->type_of_property }}
 
+                            <div class="pb-2"></div>
+                            <h3 class="font-bold"> Market Value: </h3>
+                            {{ $clients->market_value }}
 
+                            <div class="pb-2"></div>
+                            <h3 class="font-bold"> Property Description: </h3>
+                            {{ $clients->property_description }}
 
+                        </div>
 
-{{--
+                        {{--Status Details --}}
+                        <div >
+                            <h1 class="font-semibold text-2xl text-gray-800 leading-tight underline underline-offset-1">Property Details</h1>
+                            <div class="pb-2"></div>
+                            <h3 class="font-bold"> Fee: </h3>
+                            {{ $clients->fee }}
 
-                         <div class="mt-4">
-                            @foreach($roles as $role)
-                                <div class="form-check">
-                                    <label class="form-check-label" for="{{$role->name}}">
-                                        {{ $role->name }}
-                                    </label>
+                            <div class="pb-2"></div>
+                            <h3 class="font-bold"> Fee Status: </h3>
+                            {{$clients->fee_status}}
 
+                            <div class="pb-2"></div>
+                            <h3 class="font-bold"> Report Status: </h3>
+                            {{ $clients->report_status }}
 
-                                    <x-input class="form-check-input" name="roles[]"
-                                             type="radio"
-                                             value="{{$role->id}}"
-                                             id="{{$role->name}}"
-                                             @isset($user) @if(in_array($role->id, $user->roles->pluck('id')->toArray())) checked @endif @endisset
-                                     />
+                            <div class="pb-2"></div>
+                            <h3 class="font-bold"> FeedBack Status: </h3>
+                            {{ $clients->feedback_status }}
+                        </div>
 
+                        <!-- Validation Errors -->
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+
+                        <form method="POST" action="{{ route('valmaster.admin.update', $clients->id) }}">
+                            @method('PATCH')
+
+                            @csrf
+                                <div>
+                                    <h1 class="font-semibold text-2xl text-gray-800 leading-tight underline underline-offset-1">Change Status Details</h1>
+                                    <!-- fee status  -->
+                                    <div>
+                                        <x-label for="fee" :value="__('Fee (K)')" />
+
+                                        <x-input id="fee" class="block mt-1 w-full" type="text" name="fee" value="{{ $clients->fee }}" required autofocus />
+                                    </div>
+
+                                    <!-- Email Address -->
+                                    <div class="mt-4">
+                                        <x-label for="fee_status" :value="__('Fee Status')" />
+
+                                        <select name="fee_status"
+                                                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                type="number"
+                                                name="fee_status">
+                                            <option value="Paid" {{$clients->fee_status == "Paid" ? 'selected': ''}}>Paid</option>
+                                            <option value="Not Paid" {{$clients->fee_status == "Not Paid" ? 'selected': ''}}>Not Paid</option>
+                                        </select>
+                                    </div>
+                                    <!-- Email Address -->
+                                    <div class="mt-4">
+                                        <x-label for="report_status" :value="__('Report Status')" />
+
+                                        <select name="report_status"
+                                                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                type="text"
+                                                name="report_status">
+                                            @isset($clients->report_status) {{ $clients->report_status }}
+
+                                            <option value="Work In Progress">Work In Progress</option>
+                                            <option value="Inspected/report Drafting">Inspected/report Drafting</option>
+                                            <option value="Delivered">Delivered</option>
+                                            @endisset
+                                        </select>
+                                    </div>
+                                    <!-- Email Address -->
+                                    <div class="mt-4">
+                                        <x-label for="feedback_status" :value="__('FeedBack Status')" />
+
+                                        <select name="feedback_status"
+                                                class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                type="text"
+                                                name="feedback_status">
+                                            @isset($clients->feedback_status) {{ $clients->feedback_status }}
+                                            <option value="Customer Happy">Customer Happy</option>
+                                            <option value="Customer Unhappy">Customer Unhappy</option>
+                                            @endisset
+                                        </select>
+                                    </div>
                                 </div>
 
-                            @endforeach
-                        </div>
-                        <div class="mt-4">
-                            @foreach($roles as $role)
-                                <div class="form-check">
-                                    <input class="form-check-input" name="roles[]"
-                                           type="checkbox" value="{{$role->id}}" id="{{$role->name}}"
-                                           @isset($user) @if(in_array($role->id, $user->roles->pluck('id')->toArray())) checked @endif @endisset>
-                                    <label class="form-check-label" for="{{$role->name}}">
-                                        {{ $role->name }}
-                                    </label>
-                                </div>
-                            @endforeach
-                        </div>
---}}
+                            <div class="flex items-center justify-end mt-4">
 
-
-
-
-
-
+                                <x-button class="ml-4">
+                                    {{ __(' Update') }}
+                                </x-button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

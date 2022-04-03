@@ -1,20 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Mail\InvoiceMail;
-use Illuminate\Support\Facades\Auth;
-use MongoDB\Driver\Session;
 use Notification;
-use App\Notifications\SMSNotification;
 use App\Models\Client;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Messages\VonageMessage;
 use Illuminate\Support\Facades\Mail;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Notifications\Messages\NexmoMessage;
-use Nexmo\Laravel\Facade\Nexmo;
+
 
 class AccountController extends Controller
 {
@@ -177,25 +171,6 @@ class AccountController extends Controller
     }
 
 
-    public function send()
-    {
-        $user = User::first();
-
-        $project = [
-            'greeting' => 'Hi '.$user->name.',',
-            'body' => 'This is the project assigned to you.',
-            'thanks' => 'Thank you this is from codeanddeploy.com',
-            'actionText' => 'View Project',
-            'actionURL' => url('/'),
-            'id' => 57
-        ];
-
-        Notification::send($user, new SMSNotification($project));
-
-        dd('Notification sent!');
-    }
-
-
     /**
      *  Save Invoice sms
      * Function.
@@ -209,15 +184,15 @@ class AccountController extends Controller
         $client = new \Vonage\Client($basic);
 
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("260974476363", 'Hello', 'A text message sent using the Nexmo SMS API')
+            new \Vonage\SMS\Message\SMS('+26'.$data->contact_person_number, 'Sherwood GP', 'A text message sent using the Nexmo SMS API')
         );
 
         $message = $response->current();
 
         if ($message->getStatus() == 0) {
-            echo "The message was sent successfully\n";
+            return redirect()->back()->with('SuccessSms', 'Sms Has Been sent To: '.$data->contact_person.' ('.$data->contact_person_number.')');
         } else {
-            echo "The message failed with status: " . $message->getStatus() . "\n";
+            return redirect()->back()->with('FailSms', 'Sms Has Not Been Sent '.$message->getStatus() . "\n");
         }
 
     }

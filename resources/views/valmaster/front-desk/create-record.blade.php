@@ -72,8 +72,8 @@
                                                        class="block mt-1 w-full"
                                                        type="tel"
                                                        name="client_number"
-                                                       placeholder="260970******"
-                                                       maxlength="12"
+                                                       placeholder="e.g 0970******"
+                                                       maxlength="10"
                                                        :value="old('client_number')" required autofocus />
                                           </div>
 
@@ -121,8 +121,8 @@
                                                        class="block mt-1 w-full"
                                                        type="tel"
                                                        name="contact_person_number"
-                                                       placeholder="260970******"
-                                                       maxlength="12"
+                                                       placeholder="e.g 0970******"
+                                                       maxlength="10"
                                                        :value="old('contact_person-number')" required autofocus />
                                           </div>
 

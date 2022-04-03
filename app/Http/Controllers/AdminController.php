@@ -174,15 +174,15 @@ class AdminController extends Controller
         $client = new \Vonage\Client($basic);
 
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS("260974476363", 'Hello', 'A text message sent using the Nexmo SMS API')
+            new \Vonage\SMS\Message\SMS('+26'.$data->contact_person_number, 'Sherwood GP', 'A text message sent using the Nexmo SMS API')
         );
 
         $message = $response->current();
 
         if ($message->getStatus() == 0) {
-            echo "The message was sent successfully\n";
+           return redirect()->back()->with('SuccessSms', 'Sms Has Been sent To: '.$data->contact_person.' ('.$data->contact_person_number.')');
         } else {
-            echo "The message failed with status: " . $message->getStatus() . "\n";
+            return redirect()->back()->with('FailSms', 'Sms Has Not Been Sent '.$message->getStatus() . "\n");
         }
 
     }

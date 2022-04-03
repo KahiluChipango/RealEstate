@@ -65,7 +65,8 @@
                                                        class="block mt-1 w-full"
                                                        type="tel"
                                                        name="client_number"
-                                                       maxlength="12"
+                                                       maxlength="10"
+                                                       placeholder="e.g 0970******"
                                                        value="{{$client->client_number}}" required autofocus />
                                           </div>
 
@@ -112,7 +113,8 @@
                                                        class="block mt-1 w-full"
                                                        type="tel"
                                                        name="contact_person_number"
-                                                       maxlength="12"
+                                                       maxlength="10"
+                                                       placeholder="e.g 0970******"
                                                        value="{{$client->contact_person_number}}" required autofocus />
                                           </div>
 
