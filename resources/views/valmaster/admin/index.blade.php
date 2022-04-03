@@ -79,19 +79,6 @@
                                        role="button">
                                         Edit
                                     </a>
-
-                                    {{--Delete Button--}}
-                                    {{-- <button type="submit"
-                                             class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500/75 hover:bg-red-500/100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                             onclick="event.preventDefault();
-                                                 document.getElementById('delete-user-form-{{$user->id}}').submit()">
-                                         DELETE
-                                     </button>
-
-                                     <form id="delete-user-form-{{ $user->id }}" action="{{ route('valmaster.super-admin.edit', $user->id) }}" method="POST" style="display: none">
-                                         @csrf
-                                         @method("")
-                                     </form>--}}
                                 </x-table.column>
 
                                 <x-table.column>

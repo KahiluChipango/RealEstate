@@ -230,7 +230,7 @@
                                 <tr class="bg-white border-b">
 
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap col-span-3">
-                                        Description Will Appear here on the Downloaded or E-Mail PDF
+                                        To ADD Description Click On <strong>Download</strong> or <strong>Send Email</strong>.
                                     </td>
 
                                 </tr>
