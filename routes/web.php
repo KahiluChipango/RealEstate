@@ -52,6 +52,7 @@ Route::group(['middleware' => 'auth'], function(){
             Route::get('/download-receipt/{id}', [AccountController::class, 'saveReceipt'])->name('accounts.download.receipt');
             Route::get('/receipt-email/{id}', [AccountController::class, 'sendReceipt'])->name('accounts.email.receipt');
             Route::get('/download-invoice/{id}', [AccountController::class, 'saveInvoice'])->name('accounts.download.invoice');
+            Route::get('/invoice-sms/{id}', [AccountController::class, 'invoiceSms'])->name('accounts.send.invoice.sms');
 
 
         });
