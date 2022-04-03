@@ -59,7 +59,7 @@
 
         </div>
 
-        <div class="max-w-full overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="max-w-7xl overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class=" divide-y divide-dashed shadow overflow-hidden border border-indigo-400 sm:rounded-lg ">
 
