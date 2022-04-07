@@ -62,14 +62,12 @@
         <div class="max-w-full overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class=" divide-y divide-dashed shadow overflow-hidden border border-indigo-400 sm:rounded-lg ">
-
-
                     <x-table.table>
                         <x-slot name="header">
                             <x-table.header>#</x-table.header>
                             <x-table.header>Job #</x-table.header>
                             <x-table.header>Rent/Sale</x-table.header>
-                            <x-table.header>Web</x-table.header>
+                            <x-table.header>Web Reference Number</x-table.header>
                             <x-table.header>Agent in Charge</x-table.header>
                             <x-table.header>Service Line</x-table.header>
                             <x-table.header>Date of Instruction</x-table.header>
@@ -89,8 +87,13 @@
                             <x-table.header>Furnished</x-table.header>
                             <x-table.header>Quality of Finishes</x-table.header>
                             <x-table.header>Land Size</x-table.header>
-                            <x-table.header>Additional Buildings</x-table.header>
+                            <x-table.header>GUEST HOUSE</x-table.header>
                             <x-table.header>Swimming Pool</x-table.header>
+                            <x-table.header>Pool House/club</x-table.header>
+                            <x-table.header>Gym</x-table.header>
+                            <x-table.header>Guard House</x-table.header>
+                            <x-table.header>Workers Quarters</x-table.header>
+                            <x-table.header>Garage</x-table.header>
                             <x-table.header>Layout of Office Space</x-table.header>
                             <x-table.header>Parking</x-table.header>
                             <x-table.header>Pets</x-table.header>
@@ -107,20 +110,14 @@
                             <x-table.header>Sale Price/ Market Value K</x-table.header>
                             <x-table.header>Sale Price/ Market Value $</x-table.header>
                             <x-table.header>Action</x-table.header>
-
                         </x-slot>
                         <?php $i = 0?>
                         @foreach($agencies as $agency)
                              <tr>
-
                                 <x-table.column>{{++$i}}</x-table.column>
                                 <x-table.column>{{$agency->job_number}}</x-table.column>
                                 <x-table.column>{{$agency->rent_sale}}</x-table.column>
-                                <x-table.column>
-                                    <a href="https://{{$agency->web}}">
-                                        {{$agency->web}}
-                                    </a>
-                                </x-table.column>
+                                <x-table.column>{{$agency->web}}</x-table.column>
                                 <x-table.column>{{$agency->agent_in_charge}}</x-table.column>
                                 <x-table.column>{{$agency->service_line}}</x-table.column>
                                 <x-table.column>{{$agency->date_of_instruction}}</x-table.column>
@@ -140,8 +137,13 @@
                                 <x-table.column>{{$agency->furnished}}</x-table.column>
                                 <x-table.column>{{$agency->quality_of_finishes}}</x-table.column>
                                 <x-table.column>{{$agency->land_size}}</x-table.column>
-                                <x-table.column>{{$agency->additional_buildings}}</x-table.column>
+                                <x-table.column>{{$agency->guest_house}}</x-table.column>
                                 <x-table.column>{{$agency->swimming_pool}}</x-table.column>
+                                <x-table.column>{{$agency->pool_house_club}}</x-table.column>
+                                <x-table.column>{{$agency->gym}}</x-table.column>
+                                <x-table.column>{{$agency->guard_house}}</x-table.column>
+                                <x-table.column>{{$agency->workers_quarters}}</x-table.column>
+                                <x-table.column>{{$agency->garage}}</x-table.column>
                                 <x-table.column>{{$agency->layout_of_office_space}}</x-table.column>
                                 <x-table.column>{{$agency->parking}}</x-table.column>
                                 <x-table.column>{{$agency->pets}}</x-table.column>
@@ -178,7 +180,6 @@
                                         @method("DELETE")
                                     </form>
                                 </x-table.column>
-
                             </tr>
                         @endforeach
                     </x-table.table>

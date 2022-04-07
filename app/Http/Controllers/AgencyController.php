@@ -108,7 +108,11 @@ class AgencyController extends Controller
            'furnished' => ['required'],
            'quality_of_finishes' => ['required'],
            'land_size' => ['required'],
-           'additional_buildings' => ['required'],
+           'pool_house_club'=> ['required'],
+           'gym'=> ['required'],
+           'workers_quarters'=> ['required'],
+           'garage'=> ['required'],
+           'guest_house' => ['required'],
            'swimming_pool' => ['required'],
            'layout_of_office_space' => ['required'],
            'parking' => ['required'],
@@ -132,7 +136,7 @@ class AgencyController extends Controller
        $agency->fill($request->all());
        $agency->save();
 
-       return redirect(route('valmaster.agency.index'))->with('Add', 'Record has been saved to database');
+       return redirect(route('valmaster.agency.index'))->with('Add', 'Record has been saved Successfully');
     }
 
     /**
