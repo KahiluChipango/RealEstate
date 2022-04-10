@@ -38,7 +38,12 @@ class AgencyController extends Controller
                 ->orWhere('furnished', 'LIKE', '%'.$search.'%')
                 ->orWhere('quality_of_finishes', 'LIKE', '%'.$search.'%')
                 ->orWhere('land_size', 'LIKE', '%'.$search.'%')
-                ->orWhere('additional_buildings', 'LIKE', '%'.$search.'%')
+                ->orWhere('guest_house', 'LIKE', '%'.$search.'%')
+                ->orWhere('pool_house_club', 'LIKE', '%'.$search.'%')
+                ->orWhere('gym', 'LIKE', '%'.$search.'%')
+                ->orWhere('guard_house', 'LIKE', '%'.$search.'%')
+                ->orWhere('workers_quarters', 'LIKE', '%'.$search.'%')
+                ->orWhere('garage', 'LIKE', '%'.$search.'%')
                 ->orWhere('swimming_pool', 'LIKE', '%'.$search.'%')
                 ->orWhere('layout_of_office_space', 'LIKE', '%'.$search.'%')
                 ->orWhere('parking', 'LIKE', '%'.$search.'%')
@@ -46,11 +51,11 @@ class AgencyController extends Controller
                 ->orWhere('electricity', 'LIKE', '%'.$search.'%')
                 ->orWhere('water', 'LIKE', '%'.$search.'%')
                 ->orWhere('surroundings', 'LIKE', '%'.$search.'%')
-                ->orWhere('surroundings_facilities_1', 'LIKE', '%'.$search.'%')
-                ->orWhere('surroundings_facilities_2', 'LIKE', '%'.$search.'%')
-                ->orWhere('surroundings_facilities_3', 'LIKE', '%'.$search.'%')
-                ->orWhere('surroundings_facilities_4', 'LIKE', '%'.$search.'%')
-                ->orWhere('surroundings_facilities_5', 'LIKE', '%'.$search.'%')
+                ->orWhere('recreational_facilities', 'LIKE', '%'.$search.'%')
+                ->orWhere('shopping', 'LIKE', '%'.$search.'%')
+                ->orWhere('schools', 'LIKE', '%'.$search.'%')
+                ->orWhere('nearby_offices', 'LIKE', '%'.$search.'%')
+                ->orWhere('transport', 'LIKE', '%'.$search.'%')
                 ->orWhere('rent_price_k', 'LIKE', '%'.$search.'%')
                 ->orWhere('rent_price_usd', 'LIKE', '%'.$search.'%')
                 ->orWhere('rent_price_usd', 'LIKE', '%'.$search.'%')
@@ -110,6 +115,7 @@ class AgencyController extends Controller
            'land_size' => ['required'],
            'pool_house_club'=> ['required'],
            'gym'=> ['required'],
+           'guard_house'=> ['required'],
            'workers_quarters'=> ['required'],
            'garage'=> ['required'],
            'guest_house' => ['required'],
@@ -120,11 +126,11 @@ class AgencyController extends Controller
            'electricity' => ['required'],
            'water' => ['required'],
            'surroundings' => ['required'],
-           'surroundings_facilities_1' => ['required'],
-           'surroundings_facilities_2' => ['required'],
-           'surroundings_facilities_3' => ['required'],
-           'surroundings_facilities_4' => ['required'],
-           'surroundings_facilities_5' => ['required'],
+           'recreational_facilities' => ['required'],
+           'shopping' => ['required'],
+           'schools' => ['required'],
+           'nearby_offices' => ['required'],
+           'transport' => ['required'],
            'rent_price_k' => ['required'],
            'rent_price_usd' => ['required'],
            'sale_price_market_value_k' => ['required'],

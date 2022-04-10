@@ -100,15 +100,15 @@
                             <x-table.header>Electricity</x-table.header>
                             <x-table.header>Water</x-table.header>
                             <x-table.header>Surroundings</x-table.header>
-                            <x-table.header>Surroundings Facilities 1</x-table.header>
-                            <x-table.header>Surroundings Facilities 2</x-table.header>
-                            <x-table.header>Surroundings Facilities 3</x-table.header>
-                            <x-table.header>Surroundings Facilities 4</x-table.header>
-                            <x-table.header>Surroundings Facilities 5</x-table.header>
+                            <x-table.header>Recreational Facilities</x-table.header>
+                            <x-table.header>Shopping</x-table.header>
+                            <x-table.header>Schools</x-table.header>
+                            <x-table.header>Nearby Offices</x-table.header>
+                            <x-table.header>Transport</x-table.header>
                             <x-table.header>Rent Price K</x-table.header>
                             <x-table.header>Rent Price $</x-table.header>
-                            <x-table.header>Sale Price/ Market Value K</x-table.header>
-                            <x-table.header>Sale Price/ Market Value $</x-table.header>
+                            <x-table.header>Sale Price/Market Value K</x-table.header>
+                            <x-table.header>Sale Price/Market Value $</x-table.header>
                             <x-table.header>Action</x-table.header>
                         </x-slot>
                         <?php $i = 0?>
@@ -150,11 +150,11 @@
                                 <x-table.column>{{$agency->electricity}}</x-table.column>
                                 <x-table.column>{{$agency->water}}</x-table.column>
                                 <x-table.column>{{$agency->surroundings}}</x-table.column>
-                                <x-table.column>{{$agency->surroundings_facilities_1}}</x-table.column>
-                                <x-table.column>{{$agency->surroundings_facilities_2}}</x-table.column>
-                                <x-table.column>{{$agency->surroundings_facilities_3}}</x-table.column>
-                                <x-table.column>{{$agency->surroundings_facilities_4}}</x-table.column>
-                                <x-table.column>{{$agency->surroundings_facilities_5}}</x-table.column>
+                                <x-table.column>{{$agency->recreational_facilities}}</x-table.column>
+                                <x-table.column>{{$agency->shopping}}</x-table.column>
+                                <x-table.column>{{$agency->schools}}</x-table.column>
+                                <x-table.column>{{$agency->nearby_offices}}</x-table.column>
+                                <x-table.column>{{$agency->transport}}</x-table.column>
                                 <x-table.column>K{{$agency->rent_price_k}}</x-table.column>
                                 <x-table.column>${{$agency->rent_price_usd}}</x-table.column>
                                 <x-table.column>K{{$agency->sale_price_market_value_k}}</x-table.column>

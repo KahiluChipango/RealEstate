@@ -302,6 +302,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="master_self_contained">
+                                                  <option value="N/A">N/A</option>
                                                   <option value="YES">YES</option>
                                                   <option value="NO">NO</option>
                                               </select>
@@ -361,6 +362,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="guest_house">
+                                                  <option value="N/A">N/A</option>
                                                   <option value="YES">YES</option>
                                                   <option value="NO">NO</option>
                                               </select>
@@ -374,84 +376,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="swimming_pool">
-                                                  <option value="YES">YES</option>
-                                                  <option value="NO">NO</option>
-                                              </select>
-                                          </div>
-
-                                          <!-- POOL HOUSE/CLUB -->
-                                          <div>
-                                              <x-label for="pool_house_club"
-                                                       :value="__('POOL HOUSE/CLUB (yes/no)')" />
-                                              <select id="pool_house_club"
-                                                      class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                      type="text"
-                                                      name="pool_house_club">
-                                                  <option value="YES">YES</option>
-                                                  <option value="NO">NO</option>
-                                              </select>
-                                          </div>
-
-                                          <!-- GYM -->
-                                          <div>
-                                              <x-label for="gym"
-                                                       :value="__('GYM (yes/no)')" />
-                                              <select id="gym"
-                                                      class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                      type="text"
-                                                      name="gym">
-                                                  <option value="YES">YES</option>
-                                                  <option value="NO">NO</option>
-                                              </select>
-                                          </div>
-
-                                          <!-- SWIMMING POOL -->
-                                          <div>
-                                              <x-label for="SWIMMING POOL"
-                                                       :value="__('SWIMMING POOL')" />
-                                              <select id="swimming_pool"
-                                                      class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                      type="text"
-                                                      name="swimming_pool">
-                                                  <option value="YES">YES</option>
-                                                  <option value="NO">NO</option>
-                                              </select>
-                                          </div>
-
-                                          <!-- GUARD HOUSE -->
-                                          <div>
-                                              <x-label for="guard_house"
-                                                       :value="__('GUARD HOUSE (yes/no)')" />
-                                              <select id="guard_house"
-                                                      class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                      type="text"
-                                                      name="guard_house">
-                                                  <option value="YES">YES</option>
-                                                  <option value="NO">NO</option>
-                                              </select>
-                                          </div>
-
-                                          <!-- WORKERS QUARTERS -->
-                                          <div>
-                                              <x-label for="workers_quarters"
-                                                       :value="__('WORKERS QUARTERS (yes/no)')" />
-                                              <select id="workers_quarters"
-                                                      class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                      type="text"
-                                                      name="workers_quarters">
-                                                  <option value="YES">YES</option>
-                                                  <option value="NO">NO</option>
-                                              </select>
-                                          </div>
-
-                                          <!-- GARAGE -->
-                                          <div>
-                                              <x-label for="garage"
-                                                       :value="__('GARAGE (yes/no)')" />
-                                              <select id="garage"
-                                                      class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                      type="text"
-                                                      name="garage">
+                                                  <option value="N/A">N/A</option>
                                                   <option value="YES">YES</option>
                                                   <option value="NO">NO</option>
                                               </select>
@@ -462,6 +387,76 @@
 
                                 <div class="pt-8">
                                     <div class="grid grid-cols-4 gap-sm-2">
+                                        <!-- POOL HOUSE/CLUB -->
+                                        <div>
+                                            <x-label for="pool_house_club"
+                                                     :value="__('POOL HOUSE/CLUB (yes/no)')" />
+                                            <select id="pool_house_club"
+                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                    type="text"
+                                                    name="pool_house_club">
+                                                <option value="N/A">N/A</option>
+                                                <option value="YES">YES</option>
+                                                <option value="NO">NO</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- GYM -->
+                                        <div>
+                                            <x-label for="gym"
+                                                     :value="__('GYM (yes/no)')" />
+                                            <select id="gym"
+                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                    type="text"
+                                                    name="gym">
+                                                <option value="N/A">N/A</option>
+                                                <option value="YES">YES</option>
+                                                <option value="NO">NO</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- GUARD HOUSE -->
+                                        <div>
+                                            <x-label for="guard_house"
+                                                     :value="__('GUARD HOUSE (yes/no)')" />
+                                            <select id="guard_house"
+                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                    type="text"
+                                                    name="guard_house">
+                                                <option value="N/A">N/A</option>
+                                                <option value="YES">YES</option>
+                                                <option value="NO">NO</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- WORKERS QUARTERS -->
+                                        <div>
+                                            <x-label for="workers_quarters"
+                                                     :value="__('WORKERS QUARTERS (yes/no)')" />
+                                            <select id="workers_quarters"
+                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                    type="text"
+                                                    name="workers_quarters">
+                                                <option value="N/A">N/A</option>
+                                                <option value="YES">YES</option>
+                                                <option value="NO">NO</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- GARAGE -->
+                                        <div>
+                                            <x-label for="garage"
+                                                     :value="__('GARAGE (yes/no)')" />
+                                            <select id="garage"
+                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                    type="text"
+                                                    name="garage">
+                                                <option value="N/A">N/A</option>
+                                                <option value="YES">YES</option>
+                                                <option value="NO">NO</option>
+                                            </select>
+                                        </div>
+
                                         <!-- LAYOUT OF OFFICE SPACE -->
                                         <div>
                                             <x-label for="layout_of_office_space"
@@ -502,10 +497,14 @@
                                                     name="pets">
                                                 <option value="N/A">N/A</option>
                                                 <option value="PET FRIENDLY">PET FRIENDLY</option>
-                                                <option value="NO PET">NO PET</option>
+                                                <option value="NO PET">NO PETS</option>
                                             </select>
                                         </div>
+                                    </div>
+                                </div>
 
+                                <div class="pt-8">
+                                    <div class="grid grid-cols-4 gap-sm-2">
                                         <!-- ELECTRICITY / WATER -->
                                         <div>
                                             <x-label for="electricity"
@@ -537,7 +536,7 @@
                                         </div>
 
                                         <div>
-                                            <!-- surrounding and facilities -->
+                                            <!-- surrounding  -->
                                             <x-label for="surroundings"
                                                      :value="__('SURROUNDINGS')" />
                                             <select id="surroundings"
@@ -552,13 +551,13 @@
                                         </div>
 
                                         <div>
-                                            <!-- surrounding facilities 1-->
-                                            <x-label for="surroundings_facilities_1"
-                                                     :value="__('SURROUNDING FACILITIES 1')" />
-                                            <select id="surroundings_facilities_1"
+                                            <!-- RECREATIONAL FACILITIES-->
+                                            <x-label for="recreational_facilities"
+                                                     :value="__('RECREATIONAL FACILITIES')" />
+                                            <select id="recreational_facilities"
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
-                                                    name="surroundings_facilities_1">
+                                                    name="recreational_facilities">
                                                 <option value="N/A">N/A</option>
                                                 <option value="NEARBY SOCIAL AMENITIES">NEARBY SOCIAL AMENITIES</option>
                                                 <option value="NO NEARBY SOCIAL AMENITIES">NO NEARBY SOCIAL AMENITIES</option>
@@ -566,36 +565,28 @@
                                         </div>
 
                                         <div>
-                                            <!-- surrounding facilities 2-->
-                                            <x-label for="surroundings_facilities_2"
-                                                     :value="__('SURROUNDING FACILITIES 2')" />
-                                            <select id="surroundings_facilities_2"
+                                            <!-- SHOPPING -->
+                                            <x-label for="shopping"
+                                                     :value="__('SHOPPING')" />
+                                            <select id="shopping"
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
-                                                    name="surroundings_facilities_2">
+                                                    name="shopping">
                                                 <option value="N/A">N/A</option>
                                                 <option value="SHOPPING MALL">SHOPPING MALL</option>
                                                 <option value="SHOPPING CENTRE">SHOPPING CENTRE</option>
                                                 <option value="STAND ALONE SHOP">STAND ALONE SHOP</option>
                                             </select>
                                         </div>
-                                    </div>
-                                </div>
 
-
-
-{{--this is a date and Time Section        --}}
-
-                                <div class="pt-8">
-                                    <div class="grid grid-cols-4 gap-sm-2">
                                         <div>
-                                            <!-- surrounding facilities 3-->
-                                            <x-label for="surroundings_facilities_3"
-                                                     :value="__('SURROUNDING FACILITIES 3')" />
-                                            <select id="surroundings_facilities_3"
+                                            <!--SCHOOLS-->
+                                            <x-label for="schools"
+                                                     :value="__('SCHOOLS')" />
+                                            <select id="schools"
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
-                                                    name="surroundings_facilities_3">
+                                                    name="schools">
                                                 <option value="N/A">N/A</option>
                                                 <option value="SCHOOL">SCHOOL</option>
                                                 <option value="NO SCHOOL">NO SCHOOL</option>
@@ -603,13 +594,13 @@
                                         </div>
 
                                         <div>
-                                            <!-- surrounding facilities 4 -->
-                                            <x-label for="surroundings_facilities_4"
-                                                     :value="__('SURROUNDING FACILITIES 4')" />
-                                            <select id="surroundings_facilities_4"
+                                            <!-- NEARBY OFFICES -->
+                                            <x-label for="nearby_offices"
+                                                     :value="__('NEARBY OFFICES')" />
+                                            <select id="nearby_offices"
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
-                                                    name="surroundings_facilities_4">
+                                                    name="nearby_offices">
                                                 <option value="N/A">N/A</option>
                                                 <option value="OFFICE BUILDINGS">OFFICE BUILDINGS</option>
                                                 <option value="NO OFFICE BUILDINGS">NO OFFICE BUILDINGS</option>
@@ -617,13 +608,13 @@
                                         </div>
 
                                         <div>
-                                            <!-- surrounding facilities 5-->
-                                            <x-label for="surroundings_facilities_5"
-                                                     :value="__('SURROUNDING FACILITIES 5')" />
-                                            <select id="surroundings_facilities_5"
+                                            <!-- TRANSPORT-->
+                                            <x-label for="transport"
+                                                     :value="__('TRANSPORT')" />
+                                            <select id="transport"
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
-                                                    name="surroundings_facilities_5">
+                                                    name="transport">
                                                 <option value="N/A">N/A</option>
                                                 <option value="BUS STATION">BUS STATION</option>
                                                 <option value="NO BUS STATION">NO BUS STATION</option>
@@ -632,6 +623,14 @@
                                             </select>
                                         </div>
 
+                                    </div>
+                                </div>
+
+
+{{--this is a date and Time Section        --}}
+
+                                <div class="pt-8">
+                                    <div class="grid grid-cols-4 gap-sm-2">
                                         <div>
                                             <x-label for="rent_price_k"
                                                      :value="__('RENT PRICE (K)')" />
@@ -646,7 +645,7 @@
                                         {{-- RENT PRICE / SALE PRICE MARKET VALUE--}}
                                         <div>
                                             <x-label for="sale_price_market_value_k"
-                                                     :value="__('SALE PRICE MARKET VALUE (K)')" />
+                                                     :value="__('SALE PRICE/ MARKET VALUE (K)')" />
 
                                             <x-input id="sale_price_market_value_k"
                                                      class="block mt-1 w-full"
@@ -669,14 +668,13 @@
                                         {{-- RENT PRICE / SALE PRICE MARKET VALUE--}}
                                         <div>
                                             <x-label for="sale_price_market_value_usd"
-                                                     :value="__('SALE PRICE MARKET VALUE ($)')" />
+                                                     :value="__('SALE PRICE/ MARKET VALUE ($)')" />
                                             <x-input id="sale_price_market_value_usd"
                                                      class="block mt-1 w-full"
                                                      type="number"
                                                      name="sale_price_market_value_usd"
                                                      :value="old('sale_price_market_value_usd')" required autofocus />
                                         </div>
-
                                     </div>
                                 </div>
 

@@ -305,6 +305,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="master_self_contained">
+                                                <option value="N/A" {{$agency->master_self_contained == "N/A" ? 'selected': ''}}>N/A</option>
                                                 <option value="YES" {{$agency->master_self_contained == "YES" ? 'selected': ''}}>YES</option>
                                                 <option value="NO" {{$agency->master_self_contained == "NO" ? 'selected': ''}}>NO</option>
                                             </select>
@@ -363,6 +364,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="guest_house">
+                                                    <option value="N/A" {{$agency->guest_house == "N/A" ? 'selected': ''}}>N/A</option>
                                                     <option value="YES" {{$agency->guest_house == "YES" ? 'selected': ''}}>YES</option>
                                                     <option value="NO" {{$agency->guest_house == "NO" ? 'selected': ''}}>NO</option>
                                             </select>
@@ -376,90 +378,11 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="swimming_pool">
+                                                    <option value="N/A" {{$agency->swimming_pool == "N/A" ? 'selected': ''}}>N/A</option>
                                                     <option value="YES" {{$agency->swimming_pool == "YES" ? 'selected': ''}}>YES</option>
                                                     <option value="NO" {{$agency->swimming_pool == "NO" ? 'selected': ''}}>NO</option>
                                             </select>
                                         </div>
-
-                                             <!-- POOL HOUSE/CLUB -->
-                                        <div>
-                                            <x-label for="pool_house_club"
-                                                     :value="__('POOL HOUSE/CLUB (yes/no)')" />
-                                            <select id="pool_house_club"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="text"
-                                                    name="pool_house_club">
-                                                    <option value="YES" {{$agency->pool_house_club == "YES" ? 'selected': ''}}>YES</option>
-                                                    <option value="NO" {{$agency->pool_house_club == "NO" ? 'selected': ''}}>NO</option>
-                                            </select>
-                                        </div>
-
-                                                <!-- GYM -->
-                                        <div>
-                                            <x-label for="gym"
-                                                     :value="__('GYM (yes/no)')" />
-                                            <select id="gym"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="text"
-                                                    name="gym">
-                                                    <option value="YES" {{$agency->gym == "YES" ? 'selected': ''}}>YES</option>
-                                                    <option value="NO" {{$agency->gym == "NO" ? 'selected': ''}}>NO</option>
-                                            </select>
-                                        </div>
-
-                                             <!-- SWIMMING POOL -->
-                                        <div>
-                                            <x-label for="SWIMMING POOL"
-                                                     :value="__('SWIMMING POOL')" />
-                                            <select id="swimming_pool"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="text"
-                                                    name="swimming_pool">
-                                                    <option value="YES" {{$agency->swimming_pool == "YES" ? 'selected': ''}}>YES</option>
-                                                    <option value="NO" {{$agency->swimming_pool == "NO" ? 'selected': ''}}>NO</option>
-                                            </select>
-                                        </div>
-
-                                             <!-- GUARD HOUSE -->
-                                        <div>
-                                            <x-label for="guard_house"
-                                                     :value="__('GUARD HOUSE (yes/no)')" />
-                                            <select id="guard_house"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="text"
-                                                    name="guard_house">
-                                                    <option value="YES" {{$agency->guard_house == "YES" ? 'selected': ''}}>YES</option>
-                                                    <option value="NO" {{$agency->guard_house == "NO" ? 'selected': ''}}>NO</option>
-                                            </select>
-                                        </div>
-
-                                             <!-- WORKERS QUARTERS -->
-                                        <div>
-                                            <x-label for="workers_quarters"
-                                                     :value="__('WORKERS QUARTERS (yes/no)')" />
-                                            <select id="workers_quarters"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="text"
-                                                    name="workers_quarters">
-                                                    <option value="YES" {{$agency->workers_quarters == "YES" ? 'selected': ''}}>YES</option>
-                                                    <option value="NO" {{$agency->workers_quarters == "NO" ? 'selected': ''}}>NO</option>
-                                            </select>
-                                        </div>
-
-                                             <!-- GARAGE -->
-                                        <div>
-                                            <x-label for="garage"
-                                                     :value="__('GARAGE (yes/no)')" />
-                                            <select id="garage"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="text"
-                                                    name="garage">
-                                                    <option value="YES" {{$agency->garage == "YES" ? 'selected': ''}}>YES</option>
-                                                    <option value="NO" {{$agency->garage == "NO" ? 'selected': ''}}>NO</option>
-                                            </select>
-                                        </div>
-
-
                                     </div>
                                 </div>
 
@@ -469,6 +392,74 @@
 
                                     <div class="pt-8">
                                         <div class="grid grid-cols-4 gap-sm-2">
+                                            <!-- POOL HOUSE/CLUB -->
+                                            <div>
+                                                <x-label for="pool_house_club"
+                                                         :value="__('POOL HOUSE/CLUB (yes/no)')" />
+                                                <select id="pool_house_club"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                        type="text"
+                                                        name="pool_house_club">
+                                                    <option value="N/A" {{$agency->pool_house_club == "N/A" ? 'selected': ''}}>N/A</option>
+                                                    <option value="YES" {{$agency->pool_house_club == "YES" ? 'selected': ''}}>YES</option>
+                                                    <option value="NO" {{$agency->pool_house_club == "NO" ? 'selected': ''}}>NO</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- GYM -->
+                                            <div>
+                                                <x-label for="gym"
+                                                         :value="__('GYM (yes/no)')" />
+                                                <select id="gym"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                        type="text"
+                                                        name="gym">
+                                                    <option value="N/A" {{$agency->gym == "N/A" ? 'selected': ''}}>N/A</option>
+                                                    <option value="YES" {{$agency->gym == "YES" ? 'selected': ''}}>YES</option>
+                                                    <option value="NO" {{$agency->gym == "NO" ? 'selected': ''}}>NO</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- GUARD HOUSE -->
+                                            <div>
+                                                <x-label for="guard_house"
+                                                         :value="__('GUARD HOUSE (yes/no)')" />
+                                                <select id="guard_house"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                        type="text"
+                                                        name="guard_house">
+                                                    <option value="N/A" {{$agency->guard_house == "N/A" ? 'selected': ''}}>N/A</option>
+                                                    <option value="YES" {{$agency->guard_house == "YES" ? 'selected': ''}}>YES</option>
+                                                    <option value="NO" {{$agency->guard_house == "NO" ? 'selected': ''}}>NO</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- WORKERS QUARTERS -->
+                                            <div>
+                                                <x-label for="workers_quarters"
+                                                         :value="__('WORKERS QUARTERS (yes/no)')" />
+                                                <select id="workers_quarters"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                        type="text"
+                                                        name="workers_quarters">
+                                                    <option value="N/A" {{$agency->workers_quarters == "N/A" ? 'selected': ''}}>N/A</option>
+                                                    <option value="YES" {{$agency->workers_quarters == "YES" ? 'selected': ''}}>YES</option>
+                                                    <option value="NO" {{$agency->workers_quarters == "NO" ? 'selected': ''}}>NO</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- GARAGE -->
+                                            <div>
+                                                <x-label for="garage"
+                                                         :value="__('GARAGE (yes/no)')" />
+                                                <select id="garage"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                        type="text"
+                                                        name="garage">
+                                                    <option value="YES" {{$agency->garage == "YES" ? 'selected': ''}}>YES</option>
+                                                    <option value="NO" {{$agency->garage == "NO" ? 'selected': ''}}>NO</option>
+                                                </select>
+                                            </div>
                                             <!-- LAYOUT OF OFFICE SPACE -->
                                             <div>
                                                 <x-label for="layout_of_office_space"
@@ -512,7 +503,13 @@
                                                     <option value="NO PET" {{$agency->pets == "NO PET" ? 'selected': ''}}>NO PET</option>
                                             </select>
                                         </div>
+                                    </div>
+                                </div>
 
+
+                                    <div class="pt-8">
+                                        <div class="grid grid-cols-4 gap-sm-2">
+                                            <!-- ELECTRICITY / WATER -->
                                             <div>
                                                 <x-label for="electricity"
                                                          :value="__('ELECTRICITY')" />
@@ -526,25 +523,24 @@
                                                 </select>
                                             </div>
 
-                                        <!-- ELECTRICITY / WATER -->
-                                        <div>
-                                            <x-label for="water"
-                                                     :value="__('WATER')" />
-                                            <select id="water"
-                                                    class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                    type="text"
-                                                    name="water">
+                                            <div>
+                                                <x-label for="water"
+                                                         :value="__('WATER')" />
+                                                <select id="water"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                        type="text"
+                                                        name="water">
                                                     <option value="N/A" {{$agency->water == "N/A" ? 'selected': ''}}>N/A</option>
                                                     <option value="BOREHOLE" {{$agency->water == "BOREHOLE" ? 'selected': ''}}>BOREHOLE</option>
                                                     <option value="COUNCIL WATER" {{$agency->water == "COUNCIL WATER" ? 'selected': ''}}>COUNCIL WATER</option>
                                                     <option value="WELL" {{$agency->water == "WELL" ? 'selected': ''}}>WELL</option>
                                                     <option value="COMMUNAL WATER" {{$agency->water == "COMMUNAL WATER" ? 'selected': ''}}>COMMUNAL WATER</option>
                                                     <option value="NO WATER" {{$agency->water == "NO WATER" ? 'selected': ''}}>NO WATER</option>
-                                            </select>
-                                        </div>
+                                                </select>
+                                            </div>
 
                                             <div>
-                                                <!-- surrounding and facilities -->
+                                                <!-- surrounding -->
                                                 <x-label for="surroundings"
                                                          :value="__('SURROUNDINGS')" />
                                                 <select id="surroundings"
@@ -559,85 +555,83 @@
                                             </div>
 
                                             <div>
-                                                <!-- surrounding facilities 1-->
-                                                <x-label for="surroundings_facilities_1"
-                                                         :value="__('SURROUNDING FACILITIES 1')" />
-                                                <select id="surroundings_facilities_1"
+                                                <!-- recreational_facilities-->
+                                                <x-label for="recreational_facilities"
+                                                         :value="__('RECREATIONAL FACILITIES')" />
+                                                <select id="recreational_facilities"
                                                         class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                         type="text"
-                                                        name="surroundings_facilities_1">
+                                                        name="recreational_facilities">
                                                     <option value="N/A" {{$agency->surroundings_facilities_1 == "N/A" ? 'selected': ''}}>N/A</option>
                                                     <option value="NEARBY SOCIAL AMENITIES" {{$agency->surroundings_facilities_1 == "NEARBY SOCIAL AMENITIES" ? 'selected': ''}}>NEARBY SOCIAL AMENITIES</option>
                                                     <option value="NO NEARBY SOCIAL AMENITIES" {{$agency->surroundings_facilities_1 == "NO NEARBY SOCIAL AMENITIES" ? 'selected': ''}}>NO NEARBY SOCIAL AMENITIES</option>
                                                 </select>
                                             </div>
 
-
                                             <div>
-                                                <!-- surrounding facilities 2-->
-                                                <x-label for="surroundings_facilities_2"
-                                                         :value="__('SURROUNDING FACILITIES 2')" />
-                                                <select id="surroundings_facilities_2"
+                                                <!-- SHOPPING-->
+                                                <x-label for="shopping"
+                                                         :value="__('SHOPPING')" />
+                                                <select id="shopping"
                                                         class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                         type="text"
-                                                        name="surroundings_facilities_2">
+                                                        name="shopping">
                                                     <option value="N/A" {{$agency->surroundings_facilities_2 == "N/A" ? 'selected': ''}}>N/A</option>
                                                     <option value="SHOPPING MALL" {{$agency->surroundings_facilities_2 == "SHOPPING MALL" ? 'selected': ''}}>SHOPPING MALL</option>
                                                     <option value="SHOPPING CENTRE" {{$agency->surroundings_facilities_2 == "SHOPPING CENTRE" ? 'selected': ''}}>SHOPPING CENTRE</option>
                                                     <option value="STAND ALONE SHOP" {{$agency->surroundings_facilities_2 == "STAND ALONE SHOP" ? 'selected': ''}}>STAND ALONE SHOP</option>
                                                 </select>
                                             </div>
+
+                                            <div>
+                                                <!-- SCHOOLS-->
+                                                <x-label for="schools"
+                                                         :value="__('SCHOOLS')" />
+                                                <select id="schools"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                        type="text"
+                                                        name="schools">
+                                                    <option value="N/A" {{$agency->surroundings_facilities_3 == "N/A" ? 'selected': ''}}>N/A</option>
+                                                    <option value="SCHOOL" {{$agency->surroundings_facilities_3 == "SCHOOL" ? 'selected': ''}}>SCHOOL</option>
+                                                    <option value="NO SCHOOL" {{$agency->surroundings_facilities_3 == "NO SCHOOL" ? 'selected': ''}}>NO SCHOOL</option>
+                                                </select>
+                                            </div>
+
+                                            <div>
+                                                <!-- NEARBY OFFICES -->
+                                                <x-label for="nearby_offices"
+                                                         :value="__('NEARBY OFFICES')" />
+                                                <select id="nearby_offices"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                        type="text"
+                                                        name="nearby_offices">
+                                                    <option value="N/A" {{$agency->surroundings_facilities_4 == "N/A" ? 'selected': ''}}>N/A</option>
+                                                    <option value="OFFICE BUILDINGS" {{$agency->surroundings_facilities_4 == "OFFICE BUILDINGS" ? 'selected': ''}}>OFFICE BUILDINGS</option>
+                                                    <option value="NO OFFICE BUILDINGS" {{$agency->surroundings_facilities_4 == "NO OFFICE BUILDINGS" ? 'selected': ''}}>NO OFFICE BUILDINGS</option>
+                                                </select>
+                                            </div>
+
+                                            <div>
+                                                <!-- TRANSPORT-->
+                                                <x-label for="transport"
+                                                         :value="__('TRANSPORT')" />
+                                                <select id="transport"
+                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
+                                                        type="text"
+                                                        name="transport">
+                                                    <option value="N/A" {{$agency->surroundings_facilities_5 == "N/A" ? 'selected': ''}}>N/A</option>
+                                                    <option value="BUS STATION" {{$agency->surroundings_facilities_5 == "BUS STATION" ? 'selected': ''}}>BUS STATION</option>
+                                                    <option value="NO BUS STATION" {{$agency->surroundings_facilities_5 == "NO BUS STATION" ? 'selected': ''}}>NO BUS STATION</option>
+                                                    <option value="TAXI RANK" {{$agency->surroundings_facilities_5 == "TAXI RANK" ? 'selected': ''}}>TAXI RANK</option>
+                                                    <option value="NO TAXI RANK" {{$agency->surroundings_facilities_5 == "NO TAXI RANK" ? 'selected': ''}}>NO TAXI RANK</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
 
 
                                     <div class="pt-8">
                                         <div class="grid grid-cols-4 gap-sm-2">
-
-                                            <div>
-                                                <!-- surrounding facilities 3-->
-                                                <x-label for="surroundings_facilities_3"
-                                                         :value="__('SURROUNDING FACILITIES 3')" />
-                                                <select id="surroundings_facilities_3"
-                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                        type="text"
-                                                        name="surroundings_facilities_3">
-                                                        <option value="N/A" {{$agency->surroundings_facilities_3 == "N/A" ? 'selected': ''}}>N/A</option>
-                                                        <option value="SCHOOL" {{$agency->surroundings_facilities_3 == "SCHOOL" ? 'selected': ''}}>SCHOOL</option>
-                                                        <option value="NO SCHOOL" {{$agency->surroundings_facilities_3 == "NO SCHOOL" ? 'selected': ''}}>NO SCHOOL</option>
-                                                </select>
-                                            </div>
-
-                                            <div>
-                                                <!-- surrounding facilities 4 -->
-                                                <x-label for="surroundings_facilities_4"
-                                                         :value="__('SURROUNDING FACILITIES 4')" />
-                                                <select id="surroundings_facilities_4"
-                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                        type="text"
-                                                        name="surroundings_facilities_4">
-                                                        <option value="N/A" {{$agency->surroundings_facilities_4 == "N/A" ? 'selected': ''}}>N/A</option>
-                                                        <option value="OFFICE BUILDINGS" {{$agency->surroundings_facilities_4 == "OFFICE BUILDINGS" ? 'selected': ''}}>OFFICE BUILDINGS</option>
-                                                        <option value="NO OFFICE BUILDINGS" {{$agency->surroundings_facilities_4 == "NO OFFICE BUILDINGS" ? 'selected': ''}}>NO OFFICE BUILDINGS</option>
-                                                </select>
-                                            </div>
-
-                                            <div>
-                                                <!-- surrounding facilities 5-->
-                                                <x-label for="surroundings_facilities_5"
-                                                         :value="__('SURROUNDING FACILITIES 5')" />
-                                                <select id="surroundings_facilities_5"
-                                                        class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
-                                                        type="text"
-                                                        name="surroundings_facilities_5">
-                                                        <option value="N/A" {{$agency->surroundings_facilities_5 == "N/A" ? 'selected': ''}}>N/A</option>
-                                                        <option value="BUS STATION" {{$agency->surroundings_facilities_5 == "BUS STATION" ? 'selected': ''}}>BUS STATION</option>
-                                                        <option value="NO BUS STATION" {{$agency->surroundings_facilities_5 == "NO BUS STATION" ? 'selected': ''}}>NO BUS STATION</option>
-                                                        <option value="TAXI RANK" {{$agency->surroundings_facilities_5 == "TAXI RANK" ? 'selected': ''}}>TAXI RANK</option>
-                                                        <option value="NO TAXI RANK" {{$agency->surroundings_facilities_5 == "NO TAXI RANK" ? 'selected': ''}}>NO TAXI RANK</option>
-                                                </select>
-                                            </div>
-
 
                                             {{-- RENT PRICE / SALE PRICE MARKET VALUE--}}
                                             <div>
