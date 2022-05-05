@@ -140,7 +140,7 @@ class AdminController extends Controller
 
         $description= $request['email-description'];
         $client = Client::find($id);
-        $pdf = PDF::loadView('valmaster.admin.invoice.mail-invoice',  [
+        $pdf = PDF::loadView('valmaster.accounts.invoice.mail-invoice',  [
             'client' => Client::find($id),
             'user' => User::all(),
             'description' => $description
@@ -208,7 +208,7 @@ class AdminController extends Controller
 
 
         $client = Client::find($id);
-        $pdf = PDF::loadView('valmaster.admin.receipt.mail-receipt',  [
+        $pdf = PDF::loadView('valmaster.accounts.receipt.mail-receipt',  [
             'client' => Client::find($id),
             'user' => auth()->user()->name
         ]);
@@ -227,7 +227,7 @@ class AdminController extends Controller
     public function sendReceipt($id){
 
         $client = Client::find($id);
-        $pdf = PDF::loadView('valmaster.admin.receipt.mail-receipt',  [
+        $pdf = PDF::loadView('valmaster.accounts.receipt.mail-receipt',  [
             'client' => Client::find($id),
             'user' => auth()->user()->name
         ]);

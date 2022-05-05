@@ -1,6 +1,5 @@
 <x-app-layout>
     <x-slot name="header">
-
         <x-nav-links.accounts></x-nav-links.accounts>
     </x-slot>
 
@@ -96,9 +95,7 @@
                             </tr>
                         @endforeach
                     </x-table.table>
-
                     {{$clients->appends(['search' => request('search')])->links()}}
-
                 </div>
             </div>
         </div>

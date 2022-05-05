@@ -4,14 +4,19 @@
         <x-nav-links.agency></x-nav-links.agency>
     </x-slot>
 
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-slate-200 border-b border-gray-200 ">
+
+                <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 justify-center py-2 px-2 mb-2 text-center text-3xl font-bold text-stone-200">
+                    Advanced Search
+                </div>
+                <div class="p-6 bg-amber-200 border-b border-gray-200 ">
                 <!-- Validation Errors -->
                 <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-                <form method="POST" action="{{ route('valmaster.agency.store') }}">
+                <form  action="{{ route('valmaster.agency.advanced-search') }}">
                             @csrf
                             <!-- Name -->
                             {{--this section for client details--}}
@@ -25,8 +30,7 @@
                                               <x-input id="job_number"
                                                        class="block mt-1 w-full"
                                                        type="text"
-                                                       name="job_number"
-                                                       :value="old('job_number')" required autofocus />
+                                                       name="job_number"/>
                                           </div>
 
 
@@ -38,6 +42,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="rent_sale">
+                                                  <option value=""></option>
                                                   <option value="SALE">Sale</option>
                                                   <option value="RENT">Rent</option>
                                               </select>
@@ -52,8 +57,7 @@
                                               <x-input id="web"
                                                        class="block mt-1 w-full"
                                                        type="text"
-                                                       name="web"
-                                                       :value="old('web')" required autofocus />
+                                                       name="web"/>
                                           </div>
 
                                           <!-- AGENT IN CHARGE -->
@@ -64,8 +68,7 @@
                                               <x-input id="agent_in_charge"
                                                        class="block mt-1 w-full"
                                                        type="text"
-                                                       name="agent_in_charge"
-                                                       :value="old('agent_in_charge')" required autofocus />
+                                                       name="agent_in_charge"/>
                                           </div>
 
 
@@ -77,6 +80,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="service_line">
+                                                  <option value=""></option>
                                                   <option value="N/A">N/A</option>
                                                   <option value="ESTATE AGENCY">Estate Agency</option>
                                                   <option value="VALUATION">Valuation</option>
@@ -94,8 +98,7 @@
                                               <x-input id="date_of_instruction"
                                                        class="block mt-1 w-full"
                                                        type="date"
-                                                       name="date_of_instruction"
-                                                       :value="old('date_of_instruction')" required autofocus />
+                                                       name="date_of_instruction" />
                                           </div>
 
 
@@ -107,8 +110,7 @@
                                               <x-input id="client_name"
                                                        class="block mt-1 w-full"
                                                        type="text"
-                                                       name="client_name"
-                                                       :value="old('client_name')" required autofocus />
+                                                       name="client_name"/>
                                           </div>
 
 
@@ -120,8 +122,7 @@
                                               <x-input id="client_contact_number"
                                                        class="block mt-1 w-full"
                                                        type="text"
-                                                       name="client_contact_number"
-                                                       :value="old('client_contact_number')" required autofocus />
+                                                       name="client_contact_number" />
                                           </div>
                                       </div>
                                   </div>
@@ -141,8 +142,7 @@
                                             <x-input id="email"
                                                      class="block mt-1 w-full"
                                                      type="email"
-                                                     name="email"
-                                                     :value="old('email')" required autofocus />
+                                                     name="email" />
                                         </div>
                                         {{-- Property Address--}}
                                         <div>
@@ -152,8 +152,7 @@
                                             <x-input id="property_address"
                                                      class="block mt-1 w-full"
                                                      type="text"
-                                                     name="property_address"
-                                                     :value="old('property_address')" required autofocus />
+                                                     name="property_address"/>
                                         </div>
 
                                         {{-- Property Address--}}
@@ -164,8 +163,7 @@
                                             <x-input id="google_cordinates"
                                                      class="block mt-1 w-full"
                                                      type="text"
-                                                     name="google_cordinates"
-                                                     :value="old('google_cordinates')" required autofocus />
+                                                     name="google_cordinates" />
                                         </div>
 
 
@@ -177,6 +175,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="type_of_property">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="Residential">Residential</option>
                                                 <option value="Commercial">Commercial</option>
@@ -193,6 +192,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="type_of_building">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="HOUSE">HOUSE</option>
                                                 <option value="APARTMENT">APARTMENT</option>
@@ -215,6 +215,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="type_of_building_2">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="STAND ALONE">STAND ALONE</option>
                                                 <option value="COMPLEX">COMPLEX</option>
@@ -235,6 +236,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="building_height">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="SINGLE STORY">SINGLE STORY</option>
                                                 <option value="DOUBLE STORY">DOUBLE STORY</option>
@@ -252,8 +254,7 @@
                                             <x-input id="number_of_bedrooms"
                                                      class="block mt-1 w-full"
                                                      type="number"
-                                                     name="number_of_bedrooms"
-                                                     :value="old('number_of_bedrooms')" required autofocus />
+                                                     name="number_of_bedrooms"/>
                                         </div>
                                     </div>
                                 </div>
@@ -269,6 +270,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="size_of_rooms">
+                                                  <option value=""></option>
                                                   <option value="N/A">N/A</option>
                                                   <option value="BIG">BIG</option>
                                                   <option value="MEDIUM">MEDIUM</option>
@@ -284,8 +286,7 @@
                                               <x-input id="number_of_bathrooms"
                                                        class="block mt-1 w-full"
                                                        type="number"
-                                                       name="number_of_bathrooms"
-                                                       :value="old('number_of_bathrooms')" required autofocus />
+                                                       name="number_of_bathrooms"/>
                                           </div>
 
 
@@ -298,6 +299,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="master_self_contained">
+                                                  <option value=""></option>
                                                   <option value="N/A">N/A</option>
                                                   <option value="YES">YES</option>
                                                   <option value="NO">NO</option>
@@ -313,6 +315,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="furnished">
+                                                  <option value=""></option>
                                                   <option value="N/A">N/A</option>
                                                   <option value="FURNISHED">FURNISHED</option>
                                                   <option value="UNFURNISHED">UNFURNISHED</option>
@@ -327,6 +330,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="quality_of_finishes">
+                                                  <option value=""></option>
                                                   <option value="N/A">N/A</option>
                                                   <option value="ULTRA MODERN">ULTRA MODERN</option>
                                                   <option value="MODERN">MODERN</option>
@@ -345,8 +349,7 @@
                                               <x-input id="land_size"
                                                        class="block mt-1 w-full"
                                                        type="text"
-                                                       name="land_size"
-                                                       :value="old('land_size')" required autofocus />
+                                                       name="land_size"/>
                                           </div>
 
 
@@ -358,6 +361,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="guest_house">
+                                                  <option value=""></option>
                                                   <option value="N/A">N/A</option>
                                                   <option value="YES">YES</option>
                                                   <option value="NO">NO</option>
@@ -372,6 +376,7 @@
                                                       class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                       type="text"
                                                       name="swimming_pool">
+                                                  <option value=""></option>
                                                   <option value="N/A">N/A</option>
                                                   <option value="YES">YES</option>
                                                   <option value="NO">NO</option>
@@ -391,6 +396,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="pool_house_club">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="YES">YES</option>
                                                 <option value="NO">NO</option>
@@ -405,6 +411,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="gym">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="YES">YES</option>
                                                 <option value="NO">NO</option>
@@ -419,6 +426,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="guard_house">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="YES">YES</option>
                                                 <option value="NO">NO</option>
@@ -433,6 +441,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="workers_quarters">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="YES">YES</option>
                                                 <option value="NO">NO</option>
@@ -447,6 +456,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="garage">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="YES">YES</option>
                                                 <option value="NO">NO</option>
@@ -461,6 +471,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="layout_of_office_space">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="PARTIONED">PARTIONED</option>
                                                 <option value="OPEN SPACE">OPEN SPACE</option>
@@ -475,6 +486,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="parking">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="PLENTY">PLENTY</option>
                                                 <option value="MODERATE">MODERATE</option>
@@ -491,6 +503,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="pets">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="PET FRIENDLY">PET FRIENDLY</option>
                                                 <option value="NO PET">NO PETS</option>
@@ -509,6 +522,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="electricity">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="BACKUP POWER">BACKUP POWER</option>
                                                 <option value="NO BACKUP POWER">NO BACKUP POWER</option>
@@ -522,6 +536,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="water">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="BOREHOLE">BOREHOLE</option>
                                                 <option value="COUNCIL WATER">COUNCIL WATER</option>
@@ -539,6 +554,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="surroundings">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="GARDENS">GARDENS</option>
                                                 <option value="PRIVATE BACKYARD">PRIVATE BACKYARD</option>
@@ -554,6 +570,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="recreational_facilities">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="NEARBY SOCIAL AMENITIES">NEARBY SOCIAL AMENITIES</option>
                                                 <option value="NO NEARBY SOCIAL AMENITIES">NO NEARBY SOCIAL AMENITIES</option>
@@ -568,6 +585,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="shopping">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="SHOPPING MALL">SHOPPING MALL</option>
                                                 <option value="SHOPPING CENTRE">SHOPPING CENTRE</option>
@@ -583,6 +601,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="schools">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="SCHOOL">SCHOOL</option>
                                                 <option value="NO SCHOOL">NO SCHOOL</option>
@@ -597,6 +616,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="nearby_offices">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="OFFICE BUILDINGS">OFFICE BUILDINGS</option>
                                                 <option value="NO OFFICE BUILDINGS">NO OFFICE BUILDINGS</option>
@@ -611,6 +631,7 @@
                                                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full"
                                                     type="text"
                                                     name="transport">
+                                                <option value=""></option>
                                                 <option value="N/A">N/A</option>
                                                 <option value="BUS STATION">BUS STATION</option>
                                                 <option value="NO BUS STATION">NO BUS STATION</option>
@@ -634,8 +655,7 @@
                                             <x-input id="rent_price_k"
                                                      class="block mt-1 w-full"
                                                      type="number"
-                                                     name="rent_price_k"
-                                                     :value="old('rent_price_k')" required autofocus />
+                                                     name="rent_price_k"/>
                                         </div>
 
                                         {{-- RENT PRICE / SALE PRICE MARKET VALUE--}}
@@ -646,8 +666,7 @@
                                             <x-input id="sale_price_market_value_k"
                                                      class="block mt-1 w-full"
                                                      type="number"
-                                                     name="sale_price_market_value_k"
-                                                     :value="old('sale_price_market_value_k')" required autofocus />
+                                                     name="sale_price_market_value_k" />
                                         </div>
 
                                         <div>
@@ -657,8 +676,7 @@
                                             <x-input id="rent_price_usd"
                                                      class="block mt-1 w-full"
                                                      type="number"
-                                                     name="rent_price_usd"
-                                                     :value="old('rent_price_usd')" required autofocus />
+                                                     name="rent_price_usd" />
                                         </div>
 
                                         {{-- RENT PRICE / SALE PRICE MARKET VALUE--}}
@@ -668,8 +686,7 @@
                                             <x-input id="sale_price_market_value_usd"
                                                      class="block mt-1 w-full"
                                                      type="number"
-                                                     name="sale_price_market_value_usd"
-                                                     :value="old('sale_price_market_value_usd')" required autofocus />
+                                                     name="sale_price_market_value_usd"/>
                                         </div>
                                     </div>
                                 </div>
@@ -678,7 +695,7 @@
                                 <div class="flex items-center justify-end mt-4">
 
                                     <x-button class="cursor-pointer ml-4">
-                                        {{ __('ADD') }}
+                                        {{ __('Search') }}
                                     </x-button>
                                 </div>
                             </form>

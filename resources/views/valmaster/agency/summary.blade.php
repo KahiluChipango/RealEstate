@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Invoice{{$client->branch}}{{$client->id}}</title>
+        <title>Summary{{$agency->id}}{{$agency->job_number}}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-       {{-- <style type="text/css" media="screen"> </style>--}}
-        <style type="text/css" media="screen"> @charset "UTF-8";
+    {{-- <style type="text/css" media="screen"> </style>--}}
+        <style type="text/css" media="screen">
+            @charset "UTF-8";
             /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -11723,6 +11723,11 @@ Ensure the default browser behavior of the `hidden` attribute.
                 min-height: 1.5em;
             }
 
+            ::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
             select {
                 background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
                 background-position: right 0.5rem center;
@@ -11946,17 +11951,23 @@ Ensure the default browser behavior of the `hidden` attribute.
                 position: -webkit-sticky;
                 position: sticky;
             }
-            .left-0 {
-                left: 0px;
-            }
-            .right-0 {
+            .inset-0 {
+                top: 0px;
                 right: 0px;
+                bottom: 0px;
+                left: 0px;
             }
             .top-0 {
                 top: 0px;
             }
             .bottom-0 {
                 bottom: 0px;
+            }
+            .left-0 {
+                left: 0px;
+            }
+            .right-0 {
+                right: 0px;
             }
             .z-0 {
                 z-index: 0;
@@ -11994,23 +12005,23 @@ Ensure the default browser behavior of the `hidden` attribute.
             .col-span-4 {
                 grid-column: span 4 / span 4;
             }
-            .col-auto {
-                grid-column: auto;
-            }
             .col-span-3 {
                 grid-column: span 3 / span 3;
             }
+            .col-auto {
+                grid-column: auto;
+            }
             .col-start-2 {
                 grid-column-start: 2;
+            }
+            .col-start-1 {
+                grid-column-start: 1;
             }
             .col-start-3 {
                 grid-column-start: 3;
             }
             .col-start-4 {
                 grid-column-start: 4;
-            }
-            .col-start-1 {
-                grid-column-start: 1;
             }
             .col-end-4 {
                 grid-column-end: 4;
@@ -12048,10 +12059,6 @@ Ensure the default browser behavior of the `hidden` attribute.
             .mx-auto {
                 margin-left: auto;
                 margin-right: auto;
-            }
-            .-my-2 {
-                margin-top: -0.5rem;
-                margin-bottom: -0.5rem;
             }
             .mx-0 {
                 margin-left: 0px;
@@ -12105,44 +12112,39 @@ Ensure the default browser behavior of the `hidden` attribute.
                 margin-top: auto;
                 margin-bottom: auto;
             }
+            .-my-2 {
+                margin-top: -0.5rem;
+                margin-bottom: -0.5rem;
+            }
             .ml-3 {
                 margin-left: 0.75rem;
             }
             .-ml-px {
                 margin-left: -1px;
             }
-            .mt-2 {
-                margin-top: 0.5rem;
+            .mb-2 {
+                margin-bottom: 0.5rem;
             }
             .mb-4 {
                 margin-bottom: 1rem;
+            }
+            .mr-2 {
+                margin-right: 0.5rem;
+            }
+            .mt-2 {
+                margin-top: 0.5rem;
+            }
+            .mt-3 {
+                margin-top: 0.75rem;
+            }
+            .mt-0 {
+                margin-top: 0px;
             }
             .mt-1 {
                 margin-top: 0.25rem;
             }
             .mt-4 {
                 margin-top: 1rem;
-            }
-            .ml-4 {
-                margin-left: 1rem;
-            }
-            .ml-2 {
-                margin-left: 0.5rem;
-            }
-            .mt-3 {
-                margin-top: 0.75rem;
-            }
-            .ml-1 {
-                margin-left: 0.25rem;
-            }
-            .-mr-2 {
-                margin-right: -0.5rem;
-            }
-            .mt-6 {
-                margin-top: 1.5rem;
-            }
-            .mt-0 {
-                margin-top: 0px;
             }
             .mt-5 {
                 margin-top: 1.25rem;
@@ -12156,9 +12158,6 @@ Ensure the default browser behavior of the `hidden` attribute.
             .mb-1 {
                 margin-bottom: 0.25rem;
             }
-            .mb-2 {
-                margin-bottom: 0.5rem;
-            }
             .mb-3 {
                 margin-bottom: 0.75rem;
             }
@@ -12168,8 +12167,17 @@ Ensure the default browser behavior of the `hidden` attribute.
             .mb-auto {
                 margin-bottom: auto;
             }
-            .mr-2 {
-                margin-right: 0.5rem;
+            .mr-5 {
+                margin-right: 1.25rem;
+            }
+            .ml-4 {
+                margin-left: 1rem;
+            }
+            .ml-1 {
+                margin-left: 0.25rem;
+            }
+            .ml-2 {
+                margin-left: 0.5rem;
             }
             .mt-8 {
                 margin-top: 2rem;
@@ -12179,6 +12187,12 @@ Ensure the default browser behavior of the `hidden` attribute.
             }
             .-mt-px {
                 margin-top: -1px;
+            }
+            .-mr-2 {
+                margin-right: -0.5rem;
+            }
+            .mt-6 {
+                margin-top: 1.5rem;
             }
             .block {
                 display: block;
@@ -12216,26 +12230,29 @@ Ensure the default browser behavior of the `hidden` attribute.
             .h-5 {
                 height: 1.25rem;
             }
-            .h-10 {
-                height: 2.5rem;
-            }
-            .h-16 {
-                height: 4rem;
-            }
-            .h-20 {
-                height: 5rem;
-            }
             .h-4 {
                 height: 1rem;
             }
             .h-6 {
                 height: 1.5rem;
             }
+            .h-10 {
+                height: 2.5rem;
+            }
             .h-auto {
                 height: auto;
             }
+            .h-16 {
+                height: 4rem;
+            }
             .h-8 {
                 height: 2rem;
+            }
+            .h-20 {
+                height: 5rem;
+            }
+            .h-full {
+                height: 100%;
             }
             .min-h-screen {
                 min-height: 100vh;
@@ -12243,17 +12260,8 @@ Ensure the default browser behavior of the `hidden` attribute.
             .w-5 {
                 width: 1.25rem;
             }
-            .w-auto {
-                width: auto;
-            }
-            .w-48 {
-                width: 12rem;
-            }
             .w-full {
                 width: 100%;
-            }
-            .w-20 {
-                width: 5rem;
             }
             .w-4 {
                 width: 1rem;
@@ -12261,26 +12269,47 @@ Ensure the default browser behavior of the `hidden` attribute.
             .w-6 {
                 width: 1.5rem;
             }
+            .w-auto {
+                width: auto;
+            }
+            .w-48 {
+                width: 12rem;
+            }
             .w-8 {
                 width: 2rem;
+            }
+            .w-20 {
+                width: 5rem;
             }
             .w-10 {
                 width: 2.5rem;
             }
+            .min-w-0 {
+                min-width: 0px;
+            }
             .min-w-full {
                 min-width: 100%;
+            }
+            .max-w-full {
+                max-width: 100%;
             }
             .max-w-7xl {
                 max-width: 80rem;
             }
-            .max-w-6xl {
-                max-width: 72rem;
+            .max-w-sm {
+                max-width: 24rem;
             }
             .max-w-xl {
                 max-width: 36rem;
             }
+            .max-w-6xl {
+                max-width: 72rem;
+            }
             .flex-1 {
                 flex: 1 1 0%;
+            }
+            .flex-auto {
+                flex: 1 1 auto;
             }
             .flex-shrink {
                 flex-shrink: 1;
@@ -12343,6 +12372,9 @@ Ensure the default browser behavior of the `hidden` attribute.
             .grid-cols-3 {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
+            .grid-cols-5 {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
             .grid-cols-1 {
                 grid-template-columns: repeat(1, minmax(0, 1fr));
             }
@@ -12367,8 +12399,14 @@ Ensure the default browser behavior of the `hidden` attribute.
             .flex-nowrap {
                 flex-wrap: nowrap;
             }
+            .items-end {
+                align-items: flex-end;
+            }
             .items-center {
                 align-items: center;
+            }
+            .items-stretch {
+                align-items: stretch;
             }
             .justify-end {
                 justify-content: flex-end;
@@ -12379,6 +12417,9 @@ Ensure the default browser behavior of the `hidden` attribute.
             .justify-between {
                 justify-content: space-between;
             }
+            .gap-2 {
+                gap: 0.5rem;
+            }
             .gap-4 {
                 gap: 1rem;
             }
@@ -12388,24 +12429,21 @@ Ensure the default browser behavior of the `hidden` attribute.
             .gap-1 {
                 gap: 0.25rem;
             }
-            .gap-2 {
-                gap: 0.5rem;
-            }
             .gap-3 {
                 gap: 0.75rem;
             }
             .gap-5 {
                 gap: 1.25rem;
             }
-            .space-x-3 > :not([hidden]) ~ :not([hidden]) {
-                --tw-space-x-reverse: 0;
-                margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-                margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-            }
             .space-x-8 > :not([hidden]) ~ :not([hidden]) {
                 --tw-space-x-reverse: 0;
                 margin-right: calc(2rem * var(--tw-space-x-reverse));
                 margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
+            }
+            .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+                --tw-space-x-reverse: 0;
+                margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+                margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
             }
             .space-y-1 > :not([hidden]) ~ :not([hidden]) {
                 --tw-space-y-reverse: 0;
@@ -12463,6 +12501,9 @@ Ensure the default browser behavior of the `hidden` attribute.
             .rounded {
                 border-radius: 0.25rem;
             }
+            .rounded-lg {
+                border-radius: 0.5rem;
+            }
             .rounded-full {
                 border-radius: 9999px;
             }
@@ -12486,75 +12527,74 @@ Ensure the default browser behavior of the `hidden` attribute.
             .border-4 {
                 border-width: 4px;
             }
-            .border-b {
-                border-bottom-width: 1px;
-            }
             .border-l-4 {
                 border-left-width: 4px;
+            }
+            .border-b {
+                border-bottom-width: 1px;
             }
             .border-t {
                 border-top-width: 1px;
             }
+            .border-r {
+                border-right-width: 1px;
+            }
             .border-b-2 {
                 border-bottom-width: 2px;
             }
-            .border-r {
-                border-right-width: 1px;
+            .border-solid {
+                border-style: solid;
             }
             .border-gray-300 {
                 --tw-border-opacity: 1;
                 border-color: rgb(209 213 219 / var(--tw-border-opacity));
             }
-            .border-gray-200 {
-                --tw-border-opacity: 1;
-                border-color: rgb(229 231 235 / var(--tw-border-opacity));
-            }
-            .border-slate-300 {
-                --tw-border-opacity: 1;
-                border-color: rgb(203 213 225 / var(--tw-border-opacity));
+            .border-transparent {
+                border-color: transparent;
             }
             .border-indigo-400 {
                 --tw-border-opacity: 1;
                 border-color: rgb(129 140 248 / var(--tw-border-opacity));
             }
-            .border-transparent {
-                border-color: transparent;
-            }
-            .border-gray-100 {
+            .border-gray-200 {
                 --tw-border-opacity: 1;
-                border-color: rgb(243 244 246 / var(--tw-border-opacity));
+                border-color: rgb(229 231 235 / var(--tw-border-opacity));
             }
             .border-white {
                 --tw-border-opacity: 1;
                 border-color: rgb(255 255 255 / var(--tw-border-opacity));
             }
+            .border-slate-300 {
+                --tw-border-opacity: 1;
+                border-color: rgb(203 213 225 / var(--tw-border-opacity));
+            }
             .border-gray-400 {
                 --tw-border-opacity: 1;
                 border-color: rgb(156 163 175 / var(--tw-border-opacity));
+            }
+            .border-gray-100 {
+                --tw-border-opacity: 1;
+                border-color: rgb(243 244 246 / var(--tw-border-opacity));
             }
             .bg-white {
                 --tw-bg-opacity: 1;
                 background-color: rgb(255 255 255 / var(--tw-bg-opacity));
             }
-            .bg-gray-100 {
-                --tw-bg-opacity: 1;
-                background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-            }
-            .bg-indigo-50 {
-                --tw-bg-opacity: 1;
-                background-color: rgb(238 242 255 / var(--tw-bg-opacity));
-            }
             .bg-cyan-600 {
                 --tw-bg-opacity: 1;
                 background-color: rgb(8 145 178 / var(--tw-bg-opacity));
             }
-            .bg-green-100 {
+            .bg-blue-600 {
                 --tw-bg-opacity: 1;
-                background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+                background-color: rgb(37 99 235 / var(--tw-bg-opacity));
             }
-            .bg-slate-200 {
+            .bg-blue-500 {
                 --tw-bg-opacity: 1;
-                background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+                background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+            }
+            .bg-violet-600 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(124 58 237 / var(--tw-bg-opacity));
             }
             .bg-indigo-600 {
                 --tw-bg-opacity: 1;
@@ -12563,6 +12603,45 @@ Ensure the default browser behavior of the `hidden` attribute.
             .bg-red-500\/75 {
                 background-color: rgb(239 68 68 / 0.75);
             }
+            .bg-indigo-50 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(238 242 255 / var(--tw-bg-opacity));
+            }
+            .bg-green-200 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(187 247 208 / var(--tw-bg-opacity));
+            }
+            .bg-cyan-200 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(165 243 252 / var(--tw-bg-opacity));
+            }
+            .bg-violet-200 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(221 214 254 / var(--tw-bg-opacity));
+            }
+            .bg-green-100 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(220 252 231 / var(--tw-bg-opacity));
+            }
+            .bg-black {
+                --tw-bg-opacity: 1;
+                background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+            }
+            .bg-gray-200 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+            }
+            .bg-transparent {
+                background-color: transparent;
+            }
+            .bg-slate-200 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+            }
+            .bg-gray-100 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+            }
             .bg-gray-800 {
                 --tw-bg-opacity: 1;
                 background-color: rgb(31 41 55 / var(--tw-bg-opacity));
@@ -12570,13 +12649,6 @@ Ensure the default browser behavior of the `hidden` attribute.
             .bg-gray-50 {
                 --tw-bg-opacity: 1;
                 background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-            }
-            .bg-black {
-                --tw-bg-opacity: 1;
-                background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-            }
-            .bg-transparent {
-                background-color: transparent;
             }
             .bg-lime-600 {
                 --tw-bg-opacity: 1;
@@ -12590,14 +12662,30 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-bg-opacity: 1;
                 background-color: rgb(30 41 59 / var(--tw-bg-opacity));
             }
+            .bg-blue-100 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+            }
+            .bg-red-200 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+            }
+            .bg-purple-100 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(243 232 255 / var(--tw-bg-opacity));
+            }
+            .bg-amber-200 {
+                --tw-bg-opacity: 1;
+                background-color: rgb(253 230 138 / var(--tw-bg-opacity));
+            }
+            .bg-opacity-50 {
+                --tw-bg-opacity: 0.5;
+            }
             .bg-opacity-10 {
                 --tw-bg-opacity: 0.1;
             }
             .bg-opacity-25 {
                 --tw-bg-opacity: 0.25;
-            }
-            .bg-opacity-50 {
-                --tw-bg-opacity: 0.5;
             }
             .bg-opacity-75 {
                 --tw-bg-opacity: 0.75;
@@ -12605,20 +12693,36 @@ Ensure the default browser behavior of the `hidden` attribute.
             .bg-opacity-100 {
                 --tw-bg-opacity: 1;
             }
+            .bg-gradient-to-r {
+                background-image: linear-gradient(to right, var(--tw-gradient-stops));
+            }
+            .from-indigo-500 {
+                --tw-gradient-from: #6366f1;
+                --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(99 102 241 / 0));
+            }
+            .via-purple-500 {
+                --tw-gradient-stops: var(--tw-gradient-from), #a855f7, var(--tw-gradient-to, rgb(168 85 247 / 0));
+            }
+            .to-pink-500 {
+                --tw-gradient-to: #ec4899;
+            }
+            .bg-clip-padding {
+                background-clip: padding-box;
+            }
             .fill-current {
                 fill: currentColor;
             }
             .p-6 {
                 padding: 1.5rem;
             }
-            .p-2 {
-                padding: 0.5rem;
+            .p-1 {
+                padding: 0.25rem;
             }
             .p-0 {
                 padding: 0px;
             }
-            .p-1 {
-                padding: 0.25rem;
+            .p-2 {
+                padding: 0.5rem;
             }
             .p-3 {
                 padding: 0.75rem;
@@ -12641,17 +12745,13 @@ Ensure the default browser behavior of the `hidden` attribute.
                 padding-left: 0.5rem;
                 padding-right: 0.5rem;
             }
-            .py-12 {
-                padding-top: 3rem;
-                padding-bottom: 3rem;
+            .px-3 {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
             }
-            .px-9 {
-                padding-left: 2.25rem;
-                padding-right: 2.25rem;
-            }
-            .py-4 {
-                padding-top: 1rem;
-                padding-bottom: 1rem;
+            .py-1\.5 {
+                padding-top: 0.375rem;
+                padding-bottom: 0.375rem;
             }
             .py-1 {
                 padding-top: 0.25rem;
@@ -12661,21 +12761,21 @@ Ensure the default browser behavior of the `hidden` attribute.
                 padding-left: 1.5rem;
                 padding-right: 1.5rem;
             }
-            .py-6 {
-                padding-top: 1.5rem;
-                padding-bottom: 1.5rem;
+            .py-2\.5 {
+                padding-top: 0.625rem;
+                padding-bottom: 0.625rem;
             }
-            .px-1 {
-                padding-left: 0.25rem;
-                padding-right: 0.25rem;
+            .py-4 {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
             }
             .px-0 {
                 padding-left: 0px;
                 padding-right: 0px;
             }
-            .px-3 {
-                padding-left: 0.75rem;
-                padding-right: 0.75rem;
+            .px-1 {
+                padding-left: 0.25rem;
+                padding-right: 0.25rem;
             }
             .px-5 {
                 padding-left: 1.25rem;
@@ -12693,35 +12793,32 @@ Ensure the default browser behavior of the `hidden` attribute.
                 padding-top: 1.25rem;
                 padding-bottom: 1.25rem;
             }
+            .px-9 {
+                padding-left: 2.25rem;
+                padding-right: 2.25rem;
+            }
+            .py-12 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            .py-6 {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            .pt-4 {
+                padding-top: 1rem;
+            }
             .pl-3 {
                 padding-left: 0.75rem;
             }
             .pr-4 {
                 padding-right: 1rem;
             }
-            .pt-6 {
-                padding-top: 1.5rem;
-            }
-            .pt-8 {
-                padding-top: 2rem;
-            }
-            .pt-4 {
-                padding-top: 1rem;
-            }
-            .pb-3 {
-                padding-bottom: 0.75rem;
-            }
-            .pb-2 {
-                padding-bottom: 0.5rem;
-            }
-            .pb-1 {
-                padding-bottom: 0.25rem;
+            .pt-0 {
+                padding-top: 0px;
             }
             .pt-1 {
                 padding-top: 0.25rem;
-            }
-            .pt-0 {
-                padding-top: 0px;
             }
             .pt-2 {
                 padding-top: 0.5rem;
@@ -12735,11 +12832,26 @@ Ensure the default browser behavior of the `hidden` attribute.
             .pb-0 {
                 padding-bottom: 0px;
             }
+            .pb-1 {
+                padding-bottom: 0.25rem;
+            }
+            .pb-2 {
+                padding-bottom: 0.5rem;
+            }
+            .pb-3 {
+                padding-bottom: 0.75rem;
+            }
             .pb-4 {
                 padding-bottom: 1rem;
             }
             .pb-5 {
                 padding-bottom: 1.25rem;
+            }
+            .pt-6 {
+                padding-top: 1.5rem;
+            }
+            .pt-8 {
+                padding-top: 2rem;
             }
             .pl-0 {
                 padding-left: 0px;
@@ -12774,18 +12886,30 @@ Ensure the default browser behavior of the `hidden` attribute.
             .align-text-bottom {
                 vertical-align: text-bottom;
             }
-            .font-sans {
-                font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-            }
             .font-serif {
                 font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
             }
             .font-mono {
                 font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
             }
+            .font-sans {
+                font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            }
             .text-sm {
                 font-size: 0.875rem;
                 line-height: 1.25rem;
+            }
+            .text-base {
+                font-size: 1rem;
+                line-height: 1.5rem;
+            }
+            .text-xs {
+                font-size: 0.75rem;
+                line-height: 1rem;
+            }
+            .text-lg {
+                font-size: 1.125rem;
+                line-height: 1.75rem;
             }
             .text-3xl {
                 font-size: 1.875rem;
@@ -12799,26 +12923,24 @@ Ensure the default browser behavior of the `hidden` attribute.
                 font-size: 1.25rem;
                 line-height: 1.75rem;
             }
-            .text-base {
-                font-size: 1rem;
-                line-height: 1.5rem;
-            }
-            .text-lg {
-                font-size: 1.125rem;
-                line-height: 1.75rem;
-            }
-            .text-xs {
-                font-size: 0.75rem;
-                line-height: 1rem;
+            .text-4xl {
+                font-size: 2.25rem;
+                line-height: 2.5rem;
             }
             .font-medium {
                 font-weight: 500;
+            }
+            .font-normal {
+                font-weight: 400;
             }
             .font-bold {
                 font-weight: 700;
             }
             .font-semibold {
                 font-weight: 600;
+            }
+            .font-light {
+                font-weight: 300;
             }
             .uppercase {
                 text-transform: uppercase;
@@ -12841,11 +12963,11 @@ Ensure the default browser behavior of the `hidden` attribute.
             .leading-7 {
                 line-height: 1.75rem;
             }
-            .tracking-widest {
-                letter-spacing: 0.1em;
-            }
             .tracking-wider {
                 letter-spacing: 0.05em;
+            }
+            .tracking-widest {
+                letter-spacing: 0.1em;
             }
             .text-gray-500 {
                 --tw-text-opacity: 1;
@@ -12855,41 +12977,29 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-text-opacity: 1;
                 color: rgb(55 65 81 / var(--tw-text-opacity));
             }
-            .text-gray-600 {
+            .text-white {
                 --tw-text-opacity: 1;
-                color: rgb(75 85 99 / var(--tw-text-opacity));
-            }
-            .text-red-400 {
-                --tw-text-opacity: 1;
-                color: rgb(248 113 113 / var(--tw-text-opacity));
+                color: rgb(255 255 255 / var(--tw-text-opacity));
             }
             .text-indigo-700 {
                 --tw-text-opacity: 1;
                 color: rgb(67 56 202 / var(--tw-text-opacity));
             }
-            .text-white {
+            .text-gray-600 {
                 --tw-text-opacity: 1;
-                color: rgb(255 255 255 / var(--tw-text-opacity));
+                color: rgb(75 85 99 / var(--tw-text-opacity));
             }
-            .text-green-600 {
+            .text-green-700 {
                 --tw-text-opacity: 1;
-                color: rgb(22 163 74 / var(--tw-text-opacity));
+                color: rgb(21 128 61 / var(--tw-text-opacity));
             }
             .text-gray-800 {
                 --tw-text-opacity: 1;
                 color: rgb(31 41 55 / var(--tw-text-opacity));
             }
-            .text-indigo-600 {
+            .text-red-400 {
                 --tw-text-opacity: 1;
-                color: rgb(79 70 229 / var(--tw-text-opacity));
-            }
-            .text-red-600 {
-                --tw-text-opacity: 1;
-                color: rgb(220 38 38 / var(--tw-text-opacity));
-            }
-            .text-gray-400 {
-                --tw-text-opacity: 1;
-                color: rgb(156 163 175 / var(--tw-text-opacity));
+                color: rgb(248 113 113 / var(--tw-text-opacity));
             }
             .text-gray-900 {
                 --tw-text-opacity: 1;
@@ -12899,9 +13009,9 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-text-opacity: 1;
                 color: rgb(0 0 0 / var(--tw-text-opacity));
             }
-            .text-green-800 {
+            .text-green-600 {
                 --tw-text-opacity: 1;
-                color: rgb(22 101 52 / var(--tw-text-opacity));
+                color: rgb(22 163 74 / var(--tw-text-opacity));
             }
             .text-gray-200 {
                 --tw-text-opacity: 1;
@@ -12910,6 +13020,38 @@ Ensure the default browser behavior of the `hidden` attribute.
             .text-gray-300 {
                 --tw-text-opacity: 1;
                 color: rgb(209 213 219 / var(--tw-text-opacity));
+            }
+            .text-gray-400 {
+                --tw-text-opacity: 1;
+                color: rgb(156 163 175 / var(--tw-text-opacity));
+            }
+            .text-indigo-600 {
+                --tw-text-opacity: 1;
+                color: rgb(79 70 229 / var(--tw-text-opacity));
+            }
+            .text-red-600 {
+                --tw-text-opacity: 1;
+                color: rgb(220 38 38 / var(--tw-text-opacity));
+            }
+            .text-green-800 {
+                --tw-text-opacity: 1;
+                color: rgb(22 101 52 / var(--tw-text-opacity));
+            }
+            .text-blue-700 {
+                --tw-text-opacity: 1;
+                color: rgb(29 78 216 / var(--tw-text-opacity));
+            }
+            .text-red-700 {
+                --tw-text-opacity: 1;
+                color: rgb(185 28 28 / var(--tw-text-opacity));
+            }
+            .text-purple-700 {
+                --tw-text-opacity: 1;
+                color: rgb(126 34 206 / var(--tw-text-opacity));
+            }
+            .text-stone-200 {
+                --tw-text-opacity: 1;
+                color: rgb(231 229 228 / var(--tw-text-opacity));
             }
             .text-opacity-25 {
                 --tw-text-opacity: 0.25;
@@ -12934,6 +13076,9 @@ Ensure the default browser behavior of the `hidden` attribute.
             .underline-offset-1 {
                 text-underline-offset: 1px;
             }
+            .underline-offset-8 {
+                text-underline-offset: 8px;
+            }
             .antialiased {
                 -webkit-font-smoothing: antialiased;
                 -moz-osx-font-smoothing: grayscale;
@@ -12944,23 +13089,23 @@ Ensure the default browser behavior of the `hidden` attribute.
             .opacity-0 {
                 opacity: 0;
             }
-            .opacity-100 {
-                opacity: 1;
-            }
             .opacity-25 {
                 opacity: 0.25;
             }
             .opacity-50 {
                 opacity: 0.5;
             }
+            .opacity-100 {
+                opacity: 1;
+            }
             .shadow-sm {
                 --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
                 --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
                 box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             }
-            .shadow-lg {
-                --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+            .shadow-md {
+                --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+                --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
                 box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             }
             .shadow {
@@ -12968,9 +13113,14 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
                 box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             }
-            .shadow-md {
-                --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-                --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+            .shadow-xl {
+                --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+                --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            }
+            .shadow-lg {
+                --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
                 box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             }
             .shadow-none {
@@ -13041,13 +13191,17 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-bg-opacity: 1;
                 background-color: rgb(243 244 246 / var(--tw-bg-opacity));
             }
-            .hover\:bg-gray-50:hover {
-                --tw-bg-opacity: 1;
-                background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-            }
             .hover\:bg-cyan-500:hover {
                 --tw-bg-opacity: 1;
                 background-color: rgb(6 182 212 / var(--tw-bg-opacity));
+            }
+            .hover\:bg-blue-700:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+            }
+            .hover\:bg-violet-700:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(109 40 217 / var(--tw-bg-opacity));
             }
             .hover\:bg-indigo-700:hover {
                 --tw-bg-opacity: 1;
@@ -13055,6 +13209,18 @@ Ensure the default browser behavior of the `hidden` attribute.
             }
             .hover\:bg-red-500\/100:hover {
                 background-color: rgb(239 68 68 / 1);
+            }
+            .hover\:bg-gray-50:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+            }
+            .hover\:bg-gray-300:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+            }
+            .hover\:bg-red-300:hover {
+                --tw-bg-opacity: 1;
+                background-color: rgb(252 165 165 / var(--tw-bg-opacity));
             }
             .hover\:bg-gray-700:hover {
                 --tw-bg-opacity: 1;
@@ -13068,6 +13234,9 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-bg-opacity: 1;
                 background-color: rgb(15 118 110 / var(--tw-bg-opacity));
             }
+            .hover\:bg-opacity-50:hover {
+                --tw-bg-opacity: 0.5;
+            }
             .hover\:text-gray-500:hover {
                 --tw-text-opacity: 1;
                 color: rgb(107 114 128 / var(--tw-text-opacity));
@@ -13079,6 +13248,10 @@ Ensure the default browser behavior of the `hidden` attribute.
             .hover\:text-gray-800:hover {
                 --tw-text-opacity: 1;
                 color: rgb(31 41 55 / var(--tw-text-opacity));
+            }
+            .hover\:text-red-900:hover {
+                --tw-text-opacity: 1;
+                color: rgb(127 29 29 / var(--tw-text-opacity));
             }
             .hover\:text-gray-900:hover {
                 --tw-text-opacity: 1;
@@ -13092,12 +13265,21 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-text-opacity: 1;
                 color: rgb(49 46 129 / var(--tw-text-opacity));
             }
+            .hover\:shadow-lg:hover {
+                --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            }
             .focus\:z-10:focus {
                 z-index: 10;
             }
             .focus\:border-blue-300:focus {
                 --tw-border-opacity: 1;
                 border-color: rgb(147 197 253 / var(--tw-border-opacity));
+            }
+            .focus\:border-blue-600:focus {
+                --tw-border-opacity: 1;
+                border-color: rgb(37 99 235 / var(--tw-border-opacity));
             }
             .focus\:border-indigo-700:focus {
                 --tw-border-opacity: 1;
@@ -13119,6 +13301,14 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-bg-opacity: 1;
                 background-color: rgb(243 244 246 / var(--tw-bg-opacity));
             }
+            .focus\:bg-white:focus {
+                --tw-bg-opacity: 1;
+                background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+            }
+            .focus\:bg-blue-700:focus {
+                --tw-bg-opacity: 1;
+                background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+            }
             .focus\:bg-indigo-100:focus {
                 --tw-bg-opacity: 1;
                 background-color: rgb(224 231 255 / var(--tw-bg-opacity));
@@ -13126,6 +13316,10 @@ Ensure the default browser behavior of the `hidden` attribute.
             .focus\:bg-gray-50:focus {
                 --tw-bg-opacity: 1;
                 background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+            }
+            .focus\:text-gray-700:focus {
+                --tw-text-opacity: 1;
+                color: rgb(55 65 81 / var(--tw-text-opacity));
             }
             .focus\:text-indigo-800:focus {
                 --tw-text-opacity: 1;
@@ -13135,13 +13329,14 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-text-opacity: 1;
                 color: rgb(31 41 55 / var(--tw-text-opacity));
             }
-            .focus\:text-gray-700:focus {
-                --tw-text-opacity: 1;
-                color: rgb(55 65 81 / var(--tw-text-opacity));
-            }
             .focus\:text-gray-500:focus {
                 --tw-text-opacity: 1;
                 color: rgb(107 114 128 / var(--tw-text-opacity));
+            }
+            .focus\:shadow-lg:focus {
+                --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             }
             .focus\:outline-none:focus {
                 outline: 2px solid transparent;
@@ -13157,9 +13352,18 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
                 box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
             }
+            .focus\:ring-0:focus {
+                --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+                --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+                box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+            }
             .focus\:ring-indigo-500:focus {
                 --tw-ring-opacity: 1;
                 --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
+            }
+            .focus\:ring-violet-500:focus {
+                --tw-ring-opacity: 1;
+                --tw-ring-color: rgb(139 92 246 / var(--tw-ring-opacity));
             }
             .focus\:ring-indigo-200:focus {
                 --tw-ring-opacity: 1;
@@ -13175,6 +13379,10 @@ Ensure the default browser behavior of the `hidden` attribute.
                 --tw-bg-opacity: 1;
                 background-color: rgb(243 244 246 / var(--tw-bg-opacity));
             }
+            .active\:bg-blue-800:active {
+                --tw-bg-opacity: 1;
+                background-color: rgb(30 64 175 / var(--tw-bg-opacity));
+            }
             .active\:bg-gray-900:active {
                 --tw-bg-opacity: 1;
                 background-color: rgb(17 24 39 / var(--tw-bg-opacity));
@@ -13186,6 +13394,11 @@ Ensure the default browser behavior of the `hidden` attribute.
             .active\:text-gray-500:active {
                 --tw-text-opacity: 1;
                 color: rgb(107 114 128 / var(--tw-text-opacity));
+            }
+            .active\:shadow-lg:active {
+                --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+                --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             }
             .disabled\:opacity-25:disabled {
                 opacity: 0.25;
@@ -13260,6 +13473,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
                 .sm\:h-10 {
                     height: 2.5rem;
+                }
+
+                .sm\:h-16 {
+                    height: 4rem;
                 }
 
                 .sm\:h-20 {
@@ -13337,178 +13554,242 @@ Ensure the default browser behavior of the `hidden` attribute.
                     padding-right: 2rem;
                 }
             }
+            @media (min-width: 1280px) {
+
+                .xl\:w-96 {
+                    width: 24rem;
+                }
+            }
+
 
         </style>
-
     </head>
-
     <body>
-
-    <div class="grid grid-cols-4 gap-4">
-
-        <img src="{{ public_path('SG Logo.png') }}" style="width: 96px; height: 65px">
-        <h1 class="col-start-2 col-span-2 text-center text-3xl font-bold bg-indigo-50"> Sherwood Greene Properties Limited </h1>
-        {{--<x-application-logo class="col-end-4 col-span-1 block h-10 w-auto fill-current text-gray-600" />--}}
-
-
-        <h1 class="col-start-2 col-span-2 text-center text-2xl font-semibold font-serif text-red-400 opacity-75">
-            INVOICE
+        <div class="grid grid-cols-3 gap-4">
+            <img src="{{ public_path('SG Logo.png') }}" style="width: 96px; height: 65px">
+        <h1 class="col-start-2 col-span-2 text-left text-3xl font-bold">
+            Sherwood Greene Properties Limited
         </h1>
 
-
-        {{-- Branch Addres--}}
-        @if($client->branch == 'LSK')
-            <div class="col-start-1 col-span-1">
-                <p>Mukuba Pensions  House</p>
-                <p>Box. 32616 | Tel: +260 211 255 604/5</p>
-                <p>Email: sgzam@sherwoodgreene.com</p>
-            </div>
-        @elseif($client->branch == "NDL")
-            <div class="col-start-1 col-span-1">
-                <p>President Avenue</p>
-                <p> Beverley House</p>
-                <p>P.O.Box. 71919 | Tel: +260 212 612153/4</p>
-                <p>Email: sgzam@sherwoodgreene.com</p>
-            </div>
-        @elseif($client->branch == 'KT')
-            <div class="col-start-1 col-span-1">
-                <p>Unit #1, Lubambe Shopping Centre</p>
-                <p>P.O.Box. 249 Parklands | Tel: +260 212 228 880/2/1</p>
-                <p>Email: sgzamkt@sherwoodgreene.com</p>
-            </div>
-        @elseif($client->branch == "HAR")
-            <div class="col-start-1 col-span-1">
-                <p>Mukuba Pensions  House</p>
-                <p>Box. 32616 | Tel: +260 211 255 604/5</p>
-                <p>Email: sgzam@sherwoodgreene.com</p>
-            </div>
-        @endif
-
-
-
-        <div class="col-start-2 col-span-1 text-right font-bold font-mono">
-
-
-            <h3>Date: {{ date('M d, Y')}}</h3>
-            <h3>Invoice #:{{$client->branch}}{{$client->id}}</h3>
-            <h3>For:{{ $client->client_name }}</h3>
-
-
+        <h1 class="col-span-3 text-center text-2xl font-semibold font-serif text-red-400 opacity-75 ">
+            Summary
+        </h1>
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Job Number</h1>
+            <p class="font-mono">{{$agency->job_number}}</p>
         </div>
 
-        <div class="col-start-1 col-end-1 fst-italic ">
-            <p> {{ $client->client_name }}</p>
-            <p> {{ $client->property_address }}</p>
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Rent/Sale</h1>
+            <p class="font-mono">{{$agency->rent_sale}}</p>
         </div>
 
-        {{--Contact Number--}}
-        <div class="col-start-1 col-span-4 ">
-            <p><strong>Contact Person:</strong> {{ $client->contact_person }}</p>
-        </div>
-        <div class="col-start-1 col-span-4 ">
-            <p><strong>Contact Number:</strong>  {{ $client->contact_person_number }}</p>
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Web</h1>
+            <p class="font-mono">{{$agency->web}}</p>
         </div>
 
-
-        {{--Discription and amounts table--}}
-
-
-
-        <div class="col-start-1 col-span-3 row-cols-1 border border-dark">
-            <table class="min-w-full  col-span-3">
-                <thead class="border-b ">
-                <tr>
-                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 font-bold text-left col-span-2">
-                        Description
-                    </th>
-                    <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 font-bold text-right">
-                        Amount
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="bg-white border-b">
-
-                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap col-span-3">
-                        {{$description}}
-                    </td>
-
-                </tr>
-
-                <tr class="bg-white border-b">
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 font-bold text-xl">
-                        TOTAL
-                    </td>
-
-                    <td class="text-sm font-light px-6 py-4 whitespace-nowrap text-right font-bold text-lg">
-                        Amount
-                    </td>
-
-                    <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap text-left">
-                        K{{$client->fee}}
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Agent In Charge</h1>
+            <p class="font-mono">{{$agency->agent_in_charge}}</p>
         </div>
 
-
-        {{-- Bank Details --}}
-        @if($client->branch == 'LSK')
-            <div class="col-start-1 col-span-2">
-                <h2 class="font-bold uppercase font-serif">Bank Details</h2>
-                <p>Bank Name: <b>STANBIC BANK</b></p>
-                <p>Account Name: <b>SHERWOOD GREENE</b></p>
-                <p>Account Number: <b>9130000328050</b></p>
-                <p>Branch: <b>MULUNGUSHI</b></p>
-                <p>Swift Code: <b>SBICZMLX</b></p>
-                <p>Sort Code: <b>040015</b></p>
-            </div>
-        @elseif($client->branch == "NDL")
-            <div class="col-start-1 col-span-2">
-                <h2 class="font-bold uppercase font-serif">Bank Details</h2>
-                <p>Bank Name: <b>ACCESS BANK</b></p>
-                <p>Account Name: <b>SHERWOOD GREENE</b></p>
-                <p>Account Number: <b>0010011011091</b></p>
-                <p>Branch: <b>CAIRO RD, NORTHEND</b></p>
-                <p>Swift Code: <b>AZAMZMLU</b></p>
-                <p>Sort Code: <b>350001</b></p>
-            </div>
-        @elseif($client->branch == 'KT')
-            <div class="col-start-1 col-span-4">
-                <h2 class="font-bold uppercase font-serif">Bank Details</h2>
-                <p>Bank Name: <b>ABSA BANK ZAMBIA</b></p>
-                <p>Account Name: <b>SHERWOOD GREENE</b></p>
-                <p>Account Number: <b>009-1014963 </b></p> <p>Swift Code: <b>BARCMLX</b></p> <p>Sort Code: <b>040015</b></p>
-                <p>Dollar Account: <b>1046762</b> </p> <p>Swift Code: <b>BARCZMLX</b></p> <p>Sort Code: <b>02-00-01</b></p>
-                <p>Branch: <b>KITWE</b></p>
-
-            </div>
-        @elseif($client->branch == "HAR")
-            <div class="col-start-1 col-span-2">
-                <h2 class="font-bold uppercase font-serif">Bank Details</h2>
-                <p>Mukuba Pensions  House</p>
-                <p>Box. 32616 | Tel: +260 211 255 604/5</p>
-                <p>Email: sgzam@sherwoodgreene.com</p>
-            </div>
-        @endif
-
-
-
-        {{-- Footer --}}
-        <div class="col-start-1 col-span-4 font-semibold pt-2">
-            <p> Make all checks payable to <b>Sherwood Greene Properties Limited</b> </p>
-            <p>If you have any questions concerning this invoice, contact Mwansa Ngosa or</p>
-            <p>Chileshe Musonda on +260977708100 or mwansa.ngosa@sherwoodgreene.com</p>
-
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Service Line</h1>
+            <p class="font-mono">{{$agency->service_line}}</p>
         </div>
 
-        <h1 class="col-start-2 col-span-2 text-center font-bold font-sans text-xl pt-1"> 'THANK YOU FOR YOUR BUSINESS!' </h1>
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Date of Instruction</h1>
+            <p class="font-mono">{{$agency->date_of_instruction}}</p>
+        </div>
 
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Status</h1>
+            <p class="font-mono">{{$agency->job_number}}</p>
+        </div>
 
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Client Name</h1>
+            <p class="font-mono">{{$agency->client_name}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Client Contact Numner</h1>
+            <p class="font-mono">{{$agency->client_contact_number}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Email</h1>
+            <p class="font-mono">{{$agency->email}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Property Address</h1>
+            <p class="font-mono">{{$agency->property_address}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Google Cordinates </h1>
+            <p class="font-mono">{{$agency->google_cordinates}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Type of property</h1>
+            <p class="font-mono">{{$agency->type_of_property}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Type of Building</h1>
+            <p class="font-mono">{{$agency->type_of_building}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Type of Building 2</h1>
+            <p class="font-mono">{{$agency->type_of_building_2}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Building Height</h1>
+            <p class="font-mono">{{$agency->building_height}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Number of Bedrooms</h1>
+            <p class="font-mono">{{$agency->number_of_bedrooms}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Size of Rooms</h1>
+            <p class="font-mono">{{$agency->size_of_rooms}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Number of bedrooms</h1>
+            <p class="font-mono">{{$agency->number_of_bathrooms}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Master Self Contained</h1>
+            <p class="font-mono">{{$agency->master_self_contained}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Furnished</h1>
+            <p class="font-mono">{{$agency->furnished}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Quality of Finishes</h1>
+            <p class="font-mono">{{$agency->quality_of_finishes}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Land Size</h1>
+            <p class="font-mono">{{$agency->land_size}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Pool House Club</h1>
+            <p class="font-mono">{{$agency->pool_house_club}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Gym</h1>
+            <p class="font-mono">{{$agency->gym}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Guard House</h1>
+            <p class="font-mono">{{$agency->guard_house}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Workers Quarters</h1>
+            <p class="font-mono">{{$agency->workers_quarters}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Garage</h1>
+            <p class="font-mono">{{$agency->garage}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Guest House</h1>
+            <p class="font-mono">{{$agency->guest_house}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Swimming pool</h1>
+            <p class="font-mono">{{$agency->swimming_pool}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Layout of office space</h1>
+            <p class="font-mono">{{$agency->layout_of_office_space}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Parking</h1>
+            <p class="font-mono">{{$agency->parking}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Pets</h1>
+            <p class="font-mono">{{$agency->pets}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Electricity</h1>
+            <p class="font-mono">{{$agency->electricity}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Water</h1>
+            <p class="font-mono">{{$agency->water}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Surroundings</h1>
+            <p class="font-mono">{{$agency->surroundings}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Recreational Facilities</h1>
+            <p class="font-mono">{{$agency->recreational_facilities}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Shopping</h1>
+            <p class="font-mono">{{$agency->shopping}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Schools</h1>
+            <p class="font-mono">{{$agency->schools}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">nearby offices</h1>
+            <p class="font-mono">{{$agency->nearby_offices}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">transport</h1>
+            <p class="font-mono">{{$agency->transport}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Rent Price</h1>
+            <p class="font-mono">K{{$agency->rent_price_k}}</p>
+            <p class="font-mono">${{$agency->rent_price_usd}}</p>
+        </div>
+
+        <div class="col-span-1 border-b-2">
+            <h1 class="underline font-bold text-uppercase font-serif">Sale PRice Market Value</h1>
+            <p class="font-mono">K{{$agency->sale_price_market_value_k}}</p>
+            <p class="font-mono">${{$agency->sale_price_market_value_usd}}</p>
+        </div>
     </div>
     </body>
 </html>
-
-
-

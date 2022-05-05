@@ -13458,8 +13458,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 <div class="grid grid-cols-3 gap-2 ">
     <div class="items-end">
-        {{--Logo Here--}}
-
+        <img src="{{ public_path('SG Logo.png') }}" style="width: 96px; height: 65px">
     </div>
 
     <div class="col-span-3 text-center text-4xl font-bold font-serif">Sherwood Greene Properties Limited</div>

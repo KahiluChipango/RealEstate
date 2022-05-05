@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agency;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class AgencyController extends Controller
@@ -153,7 +154,10 @@ class AgencyController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('valmaster.agency.summary-templete',
+            [
+                'agency' => Agency::find($id)
+            ]);
     }
 
     /**
@@ -195,5 +199,77 @@ class AgencyController extends Controller
     {
         Agency::destroy($id);
         return redirect(route("valmaster.agency.index"))->with('delete', 'Record has Been Deleted ');
+    }
+
+    public function showSearch()
+    {
+        return view('valmaster.agency.advanced-search');
+    }
+
+
+    public function advanceSearch(Request $request)
+    {
+         /*$request ?? "";*/
+        if ($request != "") {
+            $agencies = Agency::where('job_number', 'LIKE', '%'.$request['job_number'].'%')
+                ->Where('rent_sale', 'LIKE', '%'.$request['rent_sale'].'%')
+                ->Where('web', 'LIKE', '%'.$request['web'].'%')
+                ->Where('agent_in_charge', 'LIKE', '%'.$request['agent_in_charge'].'%')
+                ->Where('service_line', 'LIKE', '%'.$request['service_line'].'%')
+                ->Where('date_of_instruction', 'LIKE', '%'.$request['date_of_instruction'].'%')
+                ->Where('client_name', 'LIKE', '%'.$request['client_name'].'%')
+                ->Where('client_contact_number', 'LIKE', '%'.$request['client_contact_number'].'%')
+                ->Where('email', 'LIKE', '%'.$request['email'].'%')
+                ->Where('property_address', 'LIKE', '%'.$request['property_address'].'%')
+                ->Where('google_cordinates', 'LIKE', '%'.$request['google_cordinates'].'%')
+                ->Where('type_of_property', 'LIKE', '%'.$request['type_of_property'].'%')
+                ->Where('type_of_building', 'LIKE', '%'.$request['type_of_building'].'%')
+                ->Where('type_of_building_2', 'LIKE', '%'.$request['type_of_building_2'].'%')
+                ->Where('building_height', 'LIKE', '%'.$request['building_height'].'%')
+                ->Where('number_of_bedrooms', 'LIKE', '%'.$request['number_of_bedrooms'].'%')
+                ->Where('size_of_rooms', 'LIKE', '%'.$request['size_of_rooms'].'%')
+                ->Where('number_of_bathrooms', 'LIKE', '%'.$request['number_of_bathrooms'].'%')
+                ->Where('master_self_contained', 'LIKE', '%'.$request['master_self_contained'].'%')
+                ->Where('furnished', 'LIKE', '%'.$request['master_self_contained'].'%')
+                ->Where('quality_of_finishes', 'LIKE', '%'.$request['quality_of_finishes'].'%')
+                ->Where('land_size', 'LIKE', '%'.$request['land_size'].'%')
+                ->Where('guest_house', 'LIKE', '%'.$request['guest_house'].'%')
+                ->Where('pool_house_club', 'LIKE', '%'.$request['pool_house_club'].'%')
+                ->Where('gym', 'LIKE', '%'.$request['gym'].'%')
+                ->Where('guard_house', 'LIKE', '%'.$request['guard_house'].'%')
+                ->Where('workers_quarters', 'LIKE', '%'.$request['workers_quarters'].'%')
+                ->Where('garage', 'LIKE', '%'.$request['garage'].'%')
+                ->Where('swimming_pool', 'LIKE', '%'.$request['swimming_pool'].'%')
+                ->Where('layout_of_office_space', 'LIKE', '%'.$request['layout_of_office_space'].'%')
+                ->Where('parking', 'LIKE', '%'.$request['parking'].'%')
+                ->Where('pets', 'LIKE', '%'.$request['pets'].'%')
+                ->Where('electricity', 'LIKE', '%'.$request['electricity'].'%')
+                ->Where('water', 'LIKE', '%'.$request['water'].'%')
+                ->Where('surroundings', 'LIKE', '%'.$request['surroundings'].'%')
+                ->Where('recreational_facilities', 'LIKE', '%'.$request['recreational_facilities'].'%')
+                ->Where('shopping', 'LIKE', '%'.$request['shopping'].'%')
+                ->Where('schools', 'LIKE', '%'.$request['schools'].'%')
+                ->Where('nearby_offices', 'LIKE', '%'.$request['nearby_offices'].'%')
+                ->Where('transport', 'LIKE', '%'.$request['transport'].'%')
+                ->Where('rent_price_k', 'LIKE', '%'.$request['rent_price_k'].'%')
+                ->Where('rent_price_usd', 'LIKE', '%'.$request['rent_price_usd'].'%')
+                ->Where('rent_price_usd', 'LIKE', '%'.$request['rent_price_usd'].'%')
+                ->Where('sale_price_market_value_usd', 'LIKE', '%'.$request['sale_price_market_value_usd'].'%')
+                ->paginate(20);
+
+        } else {
+            $agencies = Agency::paginate(10);
+
+        }
+        return view("valmaster.agency.index")
+            ->with('agencies', $agencies);
+    }
+
+    public function saveSummary($id){
+        $agency = Agency::find($id);
+        $pdf = PDF::loadView('valmaster.agency.summary', [
+            'agency' => Agency::find($id)
+        ]);
+        return $pdf->download( 'Summary - '.$agency->id.'.'.$agency->job_number.'.pdf');
     }
 }

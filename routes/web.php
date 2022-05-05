@@ -81,6 +81,10 @@ Route::group(['middleware' => 'auth'], function(){
     */
         Route::prefix('valmaster')->middleware('role:agency')->name('valmaster.')->group(function() {
             Route::resource('/agency', AgencyController::class);
+            Route::get('/advanced-search', [AgencyController::class, 'showSearch'])->name('agency.show-advanced-search-view');
+            Route::get('/get-advanced-search', [AgencyController::class, 'advanceSearch'])->name('agency.advanced-search');
+            Route::get('/download-summary/{id}', [AgencyController::class, 'saveSummary'])->name('agency.download-summary');
+
         });
 
     /*

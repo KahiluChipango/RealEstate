@@ -79,10 +79,10 @@ class ClientController extends Controller
         $request->validate([
             'branch' => ['required'],
             'client_name' => ['required', 'string'],
-            'client_number' => ['required|digits:10|numeric',],
+            'client_number' => ['required'],
             'client_email' => ['required', 'string'],
             'contact_person' => ['required',],
-            'contact_person_number' => ['required|digits:10|numeric'],
+            'contact_person_number' => ['required'],
             'property_address' => ['required', 'string'],
             'fee' => ['required', 'integer'],
             'fee_status' => ['required'],
