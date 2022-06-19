@@ -184,7 +184,7 @@ class AccountController extends Controller
         $client = new \Vonage\Client($basic);
 
         $response = $client->sms()->send(
-            new \Vonage\SMS\Message\SMS('+26'.$data->contact_person_number, 'Sherwood GP', 'A text message sent using the Nexmo SMS API')
+            new \Vonage\SMS\Message\SMS('+26'.$data->contact_person_number, 'ChipaWebs', 'Thank You for doing business with ChipaWebs')
         );
 
         $message = $response->current();
